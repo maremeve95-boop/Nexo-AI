@@ -1,0 +1,42 @@
+NEXO AI 6.0 PATCHED
+===================
+
+Actualización centrada en estabilidad y pequeños arreglos, manteniendo la base de Nexo AI 6.0.
+
+CAMBIOS DE ESTA PATCH
+- Corregido el riesgo de cambiar de chat o de cuenta mientras las imágenes adjuntas se están preparando.
+- Se bloquean temporalmente los controles de envío y adjuntos durante esa preparación para evitar mensajes duplicados o que terminen en una conversación incorrecta.
+- La recuperación por falta de espacio local conserva explícitamente la conversación activa junto con el historial reciente.
+- Al pegar una URL pública (http/https), Nexo intenta activar la búsqueda web y pide consultar esa página concreta. Si la herramienta no puede recuperarla, Nexo debe decirlo sin inventar el contenido.
+- Nexo 5 queda disponible con un límite de cinco respuestas satisfactorias al día, guardado localmente en este navegador.
+- Nexo 5.5 y Nexo 6 aparecen como perfiles reservados y no tienen una opción de desbloqueo en esta versión. También se filtran los modelos Claude Opus del selector manual para que el perfil reservado no se pueda seleccionar accidentalmente desde Ajustes.
+- Renovada la caché del service worker para evitar que el navegador mantenga una interfaz anterior tras desplegar el parche.
+- Actualizados el título, el manifiesto y las instrucciones de publicación.
+
+FAMILIA NEXO
+- Nexo 4 Lite: estudios, deberes y explicaciones.
+- Nexo 4.1: asistente general predeterminado.
+- Nexo 4.5: investigación y análisis.
+- Nexo 5: programación, con cinco respuestas satisfactorias al día.
+- Nexo 5.5 y Nexo 6: reservados y no desbloqueables en este build.
+
+IMPORTANTE SOBRE LOS LÍMITES
+El límite diario de Nexo 5 se guarda en localStorage. Es un límite de interfaz para este navegador, no un control antifraude de servidor; borrar los datos del sitio puede reiniciarlo. Los proveedores externos también tienen sus propios límites y disponibilidad. Los perfiles Nexo son configuraciones sobre modelos disponibles, no redes neuronales entrenadas desde cero.
+
+PUBLICAR CON GITHUB + VERCEL
+1. Descomprime el ZIP.
+2. Sube el contenido de la carpeta al nivel raíz de un repositorio GitHub (no subas solo el ZIP).
+3. En Vercel, importa el repositorio como sitio estático. No necesita comando de build ni dependencias npm; el archivo principal es index.html.
+4. Abre la URL HTTPS desplegada y comprueba inicio de sesión, chats, adjuntos y búsqueda antes de instalar la PWA.
+5. Los próximos cambios que confirmes en GitHub se publicarán automáticamente si mantienes la integración activa.
+
+ARCHIVOS INCLUIDOS
+- index.html: aplicación y lógica.
+- manifest.webmanifest: instalación PWA e iconos.
+- service-worker.js: shell cache y actualización de versión.
+- icons/: iconos de Nexo.
+- vercel.json: cabeceras para service worker y manifest.
+- README.md / DEPLOY_VERCEL.md: documentación.
+
+SEGURIDAD
+No subas contraseñas, tokens o claves privadas a GitHub. La app es estática y las llamadas de IA necesitan conexión a Internet. El modo offline solo puede mostrar la carcasa cacheada, no ejecutar el modelo.

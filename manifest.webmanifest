@@ -1,0 +1,38 @@
+{
+  "id": "./",
+  "name": "Nexo AI 6.0 Patched",
+  "short_name": "Nexo AI",
+  "description": "Nexo AI 6.0 Patched: mejoras de estabilidad, conversaciones robustas y creación de archivos.",
+  "lang": "es-ES",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#090c16",
+  "theme_color": "#0a0d18",
+  "categories": [
+    "productivity",
+    "education",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "icons/nexo-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/nexo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/nexo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
