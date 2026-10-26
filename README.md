@@ -1,52 +1,37 @@
-# Nexo AI 6.0 Patched
+# Nexo AI 7.1 Gratis · Inteligencia por perfiles · Inteligencia por perfiles · Inteligencia por perfiles · Inteligencia por perfiles · Inteligencia por perfiles · Inteligencia por perfiles
 
-Actualización centrada en estabilidad, con la estructura de la PWA preparada para editarse desde GitHub móvil y desplegarse en Vercel.
+Aplicación web/PWA de IA con familia de perfiles progresivos, memoria local, búsqueda web, voz, análisis de adjuntos y generación de archivos descargables. Sin pagos, anuncios ni planes de suscripción.
 
-## Correcciones principales
+## Familia Nexo
 
-- Evita cambiar de conversación o de cuenta mientras se preparan imágenes para enviar.
-- Deshabilita envío y adjuntos durante esa preparación para reducir carreras, duplicados y mensajes que terminen en otro chat.
-- Conserva la conversación activa si el almacenamiento local está casi lleno.
-- Detecta URLs públicas pegadas en el chat y trata de activar la búsqueda web para consultar la página.
-- Nexo 5 está disponible con una cuota local de cinco respuestas exitosas por día.
-- Nexo 5.5 y Nexo 6 permanecen reservados y no se pueden desbloquear en esta versión. Los modelos Claude Opus también están ocultos en el selector manual para respetar esa separación.
-- Actualiza el nombre de caché del service worker para refrescar la aplicación tras desplegar el parche.
+- **4 Lite — nivel 1:** estudio y respuestas rápidas.
+- **4.1 — nivel 2:** asistente general predeterminado.
+- **4.5 — nivel 3:** investigación, análisis y síntesis de fuentes.
+- **5 — nivel 4:** programación y depuración; 5 respuestas exitosas/día guardadas localmente.
+- **7 — nivel 5:** Creator Lab para proyectos complejos y revisión; 3 respuestas exitosas/día guardadas localmente.
+- **5.5 y 6:** reservados permanentemente en esta versión. No se desbloquean por ningún método.
 
-## Familia de modelos
+Los perfiles combinan instrucciones y selección dinámica de modelos reales del catálogo de Puter.js. Se priorizan variantes gratuitas cuando están disponibles, pero el proveedor puede tener cuotas. No son modelos entrenados desde cero ni se puede garantizar que un proveedor sea siempre mejor en toda tarea.
 
-| Perfil | Estado | Enfoque |
-|---|---|---|
-| Nexo 4 Lite | Disponible | Estudios y aprendizaje |
-| Nexo 4.1 | Disponible por defecto | Chat general, creatividad y personalidad Nexo |
-| Nexo 4.5 | Disponible | Investigación y análisis |
-| Nexo 5 | Disponible, 5 respuestas/día | Programación |
-| Nexo 5.5 | Reservado | Futuro perfil de revisión de alto nivel, no desbloqueable aquí |
-| Nexo 6 | Reservado | Futuro perfil laboratorio, no desbloqueable aquí |
+## Funciones
 
-Los nombres Nexo son perfiles e instrucciones sobre modelos reales que el proveedor expone; no son modelos neuronales nuevos entrenados desde cero. El límite de cinco respuestas de Nexo 5 se guarda en el almacenamiento local del navegador y no es una restricción segura de servidor. El proveedor puede tener límites adicionales.
+- Adjuntos: imágenes, PDF, DOCX, PPTX, XLSX, ZIP de proyectos y múltiples formatos de texto/código.
+- ZIP: análisis limitado de archivos de texto/código; no ejecuta su contenido.
+- Búsqueda web compatible y lectura de páginas públicas mediante `api/read-url.js`.
+- Creación de archivos individuales y ZIP de proyectos.
+- Memoria local, historial de conversaciones, voz/dictado, razonamiento configurable y revisión de entregables.
+- PWA compatible con ordenador y móvil.
 
-## Despliegue con GitHub + Vercel
+## Publicar con GitHub + Vercel
 
-1. Crea un repositorio en [GitHub](https://github.com/new).
-2. Descomprime el ZIP y sube **el contenido** de la carpeta al nivel raíz del repositorio, de forma que `index.html` esté en la raíz.
-3. En [Vercel](https://vercel.com/), elige Add New → Project e importa el repositorio.
-4. Elige **Other** si solicita framework. No requiere comando de build ni instalación de dependencias. Si pregunta por el directorio de salida, usa `.`.
-5. Despliega y prueba la URL HTTPS. La integración Git puede actualizar Vercel con cada commit.
-
-Pasos más detallados: consulta [`DEPLOY_VERCEL.md`](DEPLOY_VERCEL.md).
-
-## Aplicación móvil
-
-- **Android:** abre la URL HTTPS desplegada en Chrome y selecciona Instalar aplicación o Añadir a pantalla de inicio.
-- **iPhone:** abre la URL HTTPS en Safari → Compartir → Añadir a pantalla de inicio. Activa Abrir como app web si aparece.
+1. Descomprime el ZIP.
+2. Sube el contenido a la raíz del repositorio de GitHub conservando `icons/` y `api/read-url.js`.
+3. Importa el repositorio en Vercel.
+4. Framework preset: `Other`; sin build command; Output Directory `.`.
+5. Pulsa Deploy.
 
 ## Importante
 
-- La IA, la búsqueda y el análisis remoto necesitan Internet.
-- Historial, memoria y el contador local de Nexo 5 se guardan en el navegador y no se sincronizan automáticamente entre dispositivos.
-- No guardes ni subas claves de API a GitHub. Un producto público con claves privadas necesita endpoints de servidor y límites impuestos en servidor.
-- Nexo no ejecuta automáticamente el código que genera; revisa los archivos antes de abrirlos.
+El uso de IA y lectura web requieren Internet. El catálogo se consulta mediante `puter.ai.listModels()`. La selección automática prioriza perfiles de capacidad y variantes gratuitas cuando el catálogo las ofrece. Las cuotas del proveedor siguen vigentes. Los límites locales de 5 y 7 no son una medida de seguridad de servidor y se pueden reiniciar borrando almacenamiento del navegador.
 
-## Autoría
-
-Proyecto: **Gorbus**. ChatGPT ayudó con diseño y desarrollo. El proveedor y el modelo subyacente pueden variar según el catálogo real y los límites del servicio.
+Ver [`MODELOS_Y_CAPACIDADES.md`](MODELOS_Y_CAPACIDADES.md) para detalles de selección y límites.

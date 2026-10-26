@@ -1,0 +1,11 @@
+SUBIR NEXO AI 7.1 DESDE CHROMEBOOK
+
+1. Descarga el ZIP y ábrelo en la app Archivos. Extrae el contenido.
+2. En GitHub, abre el repositorio y pulsa Add file -> Upload files.
+3. Pulsa “choose your files” y selecciona los archivos normales desde la carpeta extraída. Si no acepta carpetas, sube primero archivos sueltos y después abre `icons` y selecciona las imágenes para subirlas al directorio `icons/`.
+4. Conserva `api/read-url.js` dentro de `api/`. Si el selector no permite subir una carpeta completa, crea `api` en GitHub y sube `read-url.js` dentro.
+5. Pulsa Commit changes.
+6. En Vercel importa el repositorio. Usa Other, sin build command y Output Directory `.`.
+7. Despliega y prueba la URL HTTPS.
+
+No subas el ZIP como único archivo. `index.html` tiene que estar en la raíz del repositorio.
