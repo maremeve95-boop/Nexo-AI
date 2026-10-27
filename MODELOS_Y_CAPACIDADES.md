@@ -1,41 +1,33 @@
-# Familia Nexo AI 7.3 — Papoi 8 Experimental
+# Familia Nexo AI 7.4
 
-Nexo AI es una aplicación web/PWA gratuita, sin pagos, anuncios ni suscripciones.
+La familia son perfiles de comportamiento y selección de motores reales, no siete redes neuronales entrenadas desde cero.
 
-## Perfiles
+| Perfil | Especialidad | Estado |
+|---|---|---|
+| Nexo 4 Lite | Estudios, ejercicios y explicaciones cortas | Disponible |
+| Nexo 4.1 | Conversación general y creatividad | Predeterminado |
+| Nexo 4.5 | Investigación y síntesis | Disponible |
+| Nexo 5 | Programación y depuración | Disponible con límite local diario |
+| Nexo 5.5 | Reparación profunda | Reservado/no seleccionable |
+| Nexo 6 | Laboratorio avanzado | Reservado/no seleccionable |
+| Nexo 7 | Creator Lab | Disponible con límite local diario |
+| Papoi 8 | Perfil experimental de máxima exigencia disponible, programación, juegos y proyectos | Disponible con límite local diario |
 
-- **Nexo 4 Lite · Nivel 1:** tutor rápido para deberes, ejercicios, idiomas y explicaciones sencillas.
-- **Nexo 4.1 · Nivel 2:** asistente general predeterminado, creativo y conversacional.
-- **Nexo 4.5 · Nivel 3:** investigación, análisis y síntesis de fuentes.
-- **Nexo 5 · Nivel 4:** programación y depuración; límite local de 5 respuestas exitosas al día.
-- **Nexo 5.5 · Nivel 5:** reservado permanentemente en esta versión; no desbloqueable.
-- **Nexo 6 · Nivel 6:** reservado permanentemente en esta versión; no desbloqueable.
-- **Nexo 7 · Nivel 7:** Creator Lab para proyectos complejos, adjuntos y análisis multimodal; 3 respuestas exitosas al día en este navegador.
-- **Papoi 8 · Nivel 8:** perfil experimental más ambicioso, orientado a ingeniería, investigación, proyectos completos y revisión de calidad; 3 respuestas exitosas al día en este navegador.
+## Política de motores Papoi 8
 
-## Qué hace Papoi 8
+Papoi 8 solo selecciona motores reales del catálogo de Puter identificados como OpenAI/GPT/Codex o Claude Sonnet. Se omiten Qwen y Claude Opus. Los modelos recientes tienen prioridad dinámica según los IDs/nombres reales que devuelve el catálogo, con preferencias específicas para proyectos de código, web y visión. Si no hay candidatos compatibles, la app informa del problema y no realiza una sustitución silenciosa.
 
-Papoi 8 aplica instrucciones más exigentes para tareas difíciles, da prioridad a modelos con mayor capacidad en el catálogo disponible y favorece modelos identificados explícitamente como gratuitos cuando los hay. En programación refuerza el análisis de arquitectura, la preservación de funciones existentes, el diseño de proyectos descargables y la comprobación de errores comunes. En investigación favorece fuentes primarias y no debe inventar resultados. Para preguntas sencillas responde rápido, sin forzar una investigación ni un plan largo.
+## Generación de archivos
 
-Papoi 8 **es un perfil de la aplicación**, no una red neuronal entrenada desde cero. Su calidad depende del modelo real elegido en el catálogo de Puter y de las herramientas disponibles. Se excluyen los modelos Claude Opus de la selección automática para mantener los perfiles Nexo 5.5 y 6 reservados. El catálogo de modelos puede cambiar.
+Para peticiones de creación, Papoi debe devolver bloques separados con nombres explícitos, por ejemplo:
 
-## Funciones compartidas
+```html filename="index.html"
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Ejemplo</title></head><body><h1>Hola</h1></body></html>
+```
 
-- Adjuntos de imágenes, PDF, DOCX, PPTX, XLSX, ZIP y varios formatos de texto/código.
-- Análisis de ZIP limitado a archivos de texto y código; nunca ejecuta su contenido.
-- Búsqueda web compatible y lectura de páginas públicas mediante `api/read-url.js`.
-- Generación de archivos individuales y ZIP de proyectos.
-- Memoria e historial locales, voz/dictado, razonamiento configurable y revisión de entregables.
-- PWA para ordenador y móvil.
+La app interpreta esos bloques como archivos descargables. Cada archivo tiene una acción “Descargar [nombre]” y, para varios archivos, una opción ZIP.
 
-## Publicar con GitHub + Vercel
+## Límites
 
-1. Descomprime el ZIP.
-2. Sube el contenido a la raíz del repositorio de GitHub y conserva `icons/` y `api/read-url.js`.
-3. Importa el repositorio en Vercel.
-4. Framework Preset: `Other`; deja el build command vacío y usa Output Directory `.`.
-5. Pulsa Deploy.
-
-## Límites y honestidad
-
-Los límites diarios de Nexo 5, Nexo 7 y Papoi 8 se guardan localmente; no son protecciones de servidor y pueden reiniciarse borrando los datos del navegador. Los proveedores externos pueden aplicar sus propias cuotas y condiciones. La IA y la lectura web requieren Internet. La aplicación no cobra, pero no puede prometer cuotas ilimitadas de servicios externos.
+Disponibilidad, calidad, latencia, herramientas y cuotas dependen del motor/proveedor. Los contadores locales de respuestas son orientativos y no son una protección en servidor. Papoi 8 no está entrenado desde cero ni garantiza superioridad universal.

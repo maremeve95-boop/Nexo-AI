@@ -1,4 +1,4 @@
-SUBIR NEXO AI 7.3 — PAPOI 8 DESDE CHROMEBOOK
+SUBIR NEXO AI 7.4 — PAPOI 8 CREATOR ENGINE DESDE CHROMEBOOK
 
 1. Descarga el ZIP y ábrelo en la app Archivos. Extrae el contenido.
 2. En GitHub, abre el repositorio y pulsa Add file -> Upload files.

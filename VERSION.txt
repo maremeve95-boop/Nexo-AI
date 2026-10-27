@@ -1,3 +1,8 @@
-Nexo AI 7.3 — Papoi 8 Experimental
-Perfil nuevo: Papoi 8 · Nivel 8
-Sin pagos, anuncios ni suscripciones.
+Nexo AI 7.4 — Papoi 8 Creator Engine
+
+- Creador de proyectos HTML5 y juegos web con salida descargable.
+- Enlaces de texto “Descargar archivo” funcionales y botón de ZIP para proyectos múltiples.
+- Papoi 8 selecciona exclusivamente motores permitidos de OpenAI/GPT/Codex o Claude Sonnet disponibles en el catálogo real de Puter.
+- Qwen se excluye del catálogo visible y de la selección automática.
+- Claude Opus sigue reservado para los perfiles Nexo 5.5/6.
+- Sin pagos, anuncios ni suscripciones de Nexo; los servicios externos pueden tener sus propias cuotas.

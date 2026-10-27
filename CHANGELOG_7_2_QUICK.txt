@@ -1,24 +1,7 @@
-NEXO AI 7.2 QUICK — CAMBIOS
+HISTÓRICO CONSERVADO: mejoras introducidas en Nexo AI 7.2 Quick (versión anterior)
+- Menos tareas previas a responder.
+- Búsqueda web más selectiva y carga progresiva del indicador de actividad.
+- Revisión automática opcional.
+- Mejoras de contexto y rendimiento.
 
-- Desactiva por defecto la segunda revisión automática para evitar una llamada extra a la IA.
-- Ajusta razonamiento y presupuesto de tokens por defecto para reducir la espera.
-- Hace que el mensaje aparezca inmediatamente mientras prepara imágenes/enlaces.
-- Evita activar la búsqueda web por palabras genéricas como “API”, “ejemplos” o “enlace”; prioriza peticiones explícitas o datos actuales.
-- Lee hasta dos URL en paralelo con límites de tiempo más cortos.
-- Reduce el historial enviado por turno a los mensajes recientes y recorta contexto antiguo muy largo.
-- Amplía las instrucciones para responder con más detalle cuando la pregunta lo requiere, sin relleno.
-- Mantiene el modo “Pensar” como opción explícita para trabajos difíciles.
-
-Nota: la velocidad real también depende del proveedor/modelo, la conexión y sus cuotas.
-
-Historial anterior: NEXO AI 7.1 GRATIS — INTELIGENCIA POR PERFILES
-
-- Sin pagos, anuncios ni suscripciones.
-- Orden de perfiles clarificado: Lite (1), 4.1 (2), 4.5 (3), 5 (4), 5.5 reservado (5), 6 reservado (6), 7 Creator Lab como nivel 7 disponible.
-- Selector automático reequilibrado para favorecer rapidez en Lite, equilibrio en 4.1, investigación en 4.5, modelos de código en 5 y el mejor motor permitido del catálogo en 7.
-- Estrategias de instrucciones distintas para estudio, conversación, investigación web, código, visión y análisis de archivos.
-- Nexo 5 continúa con 5 respuestas/día y Nexo 7 con 3 respuestas/día en este navegador.
-- Nexo 5.5 y Nexo 6 siguen reservados permanentemente sin métodos de desbloqueo.
-- Corregida la ventana de capacidades: ahora muestra las tarjetas de cada perfil y ya no presenta misiones obsoletas para desbloquear modelos.
-- Conservadas lectura de enlaces públicos, búsqueda web compatible, adjuntos de HTML/ZIP/documentos, memoria local, voz y descargas.
-- No se afirma que los perfiles sean redes neuronales entrenadas desde cero; se basan en instrucciones y selección de modelos reales.
+La versión actual es Nexo AI 7.4 — Papoi 8 Creator Engine. Consulta CHANGELOG_PAPOI_8.txt para las novedades de esta entrega.

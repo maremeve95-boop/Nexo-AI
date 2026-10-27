@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nexo-ai-papoi8-v7.3';
+const CACHE_NAME = 'nexo-ai-papoi8-v7.4-creator';
 const APP_SHELL = ["./index.html", "./manifest.webmanifest", "./icons/nexo-192.png", "./icons/nexo-512.png"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));

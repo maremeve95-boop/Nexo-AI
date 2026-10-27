@@ -1,13 +1,13 @@
-# Publicar Nexo AI 7.3 — Papoi 8 con GitHub + Vercel
+# Publicar Nexo AI 7.4 en Vercel
 
-1. Descomprime el ZIP.
-2. Sube todo el contenido a la raíz del repositorio; no subas solo el ZIP.
-3. Conserva `index.html`, `vercel.json`, `manifest.webmanifest`, `service-worker.js`, `icons/` y `api/read-url.js`.
-4. En Vercel importa el repositorio de GitHub.
-5. Usa Framework Preset `Other`, deja Build Command vacío y Output Directory `.`.
-6. Pulsa Deploy.
-7. Abre la URL HTTPS y prueba inicio de sesión, chat, Papoi 8, adjuntos y lectura de enlaces.
+1. Descomprime este ZIP.
+2. Sube el contenido a la raíz de un repositorio de GitHub; no subas solo el ZIP.
+3. Conserva las carpetas `icons/` y `api/`.
+4. En Vercel elige **Add New → Project** e importa el repositorio.
+5. Framework Preset: **Other**. No se necesita Build Command. Output Directory: `.`.
+6. Pulsa **Deploy**.
+7. Cuando esté en estado **Ready**, abre la URL HTTPS y prueba primero inicio de sesión, chat, generación de un HTML y la descarga de un ZIP.
 
-La función `api/read-url.js` necesita ejecutarse como función de Vercel; no funciona al abrir el HTML desde `file://`. IA, búsqueda web, lectura de páginas y otras funciones externas necesitan Internet.
+`api/read-url.js` es una función serverless para leer contenido de páginas públicas a través de un lector. Puede fallar con páginas que requieren sesión o bloquean lectores automáticos.
 
-La app no incluye cobros ni anuncios. Los proveedores de IA pueden tener cuotas propias. No guardes claves privadas en `index.html` ni en GitHub.
+No publiques claves privadas en GitHub ni en código del cliente.

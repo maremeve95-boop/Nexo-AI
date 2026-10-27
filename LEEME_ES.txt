@@ -1,34 +1,20 @@
-NEXO AI 7.3 — PAPOI 8 EXPERIMENTAL
+NEXO AI 7.4 — PAPOI 8 CREATOR ENGINE
 
-Aplicación web/PWA gratuita, sin pagos, anuncios ni suscripciones.
+QUÉ INCLUYE
+- Papoi 8 prioriza modelos reales actuales de OpenAI/GPT/Codex o Claude Sonnet disponibles en el catálogo de Puter.
+- No se usa Qwen. Claude Opus sigue reservado para los perfiles bloqueados Nexo 5.5/6.
+- Crea HTML y juegos web y convierte los archivos generados en enlaces de texto clicables, botones de descarga y ZIP si hay varios archivos.
+- Mantiene lectura web, adjuntos (incluidos HTML y ZIP), historial, memoria local y la PWA para ordenador/móvil.
 
-CONTENIDO
-- index.html: aplicación principal.
-- icons/: iconos PWA.
-- manifest.webmanifest y service-worker.js: instalación y caché.
-- api/read-url.js: función de Vercel para leer texto de páginas públicas.
-- MODELOS_Y_CAPACIDADES.md: perfiles, selección de motor y límites.
-- DEPLOY_VERCEL.md: publicación con GitHub y Vercel.
-- GITHUB_DESDE_CHROMEBOOK.txt: pasos de subida desde Chromebook.
-
-FAMILIA
-- Nexo 4 Lite: estudio y velocidad.
-- Nexo 4.1: asistente general predeterminado.
-- Nexo 4.5: investigación y análisis.
-- Nexo 5: programación, límite local de 5 respuestas exitosas/día.
-- Nexo 5.5 y Nexo 6: reservados permanentemente, sin desbloqueos.
-- Nexo 7: Creator Lab, 3 respuestas exitosas/día.
-- Papoi 8: nuevo perfil experimental de nivel 8, 3 respuestas exitosas/día; enfocado en programación, proyectos complejos, investigación y revisión.
-
-PAPOI 8
-Elige con prioridad modelos de mayor capacidad del catálogo permitido, favorece variantes identificadas como gratuitas y no usa modelos Claude Opus reservados. Es un perfil especializado de software, no una red neuronal nueva entrenada desde cero. La calidad depende del motor real disponible.
-
-PUBLICAR
+PUBLICACIÓN CON GITHUB + VERCEL
 1. Descomprime el ZIP.
-2. Sube su contenido a la raíz del repositorio GitHub; conserva las carpetas icons/ y api/.
-3. Importa el repositorio en Vercel.
-4. Selecciona Other, sin build command; Output Directory: .
-5. Despliega y prueba el chat, los enlaces y los adjuntos.
+2. Sube TODO el contenido a la raíz del repositorio GitHub, incluidos `index.html`, `api/`, `icons/`, `manifest.webmanifest`, `service-worker.js` y `vercel.json`.
+3. En Vercel importa el repositorio.
+4. Selecciona Framework Preset `Other`; deja Build Command vacío y Output Directory `.`.
+5. Pulsa Deploy y abre la URL HTTPS generada.
 
-SIN PAGOS
-La aplicación no incluye pagos ni anuncios. Los servicios externos pueden tener cuotas propias. Los contadores diarios son locales y pueden reiniciarse al borrar los datos del navegador.
+NOTAS
+- Papoi 8 es un perfil especializado, no un modelo neuronal entrenado desde cero.
+- La app elige dinámicamente modelos del catálogo; no inventa disponibilidad. Si no hay un modelo Claude Sonnet/OpenAI permitido, actualiza el catálogo o cambia de perfil.
+- Los proveedores externos pueden tener cuotas. No se promete uso ilimitado.
+- No subas claves privadas a GitHub ni a archivos HTML públicos.

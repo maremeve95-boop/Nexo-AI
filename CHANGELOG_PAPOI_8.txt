@@ -1,11 +1,22 @@
-NEXO AI 7.3 — PAPOI 8 EXPERIMENTAL
+NEXO AI 7.4 — PAPOI 8 CREATOR ENGINE
 
-- Nuevo perfil Papoi 8 (nivel 8) disponible desde el selector de modelos.
-- Perfil especializado en tareas complejas, programación, análisis de proyectos y búsqueda/investigación con instrucciones más exigentes.
-- Selección automática reforzada para priorizar motores de mayor capacidad permitidos y variantes explícitamente gratuitas cuando se identifican.
-- Mantiene el filtrado de Claude Opus para que Nexo 5.5 y Nexo 6 sigan reservados.
-- Límite beta de tres respuestas satisfactorias al día por navegador para Papoi 8.
-- La aplicación sigue siendo gratuita y no incluye publicidad ni suscripciones.
-- Actualizados el selector, panel de capacidades, contadores, manifiesto PWA, caché del service worker e instrucciones de despliegue.
+Novedades
+- Papoi 8 prioriza los modelos recientes compatibles de OpenAI/GPT/Codex o Claude Sonnet que el catálogo real de Puter anuncie en ese momento.
+- Se excluyen los modelos Qwen del catálogo, las opciones manuales y la selección automática.
+- Se conserva el bloqueo de Claude Opus, además de los perfiles Nexo 5.5 y Nexo 6 reservados.
+- Si no hay un motor de Claude/OpenAI permitido en el catálogo, Papoi lo explica y no cambia silenciosamente a otro proveedor.
+- Mejoradas las instrucciones para crear juegos HTML5 funcionales, con objetivos, controles, estados, reinicio, soporte táctil y diseño ligero.
+- Reforzada la generación de archivos completos con nombres de archivo explícitos, para convertir la respuesta en descargas en lugar de pegar todo el código en el chat.
+- Añadidos enlaces de texto de descarga (por ejemplo, “Descargar index.html”) además de botones por archivo y ZIP de proyecto.
+- Mejorado el reconocimiento de nombres de archivo en bloques de código y soporte para manifest.webmanifest.
+- Más presupuesto de salida para proyectos grandes, manteniendo una verbosidad media para evitar rodeos en preguntas sencillas.
+- Caché PWA actualizada para que Vercel no siga sirviendo la versión anterior.
 
-Limitaciones honestas: Papoi 8 es un perfil de instrucciones y selección de modelos existentes; no es una red neuronal nueva entrenada desde cero. La capacidad, velocidad y disponibilidad dependen del modelo real y de las cuotas externas. Los límites locales pueden reiniciarse borrando datos del navegador.
+Comprobaciones
+- Validación sintáctica de JavaScript.
+- Pruebas simuladas del selector Papoi 8: prioriza GPT/Claude Sonnet permitidos, rechaza Qwen y Claude Opus, y devuelve “sin motor” si no existe un candidato compatible.
+- Pruebas del detector de archivos y generación de ZIP.
+- Integridad del archivo ZIP del proyecto.
+
+Limitaciones
+Papoi 8 sigue siendo un perfil de instrucciones y selección de modelos existentes, no una red neuronal nueva entrenada desde cero. La disponibilidad de un modelo depende del catálogo de Puter en cada sesión. No se ha podido validar una conversación real contra el proveedor en este entorno.
