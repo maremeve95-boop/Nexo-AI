@@ -1,31 +1,34 @@
-NEXO AI 7.1 GRATIS
+NEXO AI 7.3 — PAPOI 8 EXPERIMENTAL
+
+Aplicación web/PWA gratuita, sin pagos, anuncios ni suscripciones.
 
 CONTENIDO
 - index.html: aplicación principal.
 - icons/: iconos PWA.
-- manifest.webmanifest y service-worker.js: instalación y caché de la aplicación.
-- api/read-url.js: función de Vercel para recuperar texto de páginas públicas.
-- MODELOS_Y_CAPACIDADES.md: detalles de los niveles y selección de motor.
+- manifest.webmanifest y service-worker.js: instalación y caché.
+- api/read-url.js: función de Vercel para leer texto de páginas públicas.
+- MODELOS_Y_CAPACIDADES.md: perfiles, selección de motor y límites.
 - DEPLOY_VERCEL.md: publicación con GitHub y Vercel.
-- GITHUB_DESDE_CHROMEBOOK.txt: pasos para subir desde Chromebook.
+- GITHUB_DESDE_CHROMEBOOK.txt: pasos de subida desde Chromebook.
 
 FAMILIA
-- Nexo 4 Lite: nivel 1, estudio y velocidad.
-- Nexo 4.1: nivel 2, asistente general predeterminado.
-- Nexo 4.5: nivel 3, investigación y análisis.
-- Nexo 5: nivel 4, programación, límite local de 5 respuestas exitosas/día.
-- Nexo 7: nivel 5, Creator Lab, límite local de 3 respuestas exitosas/día.
-- Nexo 5.5 y Nexo 6: reservados permanentemente. No se desbloquean.
+- Nexo 4 Lite: estudio y velocidad.
+- Nexo 4.1: asistente general predeterminado.
+- Nexo 4.5: investigación y análisis.
+- Nexo 5: programación, límite local de 5 respuestas exitosas/día.
+- Nexo 5.5 y Nexo 6: reservados permanentemente, sin desbloqueos.
+- Nexo 7: Creator Lab, 3 respuestas exitosas/día.
+- Papoi 8: nuevo perfil experimental de nivel 8, 3 respuestas exitosas/día; enfocado en programación, proyectos complejos, investigación y revisión.
 
-NO HAY PAGOS
-Nexo AI no incorpora planes de pago, anuncios ni compras. La aplicación prioriza variantes gratuitas cuando aparecen en el catálogo del proveedor, pero no puede garantizar uso ilimitado ni controlar las cuotas de terceros.
+PAPOI 8
+Elige con prioridad modelos de mayor capacidad del catálogo permitido, favorece variantes identificadas como gratuitas y no usa modelos Claude Opus reservados. Es un perfil especializado de software, no una red neuronal nueva entrenada desde cero. La calidad depende del motor real disponible.
 
 PUBLICAR
 1. Descomprime el ZIP.
-2. Sube su contenido a la raíz del repositorio de GitHub; conserva la carpeta icons y api/read-url.js.
+2. Sube su contenido a la raíz del repositorio GitHub; conserva las carpetas icons/ y api/.
 3. Importa el repositorio en Vercel.
-4. Selecciona Other, sin comando de build; Output Directory: .
-5. Despliega y prueba el chat, las páginas web y los adjuntos.
+4. Selecciona Other, sin build command; Output Directory: .
+5. Despliega y prueba el chat, los enlaces y los adjuntos.
 
-LÍMITES
-Los contadores diarios están en localStorage y se pueden reiniciar borrando los datos del navegador; no son límites imposibles de alterar. Los motores y servicios necesitan Internet y pueden aplicar cuotas propias.
+SIN PAGOS
+La aplicación no incluye pagos ni anuncios. Los servicios externos pueden tener cuotas propias. Los contadores diarios son locales y pueden reiniciarse al borrar los datos del navegador.

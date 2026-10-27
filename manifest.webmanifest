@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Nexo AI 7.1 Gratis",
+  "name": "Nexo AI 7.3 · Papoi 8 Experimental",
   "short_name": "Nexo AI",
-  "description": "Familia Nexo por niveles, búsqueda web, adjuntos de proyectos, memoria local y creación de archivos. Sin pagos ni anuncios.",
+  "description": "Nexo AI con Papoi 8 Experimental, perfiles especializados, búsqueda web, adjuntos y creación de proyectos descargables. Sin pagos ni anuncios.",
   "lang": "es-ES",
   "start_url": "./index.html",
   "scope": "./",

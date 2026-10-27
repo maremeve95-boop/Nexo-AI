@@ -1,0 +1,11 @@
+NEXO AI 7.3 — PAPOI 8 EXPERIMENTAL
+
+- Nuevo perfil Papoi 8 (nivel 8) disponible desde el selector de modelos.
+- Perfil especializado en tareas complejas, programación, análisis de proyectos y búsqueda/investigación con instrucciones más exigentes.
+- Selección automática reforzada para priorizar motores de mayor capacidad permitidos y variantes explícitamente gratuitas cuando se identifican.
+- Mantiene el filtrado de Claude Opus para que Nexo 5.5 y Nexo 6 sigan reservados.
+- Límite beta de tres respuestas satisfactorias al día por navegador para Papoi 8.
+- La aplicación sigue siendo gratuita y no incluye publicidad ni suscripciones.
+- Actualizados el selector, panel de capacidades, contadores, manifiesto PWA, caché del service worker e instrucciones de despliegue.
+
+Limitaciones honestas: Papoi 8 es un perfil de instrucciones y selección de modelos existentes; no es una red neuronal nueva entrenada desde cero. La capacidad, velocidad y disponibilidad dependen del modelo real y de las cuotas externas. Los límites locales pueden reiniciarse borrando datos del navegador.

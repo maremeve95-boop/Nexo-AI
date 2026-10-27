@@ -1,37 +1,38 @@
-# Nexo AI 7.1 Gratis · Inteligencia por perfiles · Inteligencia por perfiles · Inteligencia por perfiles · Inteligencia por perfiles · Inteligencia por perfiles · Inteligencia por perfiles
+# Nexo AI 7.3 — Papoi 8 Experimental
 
-Aplicación web/PWA de IA con familia de perfiles progresivos, memoria local, búsqueda web, voz, análisis de adjuntos y generación de archivos descargables. Sin pagos, anuncios ni planes de suscripción.
+Aplicación web/PWA de IA con perfiles especializados, memoria local, búsqueda y lectura web, análisis de adjuntos y generación de archivos descargables. Sin pagos, anuncios ni suscripciones.
 
-## Familia Nexo
+## Familia de perfiles
 
-- **4 Lite — nivel 1:** estudio y respuestas rápidas.
-- **4.1 — nivel 2:** asistente general predeterminado.
-- **4.5 — nivel 3:** investigación, análisis y síntesis de fuentes.
-- **5 — nivel 4:** programación y depuración; 5 respuestas exitosas/día guardadas localmente.
-- **7 — nivel 5:** Creator Lab para proyectos complejos y revisión; 3 respuestas exitosas/día guardadas localmente.
-- **5.5 y 6:** reservados permanentemente en esta versión. No se desbloquean por ningún método.
+- Nexo 4 Lite — estudio y respuestas rápidas.
+- Nexo 4.1 — perfil general predeterminado.
+- Nexo 4.5 — investigación y síntesis.
+- Nexo 5 — programación y depuración; 5 respuestas exitosas/día en este navegador.
+- Nexo 5.5 y Nexo 6 — reservados permanentemente, sin desbloqueo.
+- Nexo 7 — Creator Lab, 3 respuestas exitosas/día.
+- **Papoi 8 — nuevo perfil experimental de nivel 8**, centrado en proyectos complejos, ingeniería, investigación y revisión de calidad; 3 respuestas exitosas/día.
 
-Los perfiles combinan instrucciones y selección dinámica de modelos reales del catálogo de Puter.js. Se priorizan variantes gratuitas cuando están disponibles, pero el proveedor puede tener cuotas. No son modelos entrenados desde cero ni se puede garantizar que un proveedor sea siempre mejor en toda tarea.
+Los perfiles son configuraciones especializadas conectadas a motores reales del catálogo de Puter.js, no redes neuronales entrenadas desde cero. Papoi 8 da prioridad a motores con mayor capacidad que estén disponibles y favorece opciones reconocidas como gratuitas cuando el catálogo lo permite. Las cuotas del proveedor siguen vigentes.
 
 ## Funciones
 
-- Adjuntos: imágenes, PDF, DOCX, PPTX, XLSX, ZIP de proyectos y múltiples formatos de texto/código.
-- ZIP: análisis limitado de archivos de texto/código; no ejecuta su contenido.
+- Adjuntar imágenes, PDF, DOCX, PPTX, XLSX, ZIP de proyectos y formatos comunes de texto/código.
+- Analizar archivos ZIP con límites de tamaño; el contenido no se ejecuta.
 - Búsqueda web compatible y lectura de páginas públicas mediante `api/read-url.js`.
-- Creación de archivos individuales y ZIP de proyectos.
-- Memoria local, historial de conversaciones, voz/dictado, razonamiento configurable y revisión de entregables.
-- PWA compatible con ordenador y móvil.
+- Generación de archivos descargables individuales y ZIP de proyectos.
+- Historial y memoria locales, voz/dictado y respuesta en streaming.
+- PWA para ordenador y móvil.
 
-## Publicar con GitHub + Vercel
+## Publicar en GitHub + Vercel
 
 1. Descomprime el ZIP.
-2. Sube el contenido a la raíz del repositorio de GitHub conservando `icons/` y `api/read-url.js`.
-3. Importa el repositorio en Vercel.
-4. Framework preset: `Other`; sin build command; Output Directory `.`.
+2. Sube el contenido a la raíz del repositorio de GitHub. Conserva las carpetas `icons/` y `api/`.
+3. En Vercel, importa el repositorio.
+4. Usa Framework Preset `Other`, sin comando de build y Output Directory `.`.
 5. Pulsa Deploy.
+
+Revisa también `DEPLOY_VERCEL.md` y `GITHUB_DESDE_CHROMEBOOK.txt`.
 
 ## Importante
 
-El uso de IA y lectura web requieren Internet. El catálogo se consulta mediante `puter.ai.listModels()`. La selección automática prioriza perfiles de capacidad y variantes gratuitas cuando el catálogo las ofrece. Las cuotas del proveedor siguen vigentes. Los límites locales de 5 y 7 no son una medida de seguridad de servidor y se pueden reiniciar borrando almacenamiento del navegador.
-
-Ver [`MODELOS_Y_CAPACIDADES.md`](MODELOS_Y_CAPACIDADES.md) para detalles de selección y límites.
+La aplicación es gratuita y no incluye compras. Las funciones remotas necesitan Internet y los proveedores pueden aplicar cuotas propias. Los contadores locales pueden reiniciarse borrando los datos del navegador; no son límites de servidor. No subas secretos ni claves privadas a GitHub ni a `index.html`.
