@@ -1,33 +1,34 @@
-# Familia Nexo AI 7.4
+# Familia Nexo AI 7.5
 
-La familia son perfiles de comportamiento y selección de motores reales, no siete redes neuronales entrenadas desde cero.
+Los modelos Nexo son perfiles de instrucciones y selección de motores reales; no son redes neuronales entrenadas desde cero.
 
 | Perfil | Especialidad | Estado |
 |---|---|---|
-| Nexo 4 Lite | Estudios, ejercicios y explicaciones cortas | Disponible |
-| Nexo 4.1 | Conversación general y creatividad | Predeterminado |
+| Nexo 4 Lite | Estudios y respuestas rápidas | Disponible |
+| Nexo 4.1 | Conversación y creatividad | Predeterminado |
 | Nexo 4.5 | Investigación y síntesis | Disponible |
-| Nexo 5 | Programación y depuración | Disponible con límite local diario |
-| Nexo 5.5 | Reparación profunda | Reservado/no seleccionable |
-| Nexo 6 | Laboratorio avanzado | Reservado/no seleccionable |
-| Nexo 7 | Creator Lab | Disponible con límite local diario |
-| Papoi 8 | Perfil experimental de máxima exigencia disponible, programación, juegos y proyectos | Disponible con límite local diario |
+| Nexo 5 | Ingeniería, depuración y juegos | Disponible con límite diario local |
+| Nexo 5.5 | Repair Lab avanzado | Reservado/no seleccionable |
+| Nexo 6 | Advanced Lab | Reservado/no seleccionable |
+| Nexo 7 | Creator Lab | Disponible con límite diario local |
+| Papoi 8 | Creator Engine: juegos 2D/3D, proyectos y archivos | Disponible con límite beta local |
 
-## Política de motores Papoi 8
+## Selección real del motor
 
-Papoi 8 solo selecciona motores reales del catálogo de Puter identificados como OpenAI/GPT/Codex o Claude Sonnet. Se omiten Qwen y Claude Opus. Los modelos recientes tienen prioridad dinámica según los IDs/nombres reales que devuelve el catálogo, con preferencias específicas para proyectos de código, web y visión. Si no hay candidatos compatibles, la app informa del problema y no realiza una sustitución silenciosa.
+Papoi 8 y las familias técnicas consultan el catálogo dinámico de Puter. La preferencia de Papoi se ordena entre modelos permitidos de OpenAI/GPT/Codex y Anthropic Claude Sonnet: GPT-6 Astra para máximas exigencias, GPT-6.1 Sol para equilibrio de capacidad/coste, Claude Sonnet 5.5 para coding ágil y modelos Codex actuales cuando estén disponibles. No se hardcodea la disponibilidad: si un ID no está en el catálogo, no puede elegirse. Qwen queda excluido; Claude Opus y perfiles Nexo 5.5/6 siguen reservados. La aplicación no puede garantizar las cuotas de esos proveedores.
 
-## Generación de archivos
+La documentación oficial que orienta esta preferencia es [OpenAI GPT-6 Astra](https://developers.openai.com/api/docs/models/gpt-6-astra), [guía de selección de modelos de OpenAI](https://developers.openai.com/api/docs/models) y [Claude Sonnet 5.5 de Anthropic](https://www.anthropic.com/claude-sonnet-5-5).
 
-Para peticiones de creación, Papoi debe devolver bloques separados con nombres explícitos, por ejemplo:
+## Proyectos y juegos
 
-```html filename="index.html"
-<!doctype html>
-<html lang="es"><head><meta charset="utf-8"><title>Ejemplo</title></head><body><h1>Hola</h1></body></html>
-```
+Si el usuario pide crear un juego o un artefacto, Papoi debe devolver bloques completos y nombrados en Markdown, que la app convierte en descargas clicables. Los proyectos de varios ficheros conservan rutas relativas en el ZIP.
 
-La app interpreta esos bloques como archivos descargables. Cada archivo tiene una acción “Descargar [nombre]” y, para varios archivos, una opción ZIP.
+Para una petición 3D se solicita una escena WebGL real con Three.js, cámara perspectiva, luces, movimiento, controles, game loop, HUD, reinicio y un nivel de detalle prudente para equipos modestos. Para una petición inspirada en una franquicia se generan geometrías y diseño originales, sin copiar marcas o recursos propietarios. Si la primera respuesta no genera archivos o parece claramente demasiado incompleta, la app hace una sola pasada de recuperación; no ejecuta el código ni garantiza que esté libre de errores.
 
 ## Límites
 
-Disponibilidad, calidad, latencia, herramientas y cuotas dependen del motor/proveedor. Los contadores locales de respuestas son orientativos y no son una protección en servidor. Papoi 8 no está entrenado desde cero ni garantiza superioridad universal.
+- La calidad, velocidad, disponibilidad de herramientas y cuotas dependen del motor real y del servicio.
+- Los límites de uso de Nexo 5/7/Papoi son locales; borrar datos del navegador puede reiniciarlos.
+- Los proyectos 3D que importen módulos/CDN necesitan Internet y conviene abrirlos desde HTTPS/servidor local; abrirlos como `file://` puede bloquear ES modules.
+- La IA, búsqueda web, lectura de páginas y análisis remoto necesitan conexión.
+- Papoi 8 no es un modelo entrenado desde cero.

@@ -1,20 +1,14 @@
-NEXO AI 7.4 — PAPOI 8 CREATOR ENGINE
+NEXO AI 7.5 — PAPOI 8 CREATOR ENGINE
 
-QUÉ INCLUYE
-- Papoi 8 prioriza modelos reales actuales de OpenAI/GPT/Codex o Claude Sonnet disponibles en el catálogo de Puter.
-- No se usa Qwen. Claude Opus sigue reservado para los perfiles bloqueados Nexo 5.5/6.
-- Crea HTML y juegos web y convierte los archivos generados en enlaces de texto clicables, botones de descarga y ZIP si hay varios archivos.
-- Mantiene lectura web, adjuntos (incluidos HTML y ZIP), historial, memoria local y la PWA para ordenador/móvil.
+Esta actualización se centra en juegos y proyectos más completos. Las peticiones de juegos famosos se convierten en prototipos originales y jugables, sin copiar assets propietarios. Para 3D se pide una escena real de Three.js/WebGL con controles, cámara, HUD, game loop y reinicio. Si la primera respuesta es claramente incompleta, se intenta una recuperación adicional.
 
-PUBLICACIÓN CON GITHUB + VERCEL
-1. Descomprime el ZIP.
-2. Sube TODO el contenido a la raíz del repositorio GitHub, incluidos `index.html`, `api/`, `icons/`, `manifest.webmanifest`, `service-worker.js` y `vercel.json`.
-3. En Vercel importa el repositorio.
-4. Selecciona Framework Preset `Other`; deja Build Command vacío y Output Directory `.`.
-5. Pulsa Deploy y abre la URL HTTPS generada.
+CÓMO ACTUALIZAR
+1. Descomprime este ZIP.
+2. Sube todo su contenido a la raíz del repositorio GitHub conectado a Vercel. Mantén index.html, icons/, api/, manifest.webmanifest, service-worker.js y vercel.json.
+3. Haz commit. Vercel desplegará el cambio si la integración ya está activa.
 
-NOTAS
-- Papoi 8 es un perfil especializado, no un modelo neuronal entrenado desde cero.
-- La app elige dinámicamente modelos del catálogo; no inventa disponibilidad. Si no hay un modelo Claude Sonnet/OpenAI permitido, actualiza el catálogo o cambia de perfil.
-- Los proveedores externos pueden tener cuotas. No se promete uso ilimitado.
-- No subas claves privadas a GitHub ni a archivos HTML públicos.
+MODELOS
+Papoi 8 prioriza OpenAI GPT/Codex actuales y Claude Sonnet disponibles en el catálogo dinámico de Puter; no usa Qwen y no usa Claude Opus. Nexo 5.5 y Nexo 6 siguen reservados. La app no puede garantizar cuotas gratuitas.
+
+LIMITACIONES
+No se ha ejecutado una conversación real con Puter ni los juegos generados en un navegador durante estas comprobaciones. Los proyectos 3D con módulos CDN requieren conexión y se deberían abrir por HTTPS o un servidor local, no directamente por file://.

@@ -1,42 +1,35 @@
-# Nexo AI 7.4 — Papoi 8 Creator Engine
+# Nexo AI 7.5 — Papoi 8 Creator Engine
 
-Aplicación web progresiva (PWA) de Nexo AI con perfiles especializados, memoria local, lectura/búsqueda web, análisis de archivos y creación de proyectos descargables. Sin pagos, anuncios ni suscripciones de Nexo.
+PWA de Nexo AI con perfiles especializados, memoria local, búsqueda/lectura web, análisis de archivos y generación de proyectos descargables. Sin pagos ni anuncios propios de Nexo.
 
-## Papoi 8: motores permitidos
+## Qué ha mejorado en 7.5
+- Peticiones como “hazme un Fortnite” se detectan como tarea de creación y descargable.
+- Para juegos 3D, Papoi solicita una escena Three.js/WebGL real y una demo jugable, no una explicación genérica. Si una entrega inicial está vacía o es demasiado básica, intenta una única recuperación con instrucciones estrictas de salida.
+- Modelos técnicos ordenados dinámicamente según el catálogo de Puter, priorizando GPT-6 Astra, GPT-6.1 Sol, Claude Sonnet 5.5 y Codex permitidos. Qwen se excluye; Claude Opus y Nexo 5.5/6 siguen reservados.
+- Rutas relativas dentro de los ZIP conservadas.
+- Nueva caché PWA para la actualización.
 
-Papoi 8 elige dinámicamente entre modelos reales de OpenAI/GPT/Codex o Claude Sonnet que aparezcan en el catálogo actual de Puter.js. No usa Qwen; tampoco utiliza Claude Opus, que permanece reservado para Nexo 5.5/6. Si el catálogo no proporciona un motor permitido, Papoi lo indica en vez de cambiar de proveedor silenciosamente. El nombre Papoi 8 representa un perfil de instrucciones/herramientas, no un modelo entrenado desde cero.
+## Modelos
+- Nexo 4 Lite: estudio.
+- Nexo 4.1: general/creativo y predeterminado.
+- Nexo 4.5: investigación.
+- Nexo 5: programación y depuración; límite local diario.
+- Nexo 5.5 y 6: reservados y no seleccionables.
+- Nexo 7: Creator Lab.
+- Papoi 8: Creator Engine para proyectos, juegos y 3D.
 
-## Familia de perfiles
+Los nombres Nexo representan perfiles, no redes neuronales entrenadas desde cero. La selección solo puede usar motores que el catálogo del proveedor anuncie realmente. No se garantiza uso gratuito ilimitado.
 
-- Nexo 4 Lite — estudio y respuestas rápidas.
-- Nexo 4.1 — perfil general predeterminado.
-- Nexo 4.5 — investigación y síntesis.
-- Nexo 5 — programación y depuración; límite local de cinco respuestas satisfactorias al día.
-- Nexo 5.5 y Nexo 6 — reservados permanentemente y no seleccionables.
-- Nexo 7 — Creator Lab, límite local de tres respuestas satisfactorias al día.
-- Papoi 8 — perfil experimental de máxima exigencia disponible en esta app, límite local de tres respuestas satisfactorias al día.
-
-Los perfiles son especializaciones sobre modelos reales; no se garantiza que un perfil sea superior en todas las tareas. La velocidad y la calidad dependen del motor disponible, conexión y límites del proveedor.
-
-## Crear juegos y proyectos descargables
-
-Cuando el usuario pide crear HTML, una página o un juego, la app solicita archivos completos con nombre. Los bloques se convierten en enlaces clicables “Descargar archivo”, acciones para copiar código y, si hay varios archivos, un ZIP de proyecto. Para un juego web sencillo, Papoi prioriza HTML autocontenido que pueda abrirse sin compilación; proyectos mayores pueden incluir varios archivos.
-
-Formatos comunes de adjuntos: imágenes, PDF, DOCX, PPTX, XLSX, ZIP de proyecto y archivos de texto/código. Los ZIP se analizan con límites de tamaño y no se ejecuta su contenido.
-
-## Publicar en GitHub + Vercel
-
+## Publicar con GitHub + Vercel
 1. Descomprime el ZIP.
-2. Sube el contenido a la raíz del repositorio GitHub, manteniendo `icons/` y `api/`.
-3. En Vercel importa el repositorio.
-4. Framework Preset: `Other`, sin build command y Output Directory `.`.
-5. Pulsa Deploy.
+2. Sube todo el contenido a la raíz del repositorio GitHub manteniendo `icons/` y `api/`.
+3. En Vercel importa el repositorio; utiliza preset `Other`, sin build command y Output Directory `.`.
+4. Haz Deploy. Los commits siguientes pueden publicarse automáticamente.
 
-Consulta `DEPLOY_VERCEL.md` y `GITHUB_DESDE_CHROMEBOOK.txt`.
+Ver `DEPLOY_VERCEL.md` y `GITHUB_DESDE_CHROMEBOOK.txt`.
 
 ## Importante
-
-- La IA, la búsqueda web, la lectura de URLs y el análisis remoto necesitan Internet.
-- Los contadores de Nexo 5/7/Papoi son locales y se pueden reiniciar borrando datos del navegador; no son límites de servidor.
-- El uso gratuito no está garantizado ilimitadamente: los proveedores pueden aplicar sus propias cuotas.
-- No pongas secretos ni claves privadas en `index.html` o GitHub.
+- Si el proyecto 3D generado utiliza ES modules de Three.js, necesita Internet y debe abrirse vía HTTPS/servidor local; `file://` puede bloquear los módulos.
+- La llamada adicional de recuperación solo se activa si la primera salida no genera archivos o la entrega de juego parece incompleta; puede añadir latencia.
+- Se han probado sintaxis y funciones auxiliares, no una conversación real con el proveedor en esta sesión.
+- No guardes claves API privadas en el HTML o el repositorio.

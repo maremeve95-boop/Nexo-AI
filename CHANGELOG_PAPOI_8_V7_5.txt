@@ -1,0 +1,24 @@
+NEXO AI 7.5 — PAPOI 8 CREATOR ENGINE / GAME & 3D PATCH
+
+Correcciones y mejoras
+- “Hazme un Fortnite” y otras peticiones de juegos/franquicias se reconocen como solicitudes de crear una descarga, aunque el usuario no mencione HTML.
+- Nuevo contrato de generación: la IA debe producir un MVP original funcional y no contestar con “es demasiado difícil”, una lista de pasos o recomendaciones a otras webs.
+- Para solicitudes 3D, el prompt pide Three.js/WebGL real (renderer, perspectiva, escena, iluminación, movimiento, cámara, loop, controles, HUD, reinicio) y optimización para un Chromebook Celeron.
+- Los juegos 3D inspirados en battle royale deben tener arena/zona segura, objetos recogibles y objetivos sencillos, sin copiar marcas ni recursos propietarios.
+- Cuando el primer resultado no contiene archivos o carece de indicios mínimos de un juego jugable, se permite una única llamada adicional de recuperación con instrucciones de salida estricta. Esta recuperación solo se activa cuando la primera entrega parece incompleta.
+- Presupuesto dinámico de salida: 22.000 tokens máximo para juego 3D, 18.000 para juego no-3D, 14.000 para otros artefactos, sin aumentar el presupuesto de preguntas normales. Son límites solicitados, no una garantía de que el proveedor los conceda.
+- Conserva rutas relativas de archivos en ZIP, para que los imports de proyectos multiarquivo no queden rotos. El parser acepta hasta 12 ficheros y reconoce extensiones de shaders GLSL/vertex/fragment/WGSL como texto.
+- Papoi 8 da prioridad a GPT-6 Astra para trabajo de máxima exigencia, luego GPT-6.1 Sol, Claude Sonnet 5.5 y Codex según el catálogo devuelto por Puter. No se inventan IDs; si un motor no aparece en el catálogo no se selecciona. Qwen queda excluido y Claude Opus se mantiene reservado.
+- Nexo 5 recibe mejores instrucciones para depuración y juegos; Nexo 5.5 y Nexo 6 reciben especificaciones conceptuales más sólidas pero siguen reservados/deshabilitados.
+- Cache PWA renovada para forzar la descarga de esta versión.
+
+Comprobaciones realizadas
+- node --check del JavaScript inline.
+- node --check de api/read-url.js.
+- Validación JSON de vercel.json y manifest.webmanifest.
+- Pruebas de helpers: detección “hazme un Fortnite”, detección 3D, ausencia de falsa detección en “qué es Fortnite”, extracción de ficheros y conservación de la ruta src/game.js.
+- El resultado HTML corto de una petición 3D activa la ruta de recuperación.
+- Integridad del ZIP de salida.
+
+Limitaciones
+- No se ha probado una conversación real con Puter ni se ha ejecutado el código generado en un navegador en esta sesión. La recuperación es una segunda solicitud de texto; no es un compilador ni garantía de juego sin errores. Las capacidades finales dependen del motor y la cuota del proveedor.
