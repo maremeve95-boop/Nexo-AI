@@ -1,10 +1,1 @@
-Nexo AI 7.5 — Papoi 8 Creator Engine
-
-- Peticiones como “hazme un Fortnite” se detectan como creación de archivo 3D aunque no digan HTML.
-- Papoi 8 y Nexo 5 tienen instrucciones de ingeniería más estrictas: no responder con disculpas ni sustituir la entrega por enlaces/tutoriales.
-- Para juegos 3D se exigen escena WebGL real, cámara, movimiento, controles, HUD y reinicio; se prioriza un prototipo original y jugable en lugar de prometer un AAA entero.
-- Si la primera respuesta no incluye archivos o no alcanza unos requisitos mínimos, la app hace una única pasada de recuperación para pedir código completo y reparar la entrega.
-- Los archivos descargables conservan rutas relativas como src/game.js dentro del ZIP para no romper imports.
-- El selector dinámico prioriza GPT-6 Astra, GPT-6.1 Sol, Claude Sonnet 5.5 y Codex compatibles, si aparecen en el catálogo real. Excluye Qwen y mantiene Claude Opus y Nexo 5.5/6 reservados.
-- Aumenta el presupuesto de salida solo para peticiones de juegos/3D, manteniendo razonamiento rápido en chats normales.
-- Sin pagos ni anuncios de Nexo. La disponibilidad y cuotas de proveedores externos siguen siendo independientes.
+Nexo AI · Papoi 8 Limit Recovery v7.7

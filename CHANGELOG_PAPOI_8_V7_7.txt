@@ -1,0 +1,13 @@
+NEXO AI — PAPOI 8 LIMIT RECOVERY v7.7
+
+- Añadida pantalla propia “SE ALCANZARON LOS LÍMITES” para errores 402/insufficient_funds de Puter.
+- Añadida pantalla específica para límites temporales 429.
+- CSS + MutationObserver ocultan el componente web <usage-limit-dialog> que Puter.js añade automáticamente en sitios web.
+- Añadida alternativa para seguir en la conversación actual con Gemini API, consultando dinámicamente los modelos de texto disponibles.
+- La clave alternativa se guarda solo en sessionStorage, no en localStorage, historial, ZIP ni repositorio; las solicitudes van directamente a Google.
+- Conserva los mensajes recientes de texto y continúa en el chat existente. Los archivos binarios/imagenes anteriores deben adjuntarse de nuevo.
+- Añadida opción de exportar conversación desde la pantalla de límites.
+- Distingue crédito agotado (402) de límite temporal (429). No promete uso ilimitado.
+- Actualizada caché de PWA.
+
+Nota: el SDK Puter puede mostrar diálogos internos de forma automática en ciertas integraciones. Este parche oculta el custom element documentado para el SDK web independiente y gestiona el rechazo de la promesa. No se ha modificado el servicio remoto de Puter.

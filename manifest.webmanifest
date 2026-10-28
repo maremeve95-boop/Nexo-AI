@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Nexo AI · Papoi 8 Creator Engine",
+  "name": "Nexo AI · Papoi 8 Limit Recovery",
   "short_name": "Nexo AI",
-  "description": "Nexo AI con Papoi 8 Creator Engine, perfiles especializados, búsqueda web, adjuntos y creación de proyectos descargables. Sin pagos ni anuncios.",
+  "description": "Nexo AI con recuperación de límites y continuación opcional de chat.",
   "lang": "es-ES",
   "start_url": "./index.html",
   "scope": "./",

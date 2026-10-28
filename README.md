@@ -33,3 +33,8 @@ Ver `DEPLOY_VERCEL.md` y `GITHUB_DESDE_CHROMEBOOK.txt`.
 - La llamada adicional de recuperación solo se activa si la primera salida no genera archivos o la entrega de juego parece incompleta; puede añadir latencia.
 - Se han probado sintaxis y funciones auxiliares, no una conversación real con el proveedor en esta sesión.
 - No guardes claves API privadas en el HTML o el repositorio.
+
+
+## Papoi 8 v7.7 — recuperación de límites
+
+Esta versión intercepta errores 402/`insufficient_funds` y 429 de Puter para mostrar una pantalla de Nexo. Si quieres continuar el mismo chat sin Puter, puedes introducir una clave personal de Gemini API elegible y usar un modelo de texto que la API devuelva en su catálogo. La clave vive únicamente en `sessionStorage` de la pestaña y se envía directamente a Google; no la guardes en el repositorio. Las cuotas gratuitas son variables y no ilimitadas. En proyectos de producción se recomienda usar una función de servidor y controles de secretos apropiados.

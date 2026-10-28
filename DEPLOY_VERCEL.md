@@ -11,3 +11,8 @@
 `api/read-url.js` es una función serverless para leer contenido de páginas públicas a través de un lector. Puede fallar con páginas que requieren sesión o bloquean lectores automáticos.
 
 No publiques claves privadas en GitHub ni en código del cliente.
+
+
+### v7.7 — alternativa al agotar límites
+
+La pantalla “SE ALCANZARON LOS LÍMITES” aparece al detectar un error 402 de Puter. Para mantener el chat con otro proveedor, se puede usar una clave propia de Gemini API directamente desde el panel. Es una vía opcional de cliente y no usa una clave incluida en el repositorio. La alternativa tiene cuota propia; no es ilimitada.
