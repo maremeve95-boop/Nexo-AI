@@ -1,4 +1,4 @@
-# Familia Nexo AI 7.5
+# Familia Nexo AI 8.1.1
 
 Los modelos Nexo son perfiles de instrucciones y selección de motores reales; no son redes neuronales entrenadas desde cero.
 
@@ -32,3 +32,8 @@ Para una petición 3D se solicita una escena WebGL real con Three.js, cámara pe
 - Los proyectos 3D que importen módulos/CDN necesitan Internet y conviene abrirlos desde HTTPS/servidor local; abrirlos como `file://` puede bloquear ES modules.
 - La IA, búsqueda web, lectura de páginas y análisis remoto necesitan conexión.
 - Papoi 8 no es un modelo entrenado desde cero.
+
+
+## Cartera opcional Nexo Premium (v8.1.1)
+
+No hay pagos para desbloquear perfiles. La cartera opcional permite comprar créditos Nexo para una vía de chat separada que utiliza un proveedor configurado en el servidor. No recarga el saldo de Puter. La cartera solo está operativa tras configurar Supabase, Stripe, un webhook firmado y una API key/modelo de servidor; por defecto los botones de compra permanecen desactivados.

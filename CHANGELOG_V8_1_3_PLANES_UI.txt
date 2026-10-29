@@ -1,0 +1,21 @@
+NEXO AI 8.1.3 — PLANES Y UI DE PREMIUM
+
+MEJORAS VISUALES
+- Pantalla comparativa de Nexo Gratis y Nexo Premium inspirada en diseños modernos de planes, manteniendo la identidad violeta/cian de Nexo.
+- Diseño adaptable: dos columnas en escritorio y tarjetas apiladas en móvil.
+- Comparación visible antes de iniciar sesión; el usuario puede seguir gratis.
+- La tarjeta Premium muestra precios obtenidos del endpoint de configuración de Stripe; si no está configurado, enseña “Por configurar” sin inventar un precio.
+- Paquetes de créditos se muestran por separado para evitar duplicar Premium.
+
+SEGURIDAD Y COMPRAS
+- Checkout no se inicia si falta configuración de servidor o Price ID.
+- Se requiere sesión Nexo antes de crear una sesión de Checkout.
+- Se corrigió el nombre del parámetro de métodos de pago para usar payment_method_types[] con card y paypal.
+- Los métodos de pago pueden no aparecer si la cuenta/producto/región no son elegibles o si PayPal no está activado en Stripe.
+- Nexo Premium no desbloquea perfiles reservados; solo concede los créditos configurados para el modo alternativo.
+
+PRUEBAS
+- Validar la sintaxis de todos los endpoints y del JS embebido.
+- Validar JSON y manifiesto.
+- Validar que el ZIP se abre y conserva api/, lib/, supabase/ e icons/.
+- Checkout real no verificado: completar pruebas desde un despliegue Vercel con Stripe en modo test antes de activar pagos live.

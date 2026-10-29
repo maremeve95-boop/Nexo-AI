@@ -1,14 +1,23 @@
-NEXO AI 7.5 — PAPOI 8 CREATOR ENGINE
+NEXO AI 8.1.3 — PREMIUM OPCIONAL Y CRÉDITOS
 
-Esta actualización se centra en juegos y proyectos más completos. Las peticiones de juegos famosos se convierten en prototipos originales y jugables, sin copiar assets propietarios. Para 3D se pide una escena real de Three.js/WebGL con controles, cámara, HUD, game loop y reinicio. Si la primera respuesta es claramente incompleta, se intenta una recuperación adicional.
+Esta versión incluye una cartera de créditos propia preparada con Supabase + Stripe y un endpoint de IA en servidor. Los pagos están desactivados hasta configurar todas las variables y el webhook; el ZIP no contiene claves ni productos de Stripe.
 
-CÓMO ACTUALIZAR
-1. Descomprime este ZIP.
-2. Sube todo su contenido a la raíz del repositorio GitHub conectado a Vercel. Mantén index.html, icons/, api/, manifest.webmanifest, service-worker.js y vercel.json.
-3. Haz commit. Vercel desplegará el cambio si la integración ya está activa.
+ACTUALIZAR EN GITHUB + VERCEL
+1. Descomprime el ZIP.
+2. Sube todo el contenido a la raíz del repositorio, manteniendo index.html, api/, lib/, supabase/, icons/, manifest.webmanifest, service-worker.js y vercel.json.
+3. Haz commit y espera al despliegue de Vercel.
+4. No subas un archivo .env real. Usa Vercel -> Settings -> Environment Variables para los secretos.
 
-MODELOS
-Papoi 8 prioriza OpenAI GPT/Codex actuales y Claude Sonnet disponibles en el catálogo dinámico de Puter; no usa Qwen y no usa Claude Opus. Nexo 5.5 y Nexo 6 siguen reservados. La app no puede garantizar cuotas gratuitas.
+ACTIVAR CRÉDITOS REALES (OPCIONAL)
+Lee PAYMENTS_SETUP_ES.md antes de habilitar Stripe. Primero usa claves y productos de prueba. Ejecuta supabase/SUPABASE_SETUP.sql, configura precios/ webhook, variables de entorno, y prueba pagos, entregas de créditos y reembolsos antes de pasar al modo live.
 
-LIMITACIONES
-No se ha ejecutado una conversación real con Puter ni los juegos generados en un navegador durante estas comprobaciones. Los proyectos 3D con módulos CDN requieren conexión y se deberían abrir por HTTPS o un servidor local, no directamente por file://.
+IMPORTANTE
+- El saldo Nexo no recarga la cuenta de Puter. La cartera Nexo paga el uso de la API de IA configurada en el servidor.
+- Las credenciales privadas viven solo en variables de entorno de Vercel, nunca en el HTML o el repositorio.
+- Los endpoints /api/ se excluyen de la caché del service worker.
+- El código se ha comprobado por sintaxis y estructura; valida toda integración de pagos en modo test antes de usar dinero real.
+
+
+PAGOS (v8.1.3): La cartera usa Stripe Checkout para tarjeta y PayPal cuando ambos métodos están habilitados y son elegibles. Sigue PAYMENTS_SETUP_ES.md para activar PayPal en el Dashboard, probar en modo test y revisar la aprobación adicional para suscripciones. No actives pagos reales sin completar las comprobaciones, las condiciones legales y la titularidad de cuenta apropiada.
+
+Nexo AI 8.1.3: incluye una pantalla comparativa de planes. Los precios se consultan desde Stripe; si Stripe no está configurado, se muestra “Por configurar” y no se realiza ningún cargo. El botón “Seguir con Gratis” permite cerrar la ventana sin comprar.

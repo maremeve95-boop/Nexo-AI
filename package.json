@@ -1,0 +1,12 @@
+{
+  "name": "nexo-ai-premium-credits",
+  "version": "8.1.3",
+  "private": true,
+  "description": "Nexo AI PWA with plan comparison UI and server-verified Premium/credits wallet",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "check:api": "node --check api/billing/config.js && node --check api/billing/status.js && node --check api/billing/checkout.js && node --check api/billing/portal.js && node --check api/billing/webhook.js && node --check api/billing/chat.js && node --check lib/nexo-billing.js"
+  }
+}

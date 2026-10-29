@@ -1,0 +1,10 @@
+NEXO AI 8.1.2 — TARJETA + PAYPAL
+
+- Stripe Checkout conserva los métodos dinámicos y los filtra con `allowed_payment_method_types` a `card` y `paypal`.
+- La cartera indica los métodos previstos y explica que Stripe solo muestra aquellos que estén habilitados y sean elegibles.
+- Se documenta que PayPal puede requerir aprobación adicional para suscripciones.
+- La guía incluye pasos para activar métodos en Dashboard y verificar primero en test mode.
+- Los botones siguen desactivados hasta configurar Supabase, Stripe, precios, webhook y proveedor de IA.
+- No hay claves reales ni compras simuladas; el pago no estará activo hasta configurar cuentas propias.
+
+Nota de mantenimiento v8.1.3: se corrigió el parámetro de Checkout a payment_method_types[] (card, paypal) tras revisar la documentación de Stripe.

@@ -1,6 +1,6 @@
-# Nexo AI 7.5 — Papoi 8 Creator Engine
+# Nexo AI 8.1.3 — Comparador de planes y checkout tarjeta/PayPal
 
-PWA de Nexo AI con perfiles especializados, memoria local, búsqueda/lectura web, análisis de archivos y generación de proyectos descargables. Sin pagos ni anuncios propios de Nexo.
+PWA de Nexo AI con perfiles especializados, memoria local, búsqueda/lectura web, análisis de archivos y generación de proyectos descargables. No hay anuncios ni suscripción obligatoria para desbloquear perfiles. Se incluye una cartera opcional de créditos propios, lista para habilitarse con Stripe + Supabase + un proveedor de IA en el servidor.
 
 ## Qué ha mejorado en 7.5
 - Peticiones como “hazme un Fortnite” se detectan como tarea de creación y descargable.
@@ -38,3 +38,56 @@ Ver `DEPLOY_VERCEL.md` y `GITHUB_DESDE_CHROMEBOOK.txt`.
 ## Papoi 8 v7.7 — recuperación de límites
 
 Esta versión intercepta errores 402/`insufficient_funds` y 429 de Puter para mostrar una pantalla de Nexo. Si quieres continuar el mismo chat sin Puter, puedes introducir una clave personal de Gemini API elegible y usar un modelo de texto que la API devuelva en su catálogo. La clave vive únicamente en `sessionStorage` de la pestaña y se envía directamente a Google; no la guardes en el repositorio. Las cuotas gratuitas son variables y no ilimitadas. En proyectos de producción se recomienda usar una función de servidor y controles de secretos apropiados.
+
+
+## v7.8 — salida de emergencia del modal de límites
+
+- Pulsa Esc, X o “Cerrar y volver al chat” para cerrar el aviso. La barra superior ⇄ Alternativa sigue disponible aunque lo cierres.
+- El botón “Probar Puter otra vez” quita el bloqueo temporal en la pestaña; solo sirve si la cuenta tiene cuota disponible.
+- Si Puter devuelve saldo insuficiente o límite temporal, no se harán nuevas llamadas a Puter en bucle dentro de esa pestaña.
+- Si ya has guardado una clave y modelo Gemini en esta pestaña, los siguientes mensajes pasan a Gemini.
+- Tras desplegar, recarga con Ctrl+Shift+R. En la PWA instalada, ciérrala por completo y vuelve a abrirla; si sigue antigua, borra los datos del sitio/caché desde Chrome.
+
+
+## v7.9 — límites y Anacleto Pro
+
+- En Ajustes se configuran ventanas de 2/4/6/12/24 horas para los contadores locales.
+- Ajustes muestra uso, barra de progreso y tiempo restante para Nexo 5, Nexo 7, Papoi 8 y Anacleto Pro; hay aviso al 90 %.
+- Papoi 8 prioriza Claude Sonnet 5.5 si Puter lo anuncia en su catálogo. Anacleto Pro prioriza GPT-6 Astra/Codex y variantes gratuitas si están disponibles; usa un Claude Sonnet compatible como alternativa cuando no haya OpenAI. Qwen y Claude Opus se excluyen.
+- Estos contadores solo limitan el uso local de perfiles; no restablecen el saldo real de Puter. Según la documentación oficial de Puter, el crédito de uso depende del plan y normalmente se reinicia mensualmente, mientras que los límites de frecuencia tienen ventanas de segundos/minutos/hora.
+
+
+## v8.0 — límites configurables y selección consciente de motor
+
+- Contadores locales configurables de 2/4/6/12/24 horas para Nexo 5, Nexo 7, Papoi 8 y Anacleto Pro, con barras y aviso al 90 %.
+- Papoi 8 prioriza Claude Sonnet 5.5 en el catálogo de Puter y elige su variante gratuita si se expone. Anacleto Pro prioriza GPT/OpenAI/Codex y filtra a variantes gratuitas confirmadas cuando existen.
+- Si el catálogo no tiene una variante gratuita apropiada, Nexo puede seleccionar el mejor modelo permitido de pago del proveedor; comprueba las notas del catálogo y el saldo de tu cuenta.
+- Se elimina el temporizador permanente de actualización del uso para reducir trabajo de fondo en Chromebook/Celeron.
+- Los contadores de la app no alteran el crédito real de Puter ni de otros proveedores.
+
+
+## v8.1.1 — cartera opcional real (preparada, no activada por defecto)
+
+- Añade cuenta Nexo con Supabase, cartera persistente en Postgres, registro de movimientos y endpoints serverless.
+- Stripe Checkout concede packs y créditos Premium solo después de validar el webhook firmado; el manejo de eventos es idempotente.
+- `POST /api/billing/portal` permite gestionar o cancelar una suscripción mediante Stripe Customer Portal, una vez activado en Stripe.
+- El modo de continuidad de créditos usa una clave de proveedor guardada en Vercel y descuenta saldo en el servidor; el código no expone la clave en HTML.
+- Los endpoints `/api/` quedan excluidos de la caché de la PWA para evitar conservar saldos o estado de cuentas en la caché del dispositivo.
+- **Los pagos no están activos inmediatamente tras publicar el ZIP.** Debes crear el proyecto Supabase, ejecutar `supabase/SUPABASE_SETUP.sql`, crear precios y un webhook de prueba en Stripe y configurar todas las variables de `.env.example` en Vercel. Los botones permanecen desactivados mientras falte configuración.
+- Los créditos de Nexo son distintos de los de Puter. Puter es un saldo/plan separado y no puede recargarse desde la cartera Nexo.
+- Antes de vender al público, configura política de privacidad, términos, impuestos, reembolsos, cancelación de suscripción y revisa los costes del proveedor. Empieza en modo test de Stripe.
+
+
+## v8.1.2 — tarjeta + PayPal en Stripe Checkout
+
+## v8.1.3 — pantalla comparativa de planes
+- Añade pantalla de planes tipo pricing, adaptada a escritorio y móvil, con colores violeta/cian de Nexo.
+- Muestra precios reales leídos desde Stripe; no inventa importes cuando los productos aún no están configurados.
+- Hace accesible la comparación antes de iniciar sesión y mantiene los botones de compra sujetos a configuración y autenticación.
+- CTA “Seguir con Gratis” funcional; la compra da un mensaje claro si el backend de pagos no está activo.
+- Corrige `payment_method_types[]` para solicitar tarjeta y PayPal mediante el parámetro soportado de Checkout Session.
+
+- Stripe Checkout solicita `card` y `paypal` mediante el parámetro soportado `payment_method_types[]`; cada método depende de la elegibilidad y configuración de Stripe.
+- La UI de cartera presenta ambos métodos previstos y explica que Stripe solo ofrece los habilitados y elegibles. PayPal puede requerir aprobación adicional para suscripciones.
+- `api/billing/config` documenta la estrategia de métodos sin exponer secretos.
+- `PAYMENTS_SETUP_ES.md` explica cómo activar Card y PayPal en el Dashboard, probar en modo test y revisar la titularidad legal.

@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Nexo AI · Papoi 8 Limit Recovery",
+  "name": "Nexo AI · Planes y créditos · 8.1.3",
   "short_name": "Nexo AI",
-  "description": "Nexo AI con recuperación de límites y continuación opcional de chat.",
+  "description": "Nexo AI con familia de modelos, generación de proyectos y cartera opcional de créditos segura en servidor.",
   "lang": "es-ES",
   "start_url": "./index.html",
   "scope": "./",

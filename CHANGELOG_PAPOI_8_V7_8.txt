@@ -1,0 +1,11 @@
+NEXO AI — PAPOI 8 LIMIT RECOVERY v7.8
+
+- Añadida salida de emergencia por X, Esc, botón “Cerrar y volver al chat” y clic en el fondo.
+- Controles de cierre funcionan mediante un script autónomo antes de inicializar el resto de la aplicación.
+- Añadida acción global ⇄ Alternativa siempre disponible en la barra superior.
+- Tras un 402/429, Puter queda pausado en esa pestaña para evitar reabrir el modal en bucle; el mensaje nuevo se conserva en el cuadro.
+- El usuario puede reintentar Puter explícitamente después de cambiar de cuenta o al recuperar créditos.
+- Si existe una clave/modelo Gemini guardados en sessionStorage, los nuevos mensajes pasan a Gemini en vez de volver a solicitar a Puter.
+- Se amplía la detección de diálogos de saldo de Puter, incluidos hosts custom elements y diálogos abiertos.
+- La PWA usa una caché nueva y elimina cachés anteriores que usan prefijos nexo-ai-/nexo-papoi8-/nexo-limit-.
+- Nota: los límites del proveedor no se eliminan; la alternativa usa una cuota diferente propia.

@@ -1,0 +1,9 @@
+NEXO AI 8.1.1 — PREMIUM OPCIONAL Y CRÉDITOS
+
+- Añadida la base server-side para cuenta Nexo, cartera de créditos, ledger y compras mediante Stripe Checkout.
+- Añadido Premium mensual con créditos por ciclo y packs de créditos de un solo pago.
+- El saldo se concede solo a partir de webhooks Stripe firmados e idempotentes.
+- Añadido modo de continuidad de chat mediante el proveedor configurado en servidor, con descuento atómico y devolución si falla el proveedor.
+- API endpoints devuelven no-store; service worker nunca cachea /api/.
+- Se han mejorado textos de la interfaz para distinguir cartera Nexo del saldo Puter.
+- Pagos quedan inactivos hasta configurar Supabase, Stripe, el webhook y el proveedor de IA.

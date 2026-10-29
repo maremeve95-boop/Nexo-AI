@@ -1,0 +1,5 @@
+HISTÓRICO DE PRUEBAS V8.1.2 — tarjeta + PayPal
+
+Este archivo describe la iteración anterior. En v8.1.3 se corrigió el parámetro de Stripe Checkout: ahora se usa payment_method_types[0]=card y payment_method_types[1]=paypal.
+
+Las pruebas de compras reales deben hacerse con Stripe en modo test y una cuenta de prueba.

@@ -1,0 +1,9 @@
+Pruebas estáticas realizadas:
+- JavaScript inline: node --check en cada script.
+- IDs HTML: únicos.
+- Controles de escape y alternativa: presentes en HTML.
+- Manifest JSON: válido.
+- service-worker.js: sintaxis válida.
+- El cierre por Esc y por botón no depende de los listeners normales de la app.
+
+No se ha podido probar el SDK remoto de Puter desde esta sesión; el cierre de diálogos externos depende de cómo el SDK renderice el diálogo concreto en el navegador.

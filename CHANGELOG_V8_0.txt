@@ -1,0 +1,11 @@
+NEXO AI v8.0 — LIMIT WINDOWS + ANACLETO PRO
+
+- Ajustes permite elegir ventanas locales de 2, 4, 6, 12 o 24 horas para los perfiles limitados.
+- Barras de uso para Nexo 5, Nexo 7, Papoi 8 y Anacleto Pro, con aviso al 90 % (9/10).
+- Se elimina el temporizador permanente de un minuto: el panel se actualiza al abrir Ajustes, al refrescar manualmente y tras una respuesta correcta, reduciendo trabajo en segundo plano.
+- Papoi 8 prioriza Claude Sonnet 5.5 cuando está en el catálogo real y usa su variante gratuita si aparece; si no, intenta un motor GPT/OpenAI/Codex permitido.
+- Anacleto Pro prioriza GPT/OpenAI/Codex, prefiriendo variantes identificadas como gratuitas cuando existan; si no hay OpenAI, recurre a Claude Sonnet compatible.
+- No se usan Qwen ni Claude Opus; Nexo 5.5 y Nexo 6 siguen reservados sin desbloqueo.
+- Se actualiza la caché PWA para evitar cargar una interfaz anterior.
+
+Importante: los contadores son locales y configurables; no recargan créditos reales del proveedor. La disponibilidad y el coste del motor dependen del catálogo y la cuenta del proveedor. No se garantiza uso gratis ilimitado.

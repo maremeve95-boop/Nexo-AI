@@ -1,0 +1,14 @@
+NEXO AI 8.1.3 — COMPROBACIONES
+
+- Sintaxis comprobada para los endpoints de facturación y lib/nexo-billing.js con node --check.
+- JavaScript inline de index.html comprobado con node --check.
+- JSON validado: package.json, manifest.webmanifest y vercel.json.
+- HTML comprobado: 134 IDs, sin duplicados; IDs de la pantalla de planes presentes.
+- Checkout actualizado al parámetro Stripe Checkout documentado payment_method_types[0]=card y [1]=paypal.
+- La pantalla de planes se puede abrir antes de iniciar sesión; el precio de Premium se lee de la configuración Stripe y no se inventa cuando falta configuración.
+- El botón Gratis cierra la vista sin comprar; el CTA Premium explica el problema si pagos/precio no están configurados, sin crear un cobro.
+- ZIP validado al terminar el empaquetado.
+
+LIMITACIONES
+- No se ha probado una compra real ni una sesión de Checkout con cuenta Stripe activa.
+- Antes de cobrar dinero real, probar todo en modo test, revisar impuestos, política de privacidad, condiciones, reembolsos y titularidad legal de la cuenta.

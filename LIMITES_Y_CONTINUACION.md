@@ -1,17 +1,19 @@
-# Límites de Puter y continuación de chat
+# Límites y continuación — Nexo AI v8.0
 
-## Por qué aparece el cuadro original
-Puter.js puede abrir automáticamente su diálogo de uso/crédito al recibir `402 insufficient_funds`. Cambiar de cuenta solo cambia el límite si se autentica realmente en otra cuenta que tenga cuota propia; no restablece la cuota de la cuenta anterior. Los errores `429 too_many_requests` son límites temporales diferentes.
+## Límites locales de Nexo
 
-## Qué hace esta versión
-- Oculta el custom element `usage-limit-dialog` en el navegador independiente y gestiona el rechazo en Nexo.
-- Presenta “SE ALCANZARON LOS LÍMITES” para crédito insuficiente y un aviso separado para límites temporales.
-- Permite exportar la conversación y, opcionalmente, continuar el mismo hilo textual con Gemini API.
-- Consulta el catálogo de modelos con `generateContent` al introducir la clave; la selección se basa en modelos que el propio proyecto de Google devuelve, no en IDs inventados.
+Nexo 5, Nexo 7, Papoi 8 y Anacleto Pro tienen un contador local de 10 respuestas satisfactorias por ventana. En Ajustes se puede elegir 2, 4, 6, 12 o 24 horas. Al llegar al 90 % (9/10) se muestra un aviso una vez durante esa ventana. El panel enseña el uso y el tiempo hasta el reinicio. El panel se refresca al abrir Ajustes, usar el botón de actualizar o tras una respuesta, sin un temporizador permanente en segundo plano.
 
-## Uso del proveedor alternativo
-La clave es introducida por el propio usuario y se guarda solo en `sessionStorage` de la pestaña. Se usa para solicitudes desde el navegador directamente a `generativelanguage.googleapis.com`; no se incluye en HTML, ZIP, historial ni commits. La clave se puede inspeccionar por alguien con acceso al navegador, así que usa solo una clave personal en un despliegue que controles. Para una aplicación pública multiusuario, utiliza un backend seguro y no compartas una clave común.
+Este límite se guarda en el navegador, no está protegido por un servidor; borrar los datos del navegador puede reiniciarlo. No representa los créditos de Puter.
 
-La cuota gratuita de Gemini no es ilimitada: depende del proyecto, modelo, país/condiciones y límites actuales. La app no activa facturación. Si el proveedor alternativo llega a su límite, Nexo lo indica y permite cambiar el modelo o volver más tarde. No se puede prometer un chat en la nube sin ninguna cuota ni proveedor disponible.
+## Cuotas reales del proveedor
 
-Los archivos binarios e imágenes enviados a Puter no se conservan en el historial de texto del navegador, por lo que deben adjuntarse otra vez para que el proveedor alternativo pueda analizarlos.
+Puter documenta el crédito de uso como una asignación mensual según el plan; los límites de frecuencia (429) son ventanas separadas. Cambiar la ventana local no recarga los créditos externos. Ante un 402/429 puede usarse una alternativa configurada por el usuario, pero el proveedor alternativo tiene sus propias cuotas.
+
+## Motores de los perfiles
+
+- **Papoi 8:** prioriza Claude Sonnet 5.5 cuando se encuentra en `puter.ai.listModels()`, usando una variante confirmada como gratuita si se ofrece; si no hay Sonnet 5.5, prioriza otros motores permitidos GPT/OpenAI/Codex.
+- **Anacleto Pro:** prioriza GPT/OpenAI/Codex disponibles y elige primero entre variantes gratuitas confirmadas si hay alguna. Si el catálogo no expone una variante gratuita, la mejor opción estándar podría requerir crédito del proveedor. Si no hay OpenAI, admite Claude Sonnet compatible.
+- Qwen y Claude Opus quedan excluidos de estos perfiles; Nexo 5.5 y Nexo 6 siguen reservados sin mecanismo de desbloqueo.
+
+Los IDs de motor se comparan con el catálogo en vivo; la app no puede activar un modelo que Puter no ofrezca. Los perfiles Nexo no son redes neuronales entrenadas desde cero. Las cuotas y precios del proveedor externo siguen aplicándose.

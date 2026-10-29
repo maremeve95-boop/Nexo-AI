@@ -1,0 +1,12 @@
+NEXO AI v7.9 — RELEASED AS PART OF v8.0 LIMIT WINDOWS + ANACLETO PRO
+
+- Límites locales configurables por ventanas de 2, 4, 6, 12 o 24 horas.
+- Ajustes incluye barras de uso para Nexo 5, Nexo 7, Papoi 8 y Anacleto Pro, cuenta usada y temporizador de reinicio.
+- Aviso de una sola vez al superar el 90 % (9/10 respuestas) del contador local durante una ventana.
+- Papoi 8 prioriza Claude Sonnet 5.5 cuando el catálogo real de Puter lo ofrece; después usa motores GPT/OpenAI/Codex compatibles, favoreciendo variantes gratuitas si aparecen.
+- Nuevo perfil Anacleto Pro: prioriza GPT-6 Astra/Codex reales disponibles; puede usar Claude Sonnet como alternativa compatible, sin Qwen ni Claude Opus.
+- Nexo 5.5 y Nexo 6 siguen reservados sin posibilidad de desbloqueo.
+- La cuota local de Nexo no equivale a crédito real de Puter. Puter indica que el saldo de uso se restaura por ciclo del plan (normalmente mensual); los límites de frecuencia tienen ventanas separadas. Un temporizador local no altera esos créditos.
+- Se incrementa la versión de caché de la PWA para evitar servir una interfaz anterior.
+
+Los perfiles no son redes neuronales entrenadas desde cero: el catálogo externo controla qué motores concretos existen. No se garantiza uso gratis ilimitado.

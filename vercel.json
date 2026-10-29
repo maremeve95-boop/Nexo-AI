@@ -1,16 +1,42 @@
 {
   "headers": [
     {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store, no-cache, must-revalidate"
+        },
+        {
+          "key": "Pragma",
+          "value": "no-cache"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    },
+    {
       "source": "/service-worker.js",
       "headers": [
-        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
-        { "key": "Service-Worker-Allowed", "value": "/" }
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
       ]
     },
     {
       "source": "/manifest.webmanifest",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     }
   ]
