@@ -1,0 +1,9 @@
+NEXO AI 8.2 — USO, LÍMITES Y RENDIMIENTO
+
+- El aviso de límites de Puter ya no bloquea toda la interfaz: funciona como panel no modal, permite usar el chat alrededor y tiene un botón directo a Ajustes.
+- El detector de diálogos externos busca también dentro de Shadow DOM abierto y se re-ejecuta ante cambios del SDK. Ahora inspecciona los nodos añadidos y ancestros relevantes en vez de volver a recorrer todo el documento en cada mutación, reduciendo trabajo en equipos modestos. Los diálogos en iframes de otro origen o Shadow DOM cerrado pueden seguir fuera del control de la página; en esos casos, recarga la app.
+- Ajustes muestra el consumo real devuelto por puter.auth.getMonthlyUsage(): asignación mensual, consumido, restante y top de APIs de esta aplicación. La asignación mensual no es necesariamente el saldo de créditos comprados; incluye enlace al panel oficial de Puter.
+- Para Nexo 5, Nexo 7, Papoi 8 y Anacleto Pro, la barra lateral muestra el contador local de respuestas y, cuando se ha consultado, el uso mensual de Puter. Tras iniciar sesión, Nexo intenta cargar el resumen de uso sin realizar una petición de IA.
+- Los límites temporales 429 se desbloquean localmente tras 60 segundos, mientras que los errores de saldo insuficiente 402 permanecen bloqueados hasta que el usuario reintenta manualmente o configura otro proveedor. Esto no restaura crédito del proveedor.
+- Menor coste potencial: se envían hasta 8 mensajes recientes en lugar de 16, el contexto se limita aproximadamente a 30.000 caracteres, los mensajes previos se reducen y los topes de salida son más conservadores. Se mantiene mayor presupuesto para tareas 2D/3D.
+- Se conserva el backend de la cartera Nexo y el soporte PWA.

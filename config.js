@@ -35,11 +35,6 @@ module.exports = async function handler(req, res) {
     paymentsReady: hasPaymentConfig() && Object.values(products).some(p => p.configured),
     products,
     auth: hasAuthConfig() ? { url: process.env.SUPABASE_URL, anonKey: process.env.SUPABASE_ANON_KEY } : null,
-    paymentMethods: {
-      strategy: 'explicit-eligible-list',
-      requested: ['card', 'paypal'],
-      note: 'Checkout solicita tarjeta y PayPal con payment_method_types; Stripe solo acepta/muestra los métodos elegibles para esta cuenta, moneda y producto. PayPal para suscripciones puede requerir aprobación adicional.'
-    },
     notice: 'Los créditos Nexo son independientes del saldo de Puter. El saldo comprado solo se usa en el modo de continuidad de Nexo.'
   });
 };

@@ -1,4 +1,4 @@
-# Nexo AI 8.1.3 — Comparador de planes y checkout tarjeta/PayPal
+# Nexo AI 8.1.1 — Premium opcional y créditos verificados
 
 PWA de Nexo AI con perfiles especializados, memoria local, búsqueda/lectura web, análisis de archivos y generación de proyectos descargables. No hay anuncios ni suscripción obligatoria para desbloquear perfiles. Se incluye una cartera opcional de créditos propios, lista para habilitarse con Stripe + Supabase + un proveedor de IA en el servidor.
 
@@ -78,16 +78,6 @@ Esta versión intercepta errores 402/`insufficient_funds` y 429 de Puter para mo
 - Antes de vender al público, configura política de privacidad, términos, impuestos, reembolsos, cancelación de suscripción y revisa los costes del proveedor. Empieza en modo test de Stripe.
 
 
-## v8.1.2 — tarjeta + PayPal en Stripe Checkout
+## v8.2 — Uso y recuperación
 
-## v8.1.3 — pantalla comparativa de planes
-- Añade pantalla de planes tipo pricing, adaptada a escritorio y móvil, con colores violeta/cian de Nexo.
-- Muestra precios reales leídos desde Stripe; no inventa importes cuando los productos aún no están configurados.
-- Hace accesible la comparación antes de iniciar sesión y mantiene los botones de compra sujetos a configuración y autenticación.
-- CTA “Seguir con Gratis” funcional; la compra da un mensaje claro si el backend de pagos no está activo.
-- Corrige `payment_method_types[]` para solicitar tarjeta y PayPal mediante el parámetro soportado de Checkout Session.
-
-- Stripe Checkout solicita `card` y `paypal` mediante el parámetro soportado `payment_method_types[]`; cada método depende de la elegibilidad y configuración de Stripe.
-- La UI de cartera presenta ambos métodos previstos y explica que Stripe solo ofrece los habilitados y elegibles. PayPal puede requerir aprobación adicional para suscripciones.
-- `api/billing/config` documenta la estrategia de métodos sin exponer secretos.
-- `PAYMENTS_SETUP_ES.md` explica cómo activar Card y PayPal en el Dashboard, probar en modo test y revisar la titularidad legal.
+Nexo 8.2 hace que el panel de límite no sea bloqueante, añade un cuadro de uso mensual de Puter en Ajustes y en la barra lateral para perfiles avanzados, y reduce el contexto enviado a la IA para bajar el coste potencial. Consulta `USO_PUTER_Y_COSTES.md` y `CHANGELOG_V8_2.txt`.

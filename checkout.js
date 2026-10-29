@@ -17,12 +17,6 @@ module.exports = async function handler(req, res) {
     params.set('mode', product.mode);
     params.set('line_items[0][price]', priceId);
     params.set('line_items[0][quantity]', '1');
-    // Use Stripe Checkout's documented payment_method_types[] parameter.
-    // This requests card + PayPal; Stripe only offers each method if the
-    // account, currency, product and subscription flow are eligible/configured.
-    params.set('payment_method_types[0]', 'card');
-    params.set('payment_method_types[1]', 'paypal');
-    params.set('locale', 'auto');
     params.set('success_url', `${APP_URL}/?nexoPayment=success`);
     params.set('cancel_url', `${APP_URL}/?nexoPayment=cancel`);
     params.set('client_reference_id', user.id);

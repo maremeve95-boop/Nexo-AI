@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nexo-ai-premium-credits-v8.1.3';
+const CACHE_NAME = 'nexo-ai-usage-recovery-v8.2';
 const APP_SHELL = ["./index.html", "./manifest.webmanifest", "./icons/nexo-192.png", "./icons/nexo-512.png"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));

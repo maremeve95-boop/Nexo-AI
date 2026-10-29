@@ -1,8 +1,8 @@
 {
   "name": "nexo-ai-premium-credits",
-  "version": "8.1.3",
+  "version": "8.1.1",
   "private": true,
-  "description": "Nexo AI PWA with plan comparison UI and server-verified Premium/credits wallet",
+  "description": "Nexo AI PWA with optional server-verified Premium and credits wallet; API responses bypass service worker cache",
   "engines": {
     "node": ">=20"
   },

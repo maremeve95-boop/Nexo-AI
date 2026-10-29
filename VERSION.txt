@@ -1,1 +1,3 @@
-Nexo AI 8.1.3 — Comparador visual de planes, precios reales desde Stripe y Checkout con tarjeta/PayPal
+Nexo AI 8.2 — Usage & Recovery
+Fecha: 2026-10-29
+Base: Nexo AI 8.1 Premium/Créditos

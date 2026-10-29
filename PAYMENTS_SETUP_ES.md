@@ -1,26 +1,5 @@
 # Nexo Premium y créditos reales — configuración paso a paso
 
-## Métodos de pago: tarjeta y PayPal (v8.1.2)
-
-Nexo usa **Stripe Checkout alojado** para que los datos de tarjeta y PayPal se introduzcan directamente en Stripe, no en el HTML de Nexo. El endpoint `api/billing/checkout.js` solicita los métodos `card` y `paypal` mediante el parámetro documentado `payment_method_types[]` de Checkout Session. Stripe solo permite completar el pago con métodos habilitados y elegibles para la cuenta, la moneda, el producto y el tipo de compra. PayPal para suscripciones puede requerir aprobación adicional.
-
-### Activar tarjeta y PayPal
-
-1. Abre el **Stripe Dashboard** de la cuenta que va a recibir los pagos.
-2. En **Settings → Payments → Payment methods**, comprueba que **Cards** esté activado.
-3. Activa **PayPal** y completa el proceso de incorporación/verificación que Stripe solicite. La disponibilidad depende de la elegibilidad del negocio. Stripe indica que PayPal está disponible para empresas establecidas en la Unión Europea (con excepciones indicadas en su documentación) y España aparece entre los países admitidos.
-4. Actívalo primero en **modo de pruebas** y prueba el flujo de Checkout. Los ajustes, los productos/precios y las claves de prueba y de producción deben gestionarse con cuidado.
-5. Para **Nexo Premium (suscripción mensual)**, PayPal para pagos recurrentes puede necesitar aprobación adicional. Si todavía no está aprobado, Stripe puede mostrar tarjeta y omitir PayPal en esa suscripción. Los paquetes de créditos son pagos únicos y pueden tener disponibilidad distinta.
-
-La interfaz de Nexo muestra los métodos previstos, pero no puede confirmar desde el navegador que PayPal esté aprobado/activo en la cuenta de Stripe. Los métodos definitivos aparecen en Checkout. Si PayPal no aparece, revisa Payment methods en el Dashboard, el modo test/live, la moneda y los requisitos de aprobación.
-
-Referencias oficiales: [PayPal en Stripe](https://stripe.com/en-es/payment-method/paypal), [Disponibilidad de PayPal en Stripe](https://support.stripe.com/questions/paypal-payment-method-availability), [Crear una Checkout Session](https://docs.stripe.com/api/checkout/sessions/create).
-
-> **Titularidad y edad:** la cuenta de cobros debe pertenecer a una persona o entidad legalmente elegible. Si el creador del proyecto es menor de 18 años, un tutor legal debe ser el titular/responsable de Stripe y de los cobros; no se debe falsear la edad ni evitar verificaciones del proveedor.
-
----
-
-
 ## Qué significan los dos saldos
 
 - **Puter:** su asignación/crédito pertenece a la cuenta de cada usuario y Puter lo factura directamente. Nexo no puede transferirlo ni recargarlo mediante Stripe.
@@ -48,7 +27,7 @@ Usa primero el modo de pruebas de Stripe. Crea los productos:
 
 Decide los precios después de calcular los costes actuales del modelo, los impuestos, las comisiones y posibles reembolsos. Nexo cobra créditos por respuesta (1/1/2/3/4/5/6 según perfil); el coste real de la API depende también del modelo y la longitud. No publiques precios sin probar primero la rentabilidad y las condiciones legales.
 
-Copia los tres Price IDs del catálogo de Stripe; la interfaz muestra el precio real mediante una consulta al servidor. Si un Price ID falta, no muestra un precio inventado y no se realizará ningún cobro; la pantalla informa de que falta configurar el producto.
+Copia los tres Price IDs del catálogo de Stripe; la interfaz mostrará sus precios mediante una consulta al servidor. Si un Price ID falta, el botón de ese producto permanece desactivado.
 
 ## 3. Crea un webhook de Stripe
 
