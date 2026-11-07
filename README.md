@@ -1,8 +1,8 @@
-# Nexo AI 9.0 Release
+# Nexo AI
 
 PWA de Nexo AI con ajustes por secciones, uso real de Puter, memoria local ampliada, selección automática económica, perfiles especializados, análisis de archivos y generación de proyectos descargables. No hay anuncios ni suscripción obligatoria para desbloquear perfiles. Se incluye una cartera opcional de créditos propios, lista para habilitarse con Stripe + Supabase + un proveedor de IA en el servidor.
 
-## Qué ha mejorado en 7.5
+## Funciones principales
 - Peticiones como “hazme un Fortnite” se detectan como tarea de creación y descargable.
 - Para juegos 3D, Papoi solicita una escena Three.js/WebGL real y una demo jugable, no una explicación genérica. Si una entrega inicial está vacía o es demasiado básica, intenta una única recuperación con instrucciones estrictas de salida.
 - Modelos técnicos ordenados dinámicamente según el catálogo de Puter, priorizando GPT-6 Astra, GPT-6.1 Sol, Claude Sonnet 5.5 y Codex permitidos. Qwen se excluye; Claude Opus y Nexo 5.5/6 siguen reservados.
@@ -13,7 +13,7 @@ PWA de Nexo AI con ajustes por secciones, uso real de Puter, memoria local ampli
 - Nexo 4 Lite: estudio.
 - Nexo 4.1: general/creativo y predeterminado.
 - Nexo 4.5: investigación.
-- Nexo 5: programación y depuración; límite local diario.
+- Nexo 5: programación y depuración; el consumo depende del modelo y del proveedor.
 - Nexo 5.5 y 6: reservados y no seleccionables.
 - Nexo 7: Creator Lab.
 - Papoi 8: Creator Engine para proyectos, juegos y 3D.
@@ -97,7 +97,7 @@ Los modelos tienen tarifas distintas; el historial largo y los adjuntos elevan l
 Se validan la sintaxis, la presencia de los nuevos controles, las rutas del service worker y la estructura ZIP. La lectura de uso real requiere una sesión Puter activa y probar la aplicación publicada; no se simula saldo real.
 
 
-## Nexo AI 9.0 Release
+## Funciones de Nexo AI
 
 - Ajustes por secciones con Uso (Resumen/Análisis), Modelos e IA, Memoria, Personalización, Voz y entrada y Cuenta/datos.
 - El consumo de Puter se consulta a través del SDK oficial y se enlaza al panel de uso; las cifras se expresan en USD y el desglose por app se muestra solo cuando Puter lo devuelve.
@@ -108,3 +108,13 @@ Se validan la sintaxis, la presencia de los nuevos controles, las rutas del serv
 - Nueva introducción animada configurable y temas de color.
 
 Ver `USO_PUTER_Y_OPTIMIZACION_V9.md` y `CHANGELOG_V9_0_RELEASE.txt`.
+
+
+## Interfaz, compositor y voz
+
+- El compositor sigue el diseño compacto con botón `+`, adjuntos, campo de texto, indicador, dictado y acción azul que alterna entre ondas y enviar.
+- El menú `+` incluye Pensar, Buscar, Alternativa y Generar mensaje de voz. El generador permite elegir proveedor, voz y estilo; Puter ofrece una muestra de prueba y generación real de audio.
+- Durante la generación de código se oculta el bloque incompleto y se muestran estados discretos como «Analizando», «Programando», «Cooking» y «Let me cook».
+- Ajustes se organiza por secciones; la paleta violeta/cian se mantiene estable y el tema de color variable queda desactivado.
+- En Safari iOS los campos mantienen 16 px para evitar el zoom al enfocar, y el compositor usa anchos flexibles para no desbordarse en escritorio.
+- La memoria local admite hasta 80 notas de 800 caracteres; la orden explícita de guardar memoria se ejecuta localmente sin consulta al modelo.

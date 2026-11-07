@@ -1,0 +1,26 @@
+NEXO AI — ACTUALIZACIÓN FINAL DE INTERFAZ Y EXPERIENCIA
+
+- Oculta bloques de código durante streaming y muestra fases tenues de trabajo.
+- Muestra solo la respuesta final y los archivos cuando termina la generación.
+- Ajusta el esfuerzo de razonamiento según el proveedor/modelo; los modelos que no lo admiten no reciben esos parámetros.
+- Elimina límites locales artificiales; el consumo se muestra desde las métricas reales de Puter.
+- Mantiene la banda de límites no bloqueante.
+- Corrige el cierre de la sección Personalización.
+- Gestionar cuenta abre Cuenta y datos; Ajustes abre Uso.
+- Mantiene paleta violeta/cian y opción claro/oscuro; no hay selector de temas inestable.
+- Composer adaptable a escritorio y móvil; controles a 16 px para evitar zoom automático en Safari iOS.
+- Menú + con Pensar, Buscar, Alternativa y Generar mensaje de voz.
+- Botón de compositor: onda azul abre generador de voz si está vacío; flecha envía cuando hay texto/adjuntos.
+- Voz usa el catálogo real de Puter, idiomas y motores compatibles con la voz seleccionada; prueba de voz usa test_mode sin uso.
+- Actualizada caché PWA y nombre público a “Nexo AI”.
+
+
+INTERFAZ FINAL Y VOZ
+- Compositor compacto: + abre Pensar, Buscar, Alternativa y Generar mensaje de voz. El botón azul alterna entre onda (campo vacío) y enviar (texto/adjuntos). El micrófono separado es dictado a texto.
+- Generador de voz con proveedores, catálogo de voces, idioma y estilo; muestra de prueba y audio real incorporado al chat.
+- Ajustes por secciones: Gestionar cuenta abre Cuenta y datos; Ajustes abre Uso. Paleta estable, sin selector de temas de color experimental.
+- Mejoras iOS/desktop: campos de 16 px para impedir zoom al enfocar en Safari y compositor flexible que no desborda el ancho disponible.
+- Ocultación de código durante streaming con fases discretas y baja opacidad.
+- Memoria local ampliada a 80 notas de 800 caracteres, incluidos los datos guardados en sesiones anteriores que se vuelven a cargar.
+- Uso de Puter consultado mediante getMonthlyUsage y mostrado en USD, con desglose por API cuando está disponible.
+- Service worker actualizado para invalidar la caché anterior.

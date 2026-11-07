@@ -1,2 +1,1 @@
-NEXO AI 9.0 RELEASE
-Build: 2026-11-07
+Nexo AI

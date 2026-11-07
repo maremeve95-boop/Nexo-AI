@@ -1,4 +1,4 @@
-NEXO AI 9.0 RELEASE
+NEXO AI
 
 Novedades principales:
 - Ajustes rediseñados por secciones, con consumo real de Puter y enlace al panel oficial.
@@ -14,7 +14,7 @@ ACTUALIZAR EN GITHUB + VERCEL
 2. Sube todo el contenido a la raíz del repositorio, manteniendo api/, lib/, supabase/ e icons/.
 3. No subas archivos .env reales ni claves privadas.
 4. Haz commit y espera al despliegue Ready en Vercel.
-5. En Chrome, recarga con Ctrl+Shift+R. Si usas la PWA instalada, ciérrala completamente y vuelve a abrirla para activar la caché v9.0.
+5. En Chrome, recarga con Ctrl+Shift+R. Si usas la PWA instalada, ciérrala completamente y vuelve a abrirla para activar la caché actualizada.
 
 USO PUTER
 Inicia sesión, elige Nexo 5 o superior y pulsa el chip de uso de la barra, o entra a Ajustes → Uso → Resumen → Consultar. La cuenta muestra gasto/restante real en USD; el panel de Análisis muestra el detalle por API que Puter facilite. La fecha exacta de renovación se consulta en el dashboard oficial enlazado.
@@ -23,3 +23,10 @@ MEMORIA
 Escribe: “Nexo, guarda esto en la memoria: …”. Verás “Guardando la memoria…” y luego “Memoria guardada”. Esta acción se procesa localmente y no consume una respuesta de IA.
 
 La aplicación no puede restablecer los créditos reales de Puter. Su asignación mensual y sus límites de frecuencia son independientes de los contadores locales de Nexo.
+
+
+COMPOSITOR Y VOZ
+El botón + abre Pensar, Buscar, Alternativa y Generar mensaje de voz. El botón azul abre el generador de voz cuando el campo está vacío y envía cuando hay texto o adjuntos. El micrófono del compositor es dictado a texto. Ajustes se abre por secciones; Gestionar cuenta abre Cuenta y datos, y Ajustes abre Uso.
+
+CÓDIGO Y MEMORIA
+Mientras se genera código, Nexo muestra fases de trabajo y oculta el código incompleto. La memoria guarda hasta 80 notas de 800 caracteres; “Nexo, guarda esto en la memoria: …” se procesa localmente sin una llamada al proveedor.

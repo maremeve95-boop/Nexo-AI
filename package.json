@@ -1,8 +1,8 @@
 {
-  "name": "nexo-ai-release",
-  "version": "9.0.0",
+  "name": "nexo-ai",
+  "version": "1.0.0",
   "private": true,
-  "description": "Nexo AI 9.0 Release — modular settings, real Puter usage, economy-first model routing, relevance-ranked local memory and animated onboarding.",
+  "description": "Nexo AI progressive web app",
   "engines": {
     "node": ">=20"
   },
