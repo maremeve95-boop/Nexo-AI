@@ -28,3 +28,11 @@ Después de confirmar los archivos en GitHub y esperar a que Vercel esté en Rea
 El proyecto incluye funciones Vercel en `api/billing/` (config, status, checkout, portal, webhook y chat), una biblioteca server-side en `lib/nexo-billing.js` y SQL de Supabase. Esto está preparado para habilitarse, pero los cobros no funcionarán hasta que configures servicios externos. Sigue `PAYMENTS_SETUP_ES.md` completamente y empieza con Stripe en modo test. No publiques claves privadas en GitHub.
 
 La PWA nunca cachea `/api/`, en especial `/api/billing/status`. Tras desplegar, comprueba que los endpoints de cartera devuelven `Cache-Control: no-store`.
+
+
+## Nexo AI 9.0 Release
+
+- Actualiza todo el proyecto desde el ZIP, incluidos `index.html`, `service-worker.js`, `manifest.webmanifest` y la carpeta `api/`.
+- La caché PWA cambia a `nexo-ai-release-v9.0`; una recarga completa o cerrar/reabrir la PWA activa el nuevo shell.
+- La interfaz consulta `puter.auth.getMonthlyUsage()` y `puter.auth.getDetailedAppUsage(puter.appID)` solo después de iniciar sesión. El SDK recibe el saldo del usuario; no se debe copiar ni introducir un token privado manualmente.
+- Los pagos opcionales mantienen su configuración separada; la actualización v9 no activa cobros ni cambia productos/precios.

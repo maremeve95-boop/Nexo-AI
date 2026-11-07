@@ -1,0 +1,12 @@
+NEXO AI 8.2.1 — Control de consumo y estabilidad
+
+- Ajustes > Consumo real de Puter usa getMonthlyUsage() para mostrar cupo mensual incluido, cupo restante y porcentaje usado.
+- Cuando Puter proporciona puter.appID, Nexo consulta getDetailedAppUsage(appId) para mostrar el total de esta aplicación y el detalle por API. Si no hay App ID, no atribuye el consumo total de la cuenta a Nexo.
+- Enlace directo al panel oficial: https://puter.com/dashboard.
+- El diálogo externo de límites se detecta en elementos específicos y raíces Shadow DOM abiertas. El detector ignora el modal de Nexo y no oculta elementos contenedores generales.
+- Se reduce el historial enviado por petición, los límites de salida predeterminados y el umbral de compactación. La revisión automática queda desactivada por migración para evitar una llamada extra no solicitada.
+- Se elimina la consulta de autenticación redundante tras cada respuesta.
+
+Importante: el contador local de Nexo no recarga el crédito real de Puter. El cupo incluido se renueva según el ciclo del plan, normalmente mensual; los límites 429 son ventanas móviles independientes. Los valores de Puter se expresan en microcentavos: 100.000.000 = 1 USD. El desglose por API/aplicación puede retrasarse hasta alrededor de un minuto.
+
+Las cifras reales requieren sesión Puter activa y una consulta manual desde Ajustes. Si la web desplegada en Vercel no tiene App ID reconocido por Puter, se muestra el consumo total de la cuenta y se remite al dashboard oficial para el desglose por app.

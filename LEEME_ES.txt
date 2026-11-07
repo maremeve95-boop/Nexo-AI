@@ -1,18 +1,25 @@
-NEXO AI 8.1.1 — PREMIUM OPCIONAL Y CRÉDITOS
+NEXO AI 9.0 RELEASE
 
-Esta versión incluye una cartera de créditos propia preparada con Supabase + Stripe y un endpoint de IA en servidor. Los pagos están desactivados hasta configurar todas las variables y el webhook; el ZIP no contiene claves ni productos de Stripe.
+Novedades principales:
+- Ajustes rediseñados por secciones, con consumo real de Puter y enlace al panel oficial.
+- Indicador de saldo/consumo de Puter para Nexo 5+.
+- El aviso de límites es no bloqueante; Ajustes y el chat siguen disponibles.
+- Modelos automáticos gratuitos/de bajo coste preferidos, modelos caros ocultos.
+- Menos tokens por respuesta e historial, modo rápido por defecto.
+- Memoria local ampliada y comandos como “Nexo, guarda esto en la memoria: …” sin llamar al modelo.
+- Introducción animada con opción “No mostrar de nuevo”.
 
 ACTUALIZAR EN GITHUB + VERCEL
 1. Descomprime el ZIP.
-2. Sube todo el contenido a la raíz del repositorio, manteniendo index.html, api/, lib/, supabase/, icons/, manifest.webmanifest, service-worker.js y vercel.json.
-3. Haz commit y espera al despliegue de Vercel.
-4. No subas un archivo .env real. Usa Vercel -> Settings -> Environment Variables para los secretos.
+2. Sube todo el contenido a la raíz del repositorio, manteniendo api/, lib/, supabase/ e icons/.
+3. No subas archivos .env reales ni claves privadas.
+4. Haz commit y espera al despliegue Ready en Vercel.
+5. En Chrome, recarga con Ctrl+Shift+R. Si usas la PWA instalada, ciérrala completamente y vuelve a abrirla para activar la caché v9.0.
 
-ACTIVAR CRÉDITOS REALES (OPCIONAL)
-Lee PAYMENTS_SETUP_ES.md antes de habilitar Stripe. Primero usa claves y productos de prueba. Ejecuta supabase/SUPABASE_SETUP.sql, configura precios/ webhook, variables de entorno, y prueba pagos, entregas de créditos y reembolsos antes de pasar al modo live.
+USO PUTER
+Inicia sesión, elige Nexo 5 o superior y pulsa el chip de uso de la barra, o entra a Ajustes → Uso → Resumen → Consultar. La cuenta muestra gasto/restante real en USD; el panel de Análisis muestra el detalle por API que Puter facilite. La fecha exacta de renovación se consulta en el dashboard oficial enlazado.
 
-IMPORTANTE
-- El saldo Nexo no recarga la cuenta de Puter. La cartera Nexo paga el uso de la API de IA configurada en el servidor.
-- Las credenciales privadas viven solo en variables de entorno de Vercel, nunca en el HTML o el repositorio.
-- Los endpoints /api/ se excluyen de la caché del service worker.
-- El código se ha comprobado por sintaxis y estructura; valida toda integración de pagos en modo test antes de usar dinero real.
+MEMORIA
+Escribe: “Nexo, guarda esto en la memoria: …”. Verás “Guardando la memoria…” y luego “Memoria guardada”. Esta acción se procesa localmente y no consume una respuesta de IA.
+
+La aplicación no puede restablecer los créditos reales de Puter. Su asignación mensual y sus límites de frecuencia son independientes de los contadores locales de Nexo.

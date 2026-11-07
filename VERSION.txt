@@ -1,3 +1,2 @@
-Nexo AI 8.2 — Usage & Recovery
-Fecha: 2026-10-29
-Base: Nexo AI 8.1 Premium/Créditos
+NEXO AI 9.0 RELEASE
+Build: 2026-11-07

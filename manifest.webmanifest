@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Nexo AI · Premium y créditos · 8.1.1",
+  "name": "Nexo AI 9.0 Release",
   "short_name": "Nexo AI",
-  "description": "Nexo AI con familia de modelos, generación de proyectos y cartera opcional de créditos segura en servidor.",
+  "description": "Nexo AI 9.0 Release con ajustes por secciones, consumo real de Puter, memoria local ampliada, modelos económicos y onboarding animado.",
   "lang": "es-ES",
   "start_url": "./index.html",
   "scope": "./",

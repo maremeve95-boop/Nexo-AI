@@ -1,8 +1,8 @@
 {
-  "name": "nexo-ai-premium-credits",
-  "version": "8.1.1",
+  "name": "nexo-ai-release",
+  "version": "9.0.0",
   "private": true,
-  "description": "Nexo AI PWA with optional server-verified Premium and credits wallet; API responses bypass service worker cache",
+  "description": "Nexo AI 9.0 Release — modular settings, real Puter usage, economy-first model routing, relevance-ranked local memory and animated onboarding.",
   "engines": {
     "node": ">=20"
   },

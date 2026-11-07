@@ -1,6 +1,6 @@
-# Nexo AI 8.1.1 — Premium opcional y créditos verificados
+# Nexo AI 9.0 Release
 
-PWA de Nexo AI con perfiles especializados, memoria local, búsqueda/lectura web, análisis de archivos y generación de proyectos descargables. No hay anuncios ni suscripción obligatoria para desbloquear perfiles. Se incluye una cartera opcional de créditos propios, lista para habilitarse con Stripe + Supabase + un proveedor de IA en el servidor.
+PWA de Nexo AI con ajustes por secciones, uso real de Puter, memoria local ampliada, selección automática económica, perfiles especializados, análisis de archivos y generación de proyectos descargables. No hay anuncios ni suscripción obligatoria para desbloquear perfiles. Se incluye una cartera opcional de créditos propios, lista para habilitarse con Stripe + Supabase + un proveedor de IA en el servidor.
 
 ## Qué ha mejorado en 7.5
 - Peticiones como “hazme un Fortnite” se detectan como tarea de creación y descargable.
@@ -78,6 +78,33 @@ Esta versión intercepta errores 402/`insufficient_funds` y 429 de Puter para mo
 - Antes de vender al público, configura política de privacidad, términos, impuestos, reembolsos, cancelación de suscripción y revisa los costes del proveedor. Empieza en modo test de Stripe.
 
 
-## v8.2 — Uso y recuperación
+## Nexo AI 8.2 — consumo real de Puter y estabilidad
 
-Nexo 8.2 hace que el panel de límite no sea bloqueante, añade un cuadro de uso mensual de Puter en Ajustes y en la barra lateral para perfiles avanzados, y reduce el contexto enviado a la IA para bajar el coste potencial. Consulta `USO_PUTER_Y_COSTES.md` y `CHANGELOG_V8_2.txt`.
+- Ajustes incorpora el consumo oficial de Puter usando `puter.auth.getMonthlyUsage()`: cupo mensual y restante de la cuenta. Si `puter.appID` está disponible, también consulta `puter.auth.getDetailedAppUsage(puter.appID)` para el total y el desglose por API de Nexo AI.
+- El panel oficial de uso de Puter abre `https://puter.com/dashboard`. Los datos de cuenta, el consumo específico de Nexo (cuando Puter lo identifica) y los contadores locales de Nexo se muestran por separado.
+- Los recursos de Puter se devuelven en microcentavos: 100.000.000 microcentavos = 1 USD. El cupo mensual se renueva según el ciclo de Puter; el contador local de Nexo no recarga ese cupo.
+- Nexo reduce el historial enviado por petición (10 mensajes recientes, límites de caracteres más bajos), reduce los máximos de salida predeterminados y baja el umbral de compactación. La segunda revisión automática queda desactivada por migración para evitar una llamada extra no solicitada.
+- Se elimina la consulta de autenticación redundante después de cada respuesta. La sesión se refresca al iniciar/cerrar sesión y cuando corresponde, no tras cada mensaje.
+- La detección del diálogo de límites de Puter ahora escanea también raíces Shadow DOM abiertas y añade una ruta de cierre de emergencia sin dejar deshabilitado el compositor.
+
+### Por qué puede aumentar el consumo
+Los modelos tienen tarifas distintas; el historial largo y los adjuntos elevan los tokens de entrada; las respuestas/proyectos grandes elevan los tokens de salida; las búsquedas auxiliares, imágenes, voz y revisiones pueden añadir más llamadas. Puter documenta que el crédito se cobra a coste real y que los valores por API pueden retrasarse alrededor de un minuto.
+
+### Límites de visibilidad
+`getMonthlyUsage()` ofrece el cupo mensual total y restante de la cuenta. Cuando Puter facilita `puter.appID`, Nexo consulta también `getDetailedAppUsage(puter.appID)` para obtener el total exacto de esta app y su desglose por API. No expone necesariamente el saldo total de créditos comprados por separado ni un cálculo exacto por cada conversación individual. Si el despliegue no tiene un App ID reconocible, Nexo muestra el total de cuenta sin atribuirlo falsamente a la aplicación. El panel lo etiqueta como cupo mensual y gasto registrado por Nexo para no confundirlo con una cartera o un límite de tokens.
+
+### Comprobaciones
+Se validan la sintaxis, la presencia de los nuevos controles, las rutas del service worker y la estructura ZIP. La lectura de uso real requiere una sesión Puter activa y probar la aplicación publicada; no se simula saldo real.
+
+
+## Nexo AI 9.0 Release
+
+- Ajustes por secciones con Uso (Resumen/Análisis), Modelos e IA, Memoria, Personalización, Voz y entrada y Cuenta/datos.
+- El consumo de Puter se consulta a través del SDK oficial y se enlaza al panel de uso; las cifras se expresan en USD y el desglose por app se muestra solo cuando Puter lo devuelve.
+- El chat usa un aviso de límite no bloqueante: puedes abrir Ajustes y el panel de consumo aunque Puter rechace una petición.
+- El selector consulta el catálogo y tarifas reales. Prioriza `:free` y modelos de coste bajo; oculta modelos caros y no selecciona un modelo de tarifa alta como fallback.
+- Menos historial enviado, salidas acotadas y sin revisiones/búsqueda extra automáticas por defecto.
+- Memoria local ampliada (80 × 800), con recuperación por relevancia y comandos explícitos sin llamada de IA.
+- Nueva introducción animada configurable y temas de color.
+
+Ver `USO_PUTER_Y_OPTIMIZACION_V9.md` y `CHANGELOG_V9_0_RELEASE.txt`.

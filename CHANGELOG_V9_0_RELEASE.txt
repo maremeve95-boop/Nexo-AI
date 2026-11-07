@@ -1,0 +1,34 @@
+NEXO AI 9.0 RELEASE — 7 NOV 2026
+
+INTERFAZ Y AJUSTES
+- Rediseño del cuadro de Ajustes inspirado en una configuración de escritorio moderna: navegación lateral por Uso, Modelos e IA, Memoria, Personalización, Voz y entrada, Cuenta y datos.
+- Uso tiene vistas Resumen y Análisis.
+- Nueva selección de acento: Violeta Nexo, Azul océano, Verde esmeralda y Rosa aurora; modo claro/oscuro, animaciones y modo de bajo rendimiento.
+- La ventana de límites de Puter deja de sustituir/bloquear la interfaz: muestra una banda no bloqueante. Puedes abrir Ajustes, cambiar proveedor o cerrar el aviso mientras el chat sigue disponible.
+- Introducción animada de Nexo 9.0 en primera visita, con casilla “No mostrar de nuevo” y opción para volver a verla en Personalización.
+
+USO REAL DE PUTER
+- Usa puter.auth.getMonthlyUsage() para leer mes actual, cupo incluido y saldo restante de la cuenta.
+- Usa puter.auth.getDetailedAppUsage(appID) para separar el consumo de Nexo cuando Puter reconoce la aplicación.
+- Las cifras monetarias del SDK son microcents y se convierten a USD. El total mensual es actual; los desgloses por API/aplicación pueden tardar alrededor de un minuto.
+- En perfiles Nexo 5, Nexo 7, Papoi 8 y Anacleto Pro aparece un indicador Puter de restante/gastado en la barra superior.
+- En Ajustes hay enlaces al dashboard oficial y explicación del reinicio mensual. La API no entrega una fecha exacta de renovación; se muestra el ciclo mensual y se enlaza al panel oficial.
+
+ECONOMÍA Y VELOCIDAD
+- Selección automática usa listModels() y su información de precio en vivo: primero variantes :free, después modelos con tarifas bajas verificadas, nano/mini/flash/haiku/lite, y evita variantes :priority, motores caros, Qwen y Claude Opus.
+- No se inventan model IDs ni se elige silenciosamente un modelo caro si no hay uno económico compatible.
+- Menos tokens de salida por perfil, historial reducido a seis mensajes recientes con compactación, contexto previo truncado, modo de pensar desactivado y esfuerzo bajo por defecto.
+- Búsqueda web desactivada salvo que el usuario la active, pegue una URL, o el tema requiera información actual.
+- Revisión automática de código desactivada por defecto; recuperación solo cuando la primera entrega de archivos es incompleta o claramente insuficiente.
+- No hay intervalo permanente de actualización del panel: el uso se actualiza al entrar en Ajustes, pulsar Consultar o al recuperar sesión.
+
+MEMORIA E IDENTIDAD
+- Hasta 80 notas locales, cada una de hasta 800 caracteres; se guardan en el navegador y se preservan en el snapshot completo.
+- Contexto de memoria mejorado: selecciona hasta 12 notas relevantes por términos del mensaje, sin inyectar las 80 en cada petición.
+- Comandos locales: “Nexo, guarda esto en la memoria: …”, “recuerda que…”, “acuérdate de…”, “memoriza…”, “anota…” y “apunta…”. Muestra “Guardando la memoria…” y “Memoria guardada” sin llamar al modelo ni gastar créditos de Puter.
+- Nexo sabe que el proyecto lo impulsa Gorbus con asistencia de ChatGPT/OpenAI; distingue la app y sus perfiles del motor externo y no afirma ser un producto oficial de OpenAI o Puter.
+
+RENDIMIENTO
+- El observador de diálogos de Puter inspecciona nodos recién insertados y diálogos candidatos, en vez de recorrer todo el documento ante cada mutación.
+- La PWA usa caché release-v9.0 y purga cachés anteriores.
+- Probado en Chromium con interfaz simulada: ajustes, secciones, memoria local, consulta de uso simulada, selección de tema y respuesta ante 402 sin bloqueo.
