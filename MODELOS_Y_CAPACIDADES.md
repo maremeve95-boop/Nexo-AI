@@ -1,39 +1,48 @@
-# Familia Nexo AI 8.1.1
+# Modelos de Nexo AI
 
-Los modelos Nexo son perfiles de instrucciones y selección de motores reales; no son redes neuronales entrenadas desde cero.
+Los perfiles Nexo son configuraciones de instrucciones, límites y herramientas; no son redes neuronales entrenadas desde cero. El motor real se selecciona desde el catálogo que Puter anuncia a la cuenta en cada momento.
 
 | Perfil | Especialidad | Estado |
 |---|---|---|
 | Nexo 4 Lite | Estudios y respuestas rápidas | Disponible |
-| Nexo 4.1 | Conversación y creatividad | Predeterminado |
+| Nexo 4.1 | Conversación, creatividad y uso general | Predeterminado |
 | Nexo 4.5 | Investigación y síntesis | Disponible |
-| Nexo 5 | Ingeniería, depuración y juegos | Disponible con límite diario local |
-| Nexo 5.5 | Repair Lab avanzado | Reservado/no seleccionable |
-| Nexo 6 | Advanced Lab | Reservado/no seleccionable |
-| Nexo 7 | Creator Lab | Disponible con límite diario local |
-| Papoi 8 | Creator Engine: juegos 2D/3D, proyectos y archivos | Disponible con límite beta local |
+| Nexo 5 | Programación y depuración | Disponible |
+| Nexo 5.5 | Repair Lab | Reservado |
+| Nexo 6 | Advanced Lab | Reservado |
+| Nexo 7 | Creator Lab | Disponible |
+| Papoi 8 | Juegos, creación y proyectos | Disponible |
+| Anacleto Pro | Ingeniería y tareas complejas | Disponible |
 
-## Selección real del motor
+## Selección económica
 
-Papoi 8 y las familias técnicas consultan el catálogo dinámico de Puter. La preferencia de Papoi se ordena entre modelos permitidos de OpenAI/GPT/Codex y Anthropic Claude Sonnet: GPT-6 Astra para máximas exigencias, GPT-6.1 Sol para equilibrio de capacidad/coste, Claude Sonnet 5.5 para coding ágil y modelos Codex actuales cuando estén disponibles. No se hardcodea la disponibilidad: si un ID no está en el catálogo, no puede elegirse. Qwen queda excluido; Claude Opus y perfiles Nexo 5.5/6 siguen reservados. La aplicación no puede garantizar las cuotas de esos proveedores.
+Nexo consulta `puter.ai.listModels()` y utiliza las tarifas que devuelve el catálogo. En automático:
 
-La documentación oficial que orienta esta preferencia es [OpenAI GPT-6 Astra](https://developers.openai.com/api/docs/models/gpt-6-astra), [guía de selección de modelos de OpenAI](https://developers.openai.com/api/docs/models) y [Claude Sonnet 5.5 de Anthropic](https://www.anthropic.com/claude-sonnet-5-5).
+- Se priorizan variantes `:free` confirmadas.
+- Los demás motores solo se consideran si Puter publica un coste y ese coste queda dentro del umbral económico configurado en el código.
+- Se excluyen variantes `:priority`, Qwen, Claude Opus y GPT-6 Astra.
+- Las capacidades de tarea (por ejemplo, código o búsqueda) solo desempatan motores de coste prácticamente igual; no pueden hacer que un modelo mucho más caro gane por su nombre.
+- Si el catálogo no entrega precio verificable, Nexo no lo elige automáticamente. Puede mostrar que no hay un motor económico compatible en vez de gastar a ciegas.
 
-## Proyectos y juegos
+Los IDs y la disponibilidad no están hardcodeados. La aplicación no puede elegir un motor que el catálogo de Puter no ofrezca.
 
-Si el usuario pide crear un juego o un artefacto, Papoi debe devolver bloques completos y nombrados en Markdown, que la app convierte en descargas clicables. Los proyectos de varios ficheros conservan rutas relativas en el ZIP.
+## Control del consumo
 
-Para una petición 3D se solicita una escena WebGL real con Three.js, cámara perspectiva, luces, movimiento, controles, game loop, HUD, reinicio y un nivel de detalle prudente para equipos modestos. Para una petición inspirada en una franquicia se generan geometrías y diseño originales, sin copiar marcas o recursos propietarios. Si la primera respuesta no genera archivos o parece claramente demasiado incompleta, la app hace una sola pasada de recuperación; no ejecuta el código ni garantiza que esté libre de errores.
+En Ajustes → Modelos e IA se controla el máximo de tokens de salida normal, el presupuesto máximo para proyectos y la cantidad de historial que se reenvía. El valor `max_tokens` es un límite de salida, no una garantía del gasto total: también se cobran tokens de entrada, herramientas y cualquier llamada auxiliar. El historial previo se limita y las llamadas de recuperación/revisión se ejecutan solo cuando son necesarias; la revisión automática está desactivada por defecto.
+
+El modo de razonamiento solo envía `reasoning_effort` a motores cuya documentación/catálogo indique compatibilidad. Los parámetros OpenAI-only, como `verbosity`, no se envían a proveedores que no los admiten.
+
+## Creación y voz
+
+Papoi 8 y Anacleto Pro pueden generar proyectos completos, juegos 2D/3D y archivos descargables. Mientras se transmite código incompleto, el chat muestra un indicador discreto de trabajo; revela la respuesta cuando termina. El menú `+` ofrece Pensar, Buscar, Alternativa, generación de mensaje de voz y adjuntos. La voz usa el servicio TTS de Puter y su consumo puede ser independiente del chat.
 
 ## Límites
 
-- La calidad, velocidad, disponibilidad de herramientas y cuotas dependen del motor real y del servicio.
-- Los límites de uso de Nexo 5/7/Papoi son locales; borrar datos del navegador puede reiniciarlos.
-- Los proyectos 3D que importen módulos/CDN necesitan Internet y conviene abrirlos desde HTTPS/servidor local; abrirlos como `file://` puede bloquear ES modules.
-- La IA, búsqueda web, lectura de páginas y análisis remoto necesitan conexión.
-- Papoi 8 no es un modelo entrenado desde cero.
+- Las cuotas y la facturación real dependen de la cuenta Puter y del motor que responda.
+- Los límites locales de algunos perfiles se guardan en el navegador y no representan crédito del proveedor.
+- Los proyectos que usen Three.js/CDN necesitan Internet y conviene abrirlos desde HTTPS o servidor local.
+- No se afirma que el código descargado haya sido ejecutado si no se ha probado.
 
+## Cartera opcional
 
-## Cartera opcional Nexo Premium (v8.1.1)
-
-No hay pagos para desbloquear perfiles. La cartera opcional permite comprar créditos Nexo para una vía de chat separada que utiliza un proveedor configurado en el servidor. No recarga el saldo de Puter. La cartera solo está operativa tras configurar Supabase, Stripe, un webhook firmado y una API key/modelo de servidor; por defecto los botones de compra permanecen desactivados.
+La cartera opcional de Nexo usa Stripe + Supabase + un proveedor de IA configurado en el servidor. No recarga Puter ni cambia sus tarifas. Consulta `PAYMENTS_SETUP_ES.md` antes de activar pagos; no se incluyen claves reales en este proyecto.

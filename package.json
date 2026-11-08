@@ -2,7 +2,7 @@
   "name": "nexo-ai",
   "version": "1.0.0",
   "private": true,
-  "description": "Nexo AI progressive web app",
+  "description": "Nexo AI web application with economy-first Puter routing, token controls, memory and voice tools.",
   "engines": {
     "node": ">=20"
   },

@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Nexo AI",
   "short_name": "Nexo AI",
-  "description": "Nexo AI: asistente con modelos económicos, uso real de Puter, memoria, archivos, búsqueda, mensajes de voz y ajustes por secciones.",
+  "description": "Nexo AI: interfaz adaptable para móvil y PC, temas de contraste, uso real de Puter, memoria y herramientas de voz.",
   "lang": "es-ES",
   "start_url": "./index.html",
   "scope": "./",
