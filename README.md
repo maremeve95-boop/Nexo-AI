@@ -62,3 +62,14 @@ La disponibilidad de motores, sus precios, cuotas, herramientas y TTS dependen d
 - Layout: refuerzo de `min-width:0`, `max-width:100%`, wrapping, safe areas y contención horizontal en composer, topbar, ajustes, modales y tarjetas.
 - Temas: modo claro con fondos blancos y texto oscuro; modo oscuro con fondos oscuros y texto claro. El acento (violeta, océano, esmeralda o rosa) se mantiene independiente.
 - Uso: se retiran topes locales ficticios. Ajustes informa del reinicio mensual 402 y los límites temporales 429. El SDK no expone la fecha exacta del próximo reinicio; Nexo muestra el panel oficial.
+
+
+## Pulido final de Chromebook y consumo
+
+- En resoluciones de portátil se compacta la barra superior: herramientas que antes ocupaban sitio pasan al menú `+`.
+- El menú `+` se eleva al `body` y se posiciona en el viewport, con scroll interno y sin quedar recortado por el compositor. Contiene Pensar, Buscar, Alternativa, Generar voz, Mejorar prompt, Memoria, Lectura, Perfiles, Exportar, Limpiar y Adjuntar.
+- Los controles del menú están enlazados a los eventos existentes de cada herramienta.
+- El historial enviado por defecto baja a tres mensajes; las memorias relevantes se limitan a siete fragmentos; los turnos antiguos se acortan.
+- La salida normal por defecto es 1.100 tokens y la de proyectos 5.500; ambas son configurables.
+- Gemini alternativo respeta ahora las mismas opciones de historial y salida que Puter.
+- Se ha probado la maquetación en Chromium a varios tamaños de portátil y móvil; las pruebas de proveedor real siguen dependiendo de la cuenta Puter/Gemini del usuario.

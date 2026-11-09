@@ -26,3 +26,10 @@ La aplicación no puede restablecer los créditos reales de Puter. Su asignació
 
 
 PULIDO FINAL: campos editables a 16px en iOS, diseño con contención horizontal, tema claro/oscuro con texto de contraste automático y consumo real de Puter sin topes locales artificiales. El cupo mensual se renueva el mes siguiente según tu plan; no se inventa una fecha exacta si el SDK no la proporciona. Un error 429 es un límite temporal distinto.
+
+
+CHROMEBOOK Y MENÚ +
+En pantallas de portátil, Nexo compacta la barra superior para mantener los controles principales visibles al 100% de zoom. Pulsa + para abrir Pensar, Buscar, Alternativa, Generar mensaje de voz, Mejorar prompt, Memoria, Lectura en voz alta, Perfiles, Exportar, Limpiar y Adjuntar. El menú tiene scroll propio si la pantalla es baja.
+
+AHORRO DE TOKENS
+Por defecto se envían los últimos 3 mensajes, hasta 7 recuerdos relevantes, y la salida normal se limita a 1.100 tokens. Los proyectos tienen 5.500 por defecto. La alternativa Gemini usa los mismos ajustes. Puedes cambiar los límites en Ajustes → Modelos e IA.

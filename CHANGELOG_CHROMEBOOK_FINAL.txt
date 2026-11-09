@@ -1,0 +1,31 @@
+NEXO AI — CORRECCIÓN FINAL DE CHROMEBOOK, MENÚ Y CONSUMO
+
+INTERFAZ EN CHROMEBOOK
+- En anchos de portátil hasta 1450px se compacta la barra superior. Se dejan visibles el selector de perfil, el indicador de uso, Ajustes y Cuenta; las herramientas duplicadas se concentran en +.
+- En 1180px se estrecha la barra lateral y se ajustan espacios.
+- El campo de escritura, adjuntos y botones conservan anchuras flexibles.
+- Se elimina la necesidad de reducir el zoom del navegador para mostrar los controles principales.
+
+MENÚ +
+- Se corrige la causa del menú recortado: se mueve al body y se posiciona respecto al viewport con tamaño máximo y scroll propio.
+- Incluye 11 acciones: Pensar, Buscar, Alternativa, Generar mensaje de voz, Mejorar prompt, Memoria, Lectura en voz alta, Perfiles y capacidades, Exportar conversación, Limpiar conversación y Adjuntar archivos.
+- El botón + tiene un único listener; no abre a la vez el selector de archivos.
+- Pensar y Buscar llaman a sus controles reales y actualizan el estado visual. Se incluye cierre fuera del menú, Escape y navegación con flechas.
+
+CALIDAD Y CONSUMO
+- Las instrucciones de Nexo refuerzan la identificación de objetivo, uso del contexto, soluciones completas, comprobación de coherencia y comunicación de incertidumbre, sin pedir más llamadas al proveedor.
+- Historial enviado: 3 mensajes por defecto (opciones 2/3/4/6).
+- Recuerdos inyectados: hasta 7 recuerdos relevantes, máximo 260 caracteres cada uno.
+- Mensajes antiguos recortados a 450 caracteres; petición normal actual hasta 3.000 caracteres y tareas/adjuntos/búsqueda hasta 8.000.
+- Respuesta normal: 1.100 tokens por defecto; proyectos: 5.500 por defecto (con topes por tipo de proyecto).
+- La migración aplica estos valores económicos una sola vez; se pueden cambiar después en Ajustes.
+- La ruta alternativa Gemini usa ahora los mismos límites de historial y maxOutputTokens, en lugar de reenviar 18 mensajes y solicitar hasta 4.096/8.192 tokens sin respetar Ajustes.
+- Búsqueda auxiliar limitada a 500 tokens. Revisión automática de código desactivada por defecto.
+- Cache PWA renovada para que la nueva interfaz no se quede en una versión anterior.
+
+VALIDACIÓN
+- 2 scripts inline comprobados con node --check.
+- Backend, API de lectura, funciones de facturación y service worker comprobados con node --check y npm run check:api.
+- 169 identificadores HTML únicos.
+- Prueba de maquetación con Chromium: 1366×768, 1280×720, 1024×768, 900×700, 800×800, 768×1024 y 390×844/360×640; sin scroll horizontal del documento. Menú + portalled a BODY, 11 acciones y dentro del viewport en 1366×768, 1024×768, 390×844 y 360×640.
+- No se realizó una conversación real con Puter ni se probaron voces/modelos conectados a una cuenta real.
