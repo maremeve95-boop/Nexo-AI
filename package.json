@@ -2,11 +2,11 @@
   "name": "nexo-ai",
   "version": "1.0.0",
   "private": true,
-  "description": "Nexo AI web application with economy-first Puter routing, token controls, memory and voice tools.",
+  "description": "Nexo AI web application with economy-first Puter routing, live usage metering, image tools, memory and voice tools.",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "check:api": "node --check api/billing/config.js && node --check api/billing/status.js && node --check api/billing/checkout.js && node --check api/billing/portal.js && node --check api/billing/webhook.js && node --check api/billing/chat.js && node --check lib/nexo-billing.js"
+    "check:api": "node --check api/read-url.js"
   }
 }

@@ -1,38 +1,26 @@
-# Publicar Nexo AI 8.1.1 en Vercel
+# Publicar Nexo AI en Vercel
 
-1. Descomprime este ZIP.
+1. Descomprime el ZIP.
 2. Sube el contenido a la raíz de un repositorio de GitHub; no subas solo el ZIP.
-3. Conserva las carpetas `icons/` y `api/`.
+3. Conserva `index.html`, `icons/`, `api/`, `manifest.webmanifest` y `service-worker.js`.
 4. En Vercel elige **Add New → Project** e importa el repositorio.
-5. Framework Preset: **Other**. No se necesita Build Command. Output Directory: `.`.
+5. Framework Preset: **Other**. Build Command: vacío. Output Directory: `.`.
 6. Pulsa **Deploy**.
-7. Cuando esté en estado **Ready**, abre la URL HTTPS y prueba primero inicio de sesión, chat, generación de un HTML y la descarga de un ZIP.
+7. Cuando el proyecto esté en estado **Ready**, abre la URL HTTPS e inicia sesión con Puter.
 
-Las funciones dentro de `api/` se despliegan como funciones serverless: `api/read-url.js` lee contenido de páginas públicas y `api/billing/` gestiona la cartera opcional de créditos. Puede fallar con páginas que requieren sesión o bloquean lectores automáticos.
+## Funciones del proyecto
 
-No publiques claves privadas en GitHub ni en código del cliente.
+- `api/read-url.js` permite leer el texto de páginas públicas para la herramienta de búsqueda/lectura. Puede fallar con páginas que requieren sesión o bloquean lectores automáticos.
+- La IA, el catálogo de modelos, el uso y las imágenes se ejecutan mediante el SDK de Puter en el navegador.
+- Nexo no incluye cartera propia, planes Premium, pagos, Stripe ni Supabase.
+- No se necesitan claves privadas en variables de Vercel para el funcionamiento normal. No añadas claves privadas a GitHub ni al HTML.
 
+## Después de desplegar
 
-### v7.7 — alternativa al agotar límites
+- Espera a que Vercel muestre **Ready**.
+- En Chrome/Chromebook usa Ctrl+Shift+R. Si instalaste la PWA, ciérrala por completo y vuelve a abrirla.
+- Inicia sesión con Puter, abre Ajustes → Uso y pulsa Actualizar.
+- Comprueba el chat, el historial, la lectura de enlaces, los adjuntos y el generador de imágenes.
+- El botón «Probar sin gastar» utiliza el modo de prueba documentado del servicio; no genera la imagen final.
 
-La pantalla “SE ALCANZARON LOS LÍMITES” aparece al detectar un error 402 de Puter. Para mantener el chat con otro proveedor, se puede usar una clave propia de Gemini API directamente desde el panel. Es una vía opcional de cliente y no usa una clave incluida en el repositorio. La alternativa tiene cuota propia; no es ilimitada.
-
-
-### v7.8 — recargar el código nuevo
-
-Después de confirmar los archivos en GitHub y esperar a que Vercel esté en Ready, abre la URL en Chrome y pulsa Ctrl+Shift+R. Si estás usando la PWA instalada, ciérrala por completo y vuelve a abrirla. Si conserva la versión antigua, limpia los datos del sitio/caché. El botón ⇄ Alternativa permanece en la barra superior para abrir las opciones de continuación.
-
-
-## Cartera opcional de créditos Nexo (v8.1.1)
-
-El proyecto incluye funciones Vercel en `api/billing/` (config, status, checkout, portal, webhook y chat), una biblioteca server-side en `lib/nexo-billing.js` y SQL de Supabase. Esto está preparado para habilitarse, pero los cobros no funcionarán hasta que configures servicios externos. Sigue `PAYMENTS_SETUP_ES.md` completamente y empieza con Stripe en modo test. No publiques claves privadas en GitHub.
-
-La PWA nunca cachea `/api/`, en especial `/api/billing/status`. Tras desplegar, comprueba que los endpoints de cartera devuelven `Cache-Control: no-store`.
-
-
-## Nexo AI 9.0 Release
-
-- Actualiza todo el proyecto desde el ZIP, incluidos `index.html`, `service-worker.js`, `manifest.webmanifest` y la carpeta `api/`.
-- La caché PWA cambia a `nexo-ai-release-v9.0`; una recarga completa o cerrar/reabrir la PWA activa el nuevo shell.
-- La interfaz consulta `puter.auth.getMonthlyUsage()` y `puter.auth.getDetailedAppUsage(puter.appID)` solo después de iniciar sesión. El SDK recibe el saldo del usuario; no se debe copiar ni introducir un token privado manualmente.
-- Los pagos opcionales mantienen su configuración separada; la actualización v9 no activa cobros ni cambia productos/precios.
+Las cuotas y motores disponibles dependen de tu cuenta Puter. Las validaciones estáticas no sustituyen una prueba real con tu sesión.

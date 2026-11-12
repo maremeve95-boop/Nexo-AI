@@ -1,75 +1,45 @@
 # Nexo AI
 
-Aplicación web progresiva para conversar con modelos de IA mediante Puter, guardar memoria local, investigar en la web, adjuntar archivos, crear proyectos descargables y generar mensajes de voz.
+Aplicación web de IA centrada en modelos económicos de Puter, generación y análisis de imágenes, chats locales, búsqueda web, memoria, archivos y herramientas de voz.
 
-## Qué incluye
+## Lo principal
+- Catálogo dinámico de modelos y selección automática basada en costes publicados y capacidades.
+- Panel **Ajustes → Uso** con créditos de consumo, créditos disponibles, porcentaje mensual, desglose de uso y exportación CSV.
+- Protección inteligente configurable que reduce el gasto de salida cuando se consume el cupo mensual.
+- Generación/edición de imágenes con modo de prueba `test_mode`.
+- Transcripción de archivos de audio a texto con revisión antes de enviar; el archivo no se guarda en el historial.
+- Análisis de imágenes usando modelos de visión compatibles.
+- Historial paginado y búsqueda dentro de conversaciones; paneles con scroll independiente.
+- Búsqueda web, lectura de enlaces públicos, memoria local, dictado en directo, transcripción de audio y lectura de respuestas.
+- Sin cartera Nexo, suscripciones Premium, compras ni endpoints de pago.
 
-- Interfaz adaptable a escritorio y móvil, con onboarding opcional.
-- Ajustes por secciones: Uso, Modelos e IA, Memoria, Personalización, Voz y entrada, Cuenta y datos.
-- Consumo mensual de Puter consultado desde el SDK cuando la cuenta lo permite.
-- Selección automática basada en precios reales del catálogo; prioriza `:free`, admite motores de coste bajo verificable y bloquea GPT-6 Astra, variantes `:priority`, Qwen y Claude Opus.
-- Control de tokens de salida, presupuesto de proyectos e historial enviado.
-- Indicador discreto de trabajo; el código/HTML parcial se oculta durante streaming.
-- Menú `+` con Pensar, Buscar, Alternativa, Generar mensaje de voz y Adjuntar archivos.
-- Memoria local explícita mediante «Nexo, guarda esto en la memoria: …», sin llamar al modelo.
-- PWA con caché propia; las rutas `/api/` no se cachean.
-- Cartera opcional Nexo Premium y créditos, preparada con Stripe + Supabase en servidor (desactivada hasta configurar claves y webhooks).
+## Créditos de consumo
+Nexo consulta el uso real con `puter.auth.getMonthlyUsage()` y, cuando está disponible, `puter.auth.getDetailedAppUsage()`. Para que sea legible, Nexo representa el contador técnico en unidades normalizadas: **1 crédito mostrado = 1.000.000 microcents**. Esta escala no es dinero ni un crédito comprable. El total de cuenta no siempre puede atribuirse por completo a Nexo; el panel lo indica si Puter no devuelve datos por aplicación.
 
-## Control del gasto
+La protección inteligente viene activada por defecto: a partir del 80 % limita respuestas normales a 800 tokens y omite revisiones automáticas adicionales; a partir del 90 % limita respuestas normales a 512 tokens y pausa razonamiento adicional. No cambia el modelo seleccionado ni modifica el presupuesto de proyectos grandes.
 
-En Ajustes → Modelos e IA puedes limitar los tokens de salida normal y de proyectos, además de elegir cuánto historial se envía al modelo. El valor de tokens es un máximo de salida, no el coste total garantizado: también influyen la entrada, las herramientas y cualquier llamada extra. Nexo limita el historial y evita la revisión/recuperación adicional salvo que haga falta.
+## Desarrollo
+- Requisito: Node.js 20 o superior.
+- Comprobación API: `npm run check:api`.
+- Despliegue: consulta `DEPLOY_VERCEL.md`.
+- No guardes claves privadas en el HTML ni en el repositorio.
 
-El selector usa datos de precio publicados por `puter.ai.listModels()`. Los modelos sin tarifa verificable no entran en automático. Si Puter no publica un modelo económico compatible, Nexo lo indica en lugar de seleccionar a ciegas. GPT-6 Astra no se usa en automático ni en la búsqueda auxiliar.
+Las cuotas, modelos disponibles, costes técnicos y herramientas dependen de la cuenta y del proveedor Puter. La comprobación estática del proyecto no sustituye a una prueba real con una cuenta.
 
-## Publicar en GitHub + Vercel
+## Espacios, sincronización y Nexo Live
 
-1. Descomprime este ZIP.
-2. Sube el contenido a la raíz del repositorio GitHub; conserva `index.html`, `api/`, `lib/`, `icons/`, `manifest.webmanifest`, `service-worker.js` y `vercel.json`.
-3. En Vercel importa el repositorio. Usa preset `Other`, sin build command y Output Directory `.`.
-4. Haz Deploy. En futuros commits Vercel publicará los cambios automáticamente.
-5. Tras actualizar, recarga con `Ctrl + Shift + R`. Si usas la PWA instalada, ciérrala completamente y vuelve a abrirla.
+### Sincronizar Chromebook e iPhone
+1. Publica Nexo en HTTPS.
+2. Inicia sesión con la misma cuenta Puter en ambos dispositivos.
+3. En cada dispositivo, abre **Ajustes → Cuenta y datos** y activa **Sincronización automática**.
+4. Confirma la copia y pulsa **Sincronizar ahora** la primera vez. Después, Nexo agrupa cambios y los sincroniza automáticamente.
 
-## Pagos opcionales
+La sincronización es opcional y cada dispositivo necesita su propia confirmación. Copia los chats, sus contenidos guardados, memorias, espacios y notas de conocimiento. Los archivos originales adjuntos no se suben por separado. Puedes exportar e importar un respaldo JSON. Si cambias de cuenta, la sincronización automática se detiene y exige nueva confirmación. Esta versión no ofrece cifrado de extremo a extremo: evita sincronizar secretos o datos sensibles.
 
-La cartera Nexo usa saldo propio almacenado en Supabase y checkout alojado por Stripe. No añade saldo a Puter. La compra no se activa hasta configurar los productos, variables privadas y webhook descritos en `PAYMENTS_SETUP_ES.md`. Empieza en Stripe test mode y no guardes secretos en GitHub.
+### Espacios de trabajo
+En la barra lateral abre **Espacios de trabajo** para crear proyectos con instrucciones independientes. Al usar un espacio, puedes pulsar **Guardar en espacio** en una respuesta para convertirla en una nota de conocimiento reutilizable. Nexo añade solo las cinco notas recientes y limita su longitud para no cargar el prompt.
 
-## Archivos de ayuda
+### Conversación por voz Nexo Live
+Abre **+ → Conversación en directo**, revisa el aviso de uso y marca la casilla antes de conectar. Necesita HTTPS, permiso del micrófono, una sesión Puter y acceso a la API Realtime en tu cuenta. La función es experimental y puede consumir saldo/cupo del proveedor. Para evitar ese consumo, usa **Voz por turnos**: dictado y lectura normal del navegador.
 
-- `LEEME_ES.txt`: instrucciones rápidas.
-- `MODELOS_Y_CAPACIDADES.md`: perfiles y selección económica.
-- `USO_PUTER_Y_OPTIMIZACION_V9.md`: consumo y optimización.
-- `DEPLOY_VERCEL.md`: despliegue.
-- `PAYMENTS_SETUP_ES.md`: configuración opcional de cobros.
-- `CHANGELOG_NEXO_AI_FINAL.txt`: cambios de esta actualización.
-
-## Limitaciones verificables
-
-La disponibilidad de motores, sus precios, cuotas, herramientas y TTS dependen del catálogo y de la cuenta del proveedor. Las comprobaciones del proyecto son estáticas y de lógica local; no implican que se haya realizado una conversación real con cada motor ni una prueba física en iPhone/Chromebook.
-
-
-## Ajuste final de interfaz y uso
-
-- iPhone/Safari: controles de texto a 16 px y viewport safe-area para impedir el zoom automático al tocar el compositor.
-- El diseño se adapta a pantallas estrechas, con controles flexibles y scroll interno para tablas/código.
-- Tema claro funcional con texto oscuro y tema oscuro con texto claro; acentos violeta, océano, esmeralda y rosa.
-- Se retiran los topes locales de respuestas de Nexo; los límites reales son los de la cuenta Puter.
-- En Ajustes → Uso: `402` significa cupo mensual agotado (se renueva el próximo mes según el plan); `429` es un límite de frecuencia en ventana móvil. El SDK de uso mensual no devuelve la fecha exacta del ciclo; el panel oficial es la referencia para el próximo ciclo.
-
-
-## Pulido final de Nexo AI (8 de noviembre de 2026)
-
-- iOS Safari: controles editables a 16px para evitar el autozoom al enfocar el cuadro de mensaje. Se conserva el zoom manual del usuario.
-- Layout: refuerzo de `min-width:0`, `max-width:100%`, wrapping, safe areas y contención horizontal en composer, topbar, ajustes, modales y tarjetas.
-- Temas: modo claro con fondos blancos y texto oscuro; modo oscuro con fondos oscuros y texto claro. El acento (violeta, océano, esmeralda o rosa) se mantiene independiente.
-- Uso: se retiran topes locales ficticios. Ajustes informa del reinicio mensual 402 y los límites temporales 429. El SDK no expone la fecha exacta del próximo reinicio; Nexo muestra el panel oficial.
-
-
-## Pulido final de Chromebook y consumo
-
-- En resoluciones de portátil se compacta la barra superior: herramientas que antes ocupaban sitio pasan al menú `+`.
-- El menú `+` se eleva al `body` y se posiciona en el viewport, con scroll interno y sin quedar recortado por el compositor. Contiene Pensar, Buscar, Alternativa, Generar voz, Mejorar prompt, Memoria, Lectura, Perfiles, Exportar, Limpiar y Adjuntar.
-- Los controles del menú están enlazados a los eventos existentes de cada herramienta.
-- El historial enviado por defecto baja a tres mensajes; las memorias relevantes se limitan a siete fragmentos; los turnos antiguos se acortan.
-- La salida normal por defecto es 1.100 tokens y la de proyectos 5.500; ambas son configurables.
-- Gemini alternativo respeta ahora las mismas opciones de historial y salida que Puter.
-- Se ha probado la maquetación en Chromium a varios tamaños de portátil y móvil; las pruebas de proveedor real siguen dependiendo de la cuenta Puter/Gemini del usuario.
+El botón **Terminar** detiene el micrófono y el altavoz; también se intenta liberar el audio al cerrar el panel o abandonar la página. La prueba de desarrollo usa un audio simulado, no valida una cuenta Puter real.

@@ -1,19 +1,26 @@
-# Límites y continuación — Nexo AI v8.0
-
-## Límites locales de Nexo
-
-Nexo 5, Nexo 7, Papoi 8 y Anacleto Pro tienen un contador local de 10 respuestas satisfactorias por ventana. En Ajustes se puede elegir 2, 4, 6, 12 o 24 horas. Al llegar al 90 % (9/10) se muestra un aviso una vez durante esa ventana. El panel enseña el uso y el tiempo hasta el reinicio. El panel se refresca al abrir Ajustes, usar el botón de actualizar o tras una respuesta, sin un temporizador permanente en segundo plano.
-
-Este límite se guarda en el navegador, no está protegido por un servidor; borrar los datos del navegador puede reiniciarlo. No representa los créditos de Puter.
+# Límites y continuidad — Nexo AI
 
 ## Cuotas reales del proveedor
 
-Puter documenta el crédito de uso como una asignación mensual según el plan; los límites de frecuencia (429) son ventanas separadas. Cambiar la ventana local no recarga los créditos externos. Ante un 402/429 puede usarse una alternativa configurada por el usuario, pero el proveedor alternativo tiene sus propias cuotas.
+Nexo no impone un contador local de respuestas ni ventanas artificiales de 10 mensajes. El cupo y los límites de uso los determina el proveedor conectado. El panel Ajustes → Uso consulta el estado real de Puter cuando la cuenta permite acceder a `puter.auth.getMonthlyUsage()`.
 
-## Motores de los perfiles
+- **402 `insufficient_funds`:** el cupo mensual incluido se ha agotado. La renovación depende del ciclo de la cuenta Puter.
+- **429 `too_many_requests`:** límite temporal de frecuencia, distinto del cupo mensual. Respeta el tiempo `Retry-After` si el proveedor lo devuelve.
 
-- **Papoi 8:** prioriza Claude Sonnet 5.5 cuando se encuentra en `puter.ai.listModels()`, usando una variante confirmada como gratuita si se ofrece; si no hay Sonnet 5.5, prioriza otros motores permitidos GPT/OpenAI/Codex.
-- **Anacleto Pro:** prioriza GPT/OpenAI/Codex disponibles y elige primero entre variantes gratuitas confirmadas si hay alguna. Si el catálogo no expone una variante gratuita, la mejor opción estándar podría requerir crédito del proveedor. Si no hay OpenAI, admite Claude Sonnet compatible.
-- Qwen y Claude Opus quedan excluidos de estos perfiles; Nexo 5.5 y Nexo 6 siguen reservados sin mecanismo de desbloqueo.
+La protección inteligente de Nexo reduce las respuestas normales al 80 % y 90 % del cupo consultado. No cambia el modelo seleccionado ni recorta automáticamente proyectos grandes.
 
-Los IDs de motor se comparan con el catálogo en vivo; la app no puede activar un modelo que Puter no ofrezca. Los perfiles Nexo no son redes neuronales entrenadas desde cero. Las cuotas y precios del proveedor externo siguen aplicándose.
+## Créditos y exactitud
+
+Nexo representa el valor técnico en unidades normalizadas: 1 crédito mostrado = 1.000.000 microcents. Es una escala de lectura, no una moneda ni una cartera. El total de cuenta no siempre se puede separar por app; cuando Puter no devuelve consumo atribuido a Nexo, la interfaz muestra «No disponible».
+
+## Modelos y perfiles
+
+Los perfiles Nexo son instrucciones y reglas de enrutamiento, no modelos entrenados desde cero. La selección real se basa en el catálogo en vivo que Puter ofrece a la cuenta. Las cuotas y capacidades pueden cambiar en el proveedor. Nexo 5.5 y Nexo 6 continúan reservados en la interfaz.
+
+## Herramientas de voz
+
+- El dictado en directo utiliza las capacidades del navegador cuando están disponibles.
+- La generación de voz utiliza `puter.ai.txt2speech()`.
+- La transcripción de audio utiliza `puter.ai.speech2txt()` y requiere confirmación, porque puede consumir créditos de Puter.
+
+No hay límites locales para desbloquear modelos ni una cartera de créditos propia de Nexo.

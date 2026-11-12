@@ -1,11 +1,13 @@
-SUBIR NEXO AI 8.1.1 — CARTERA OPCIONAL DESDE CHROMEBOOK
+SUBIR NEXO AI DESDE CHROMEBOOK
 
 1. Descarga el ZIP y ábrelo en la app Archivos. Extrae el contenido.
-2. En GitHub, abre el repositorio y pulsa Add file -> Upload files.
-3. Pulsa “choose your files” y selecciona los archivos normales desde la carpeta extraída. Si no acepta carpetas, sube archivos sueltos y después crea los directorios `icons/` y `api/`, subiendo dentro sus archivos correspondientes.
-4. Conserva todos los archivos dentro de `api/` (incluyendo `api/read-url.js` y `api/billing/`), `lib/`, `supabase/` y los iconos dentro de `icons/`.
+2. En GitHub, abre el repositorio y pulsa Add file → Upload files.
+3. Selecciona los archivos extraídos. Si no acepta carpetas, sube los archivos sueltos y crea `icons/` y `api/` para colocar su contenido.
+4. Conserva `index.html` en la raíz del repositorio y `api/read-url.js` dentro de `api/`.
 5. Pulsa Commit changes.
-6. En Vercel importa el repositorio. Usa Other, sin build command y Output Directory `.`.
-7. Despliega y prueba la URL HTTPS.
+6. En Vercel importa el repositorio. Usa Framework Preset Other, sin Build Command y Output Directory `.`.
+7. Despliega. Cuando esté en Ready, abre la URL HTTPS e inicia sesión con Puter.
 
-No subas el ZIP como único archivo. `index.html` tiene que estar en la raíz del repositorio. No subas un `.env` real ni claves privadas. Para pagos, sigue `PAYMENTS_SETUP_ES.md` y empieza con Stripe en modo test.
+No subas el ZIP como único archivo. No subas nunca un `.env` real ni claves privadas. Nexo no incluye pagos ni necesita configurar Stripe o Supabase.
+
+Para activar la versión nueva, recarga con Ctrl+Shift+R. Si usas la PWA, ciérrala completamente y vuelve a abrirla.

@@ -1,0 +1,37 @@
+NEXO AI — WORKSPACE & LIVE UPDATE
+Build: 12 de noviembre de 2026
+
+SINCRONIZACIÓN ENTRE DISPOSITIVOS
+- Copia opcional de conversaciones, memorias y espacios al KV personal de Puter.
+- Activación explícita; cada dispositivo debe iniciar sesión con la misma cuenta y dar su consentimiento.
+- Escritura por bloques por debajo del límite por valor de KV; compresión gzip cuando el navegador lo admite.
+- El manifiesto identifica la cuenta; un cambio de cuenta desactiva la sincronización automática hasta volver a confirmarla.
+- Fusión de conversaciones que conserva mensajes de ambas ramas y deduplica mensajes identificados.
+- Tombstones para propagar eliminaciones y evitar que chats borrados reaparezcan.
+- Conserva la generación anterior como recuperación ante escrituras concurrentes o incompletas.
+- Copia local JSON exportable/importable.
+- La sincronización no cifra los datos de extremo a extremo en esta versión; evita guardar contraseñas o información sensible.
+
+ESPACIOS NEXO
+- Instrucciones y memoria aislada por espacio.
+- Las respuestas del asistente se pueden guardar como notas de conocimiento del espacio.
+- El prompt recupera como máximo cinco notas recientes, con presupuesto de contexto acotado.
+
+NEXO LIVE
+- Conversación de audio bidireccional experimental mediante puter.ai.realtime().
+- Transcripciones, escritura por texto, silencio/activación del micrófono, interrupción y cierre seguro de micrófono y altavoz.
+- Aviso explícito de uso antes de conectar.
+- La API de tiempo real depende del acceso disponible en la cuenta Puter y puede tener coste; voz por turnos queda como alternativa.
+
+IDENTIDAD VISUAL
+- Iconos propios SVG lineales en navegación, accesos rápidos, acciones de mensaje, herramientas y secciones de ajustes.
+- Los iconos principales ya no dependen de emojis tipográficos.
+
+VALIDACIÓN
+- JavaScript inline, API y CSS revisados por sintaxis.
+- Prueba de interfaz con Chromium simulado en 8 tamaños, sin desbordamiento horizontal en los tamaños comprobados.
+- Flujos de creación de espacios y sincronización Puter KV simulados.
+- Nexo Live probado con sesión y audio simulados; no se inició ninguna conexión de audio real ni se consumió crédito real.
+- La prueba simulada no sustituye a la validación en una cuenta Puter real ni en dispositivos físicos.
+- Protección adicional: la sincronización exige un identificador estable de cuenta Puter; si falta, se desactiva para evitar mezclar datos entre usuarios.
+- Prueba de fusión concurrente: se comprueba que ambas ramas de mensajes se conservan, se deduplican y que las notas de proyecto y eliminaciones se propagan.

@@ -1,0 +1,32 @@
+NEXO AI — IMAGE STUDIO & STABLE HISTORY
+Build: 2026-11-12
+
+NOVEDADES
+- Generación de imágenes mediante la API oficial puter.ai.txt2img.
+- Selector de modelos de imagen Gemini 3.1 Flash Image y GPT Image 2.6 Flare.
+- Controles de formato y calidad; generación de una imagen por solicitud.
+- Edición basada en una imagen de referencia (PNG/JPG/WebP/GIF, hasta 12 MB).
+- Imágenes generadas dentro del chat con opción de abrir y guardar.
+- El chat distingue los motores de texto de los modelos de generación de imagen.
+- Se amplía el catálogo de imagen con opciones Gemini y GPT Image documentadas; calidad por defecto baja para limitar consumo.
+- Añadidas herramientas opcionales de resumen de conversación y test de estudio, que solo preparan el mensaje y no generan una llamada hasta que el usuario lo envía.
+- El selector automático de visión prioriza motores de chat conocidos por aceptar entrada de imagen.
+- Buscador de historial ampliado: busca también dentro de los últimos mensajes de cada conversación.
+- Historial paginado para no llenar la interfaz de cientos de elementos a la vez.
+- Panel lateral, conversación y compositor con zonas de desplazamiento independientes.
+- Corregida la distribución de la barra lateral: el historial mantiene espacio visible en portátiles y el panel se oculta correctamente en móvil hasta abrirlo.
+- El renderizado ya no obliga al chat a saltar al final cuando el usuario está leyendo mensajes anteriores.
+- Búsqueda web mejorada: más señales de actualidad, 2–4 fuentes primarias/fiables, fechas y URLs exactas cuando estén disponibles.
+- Actualizado el service worker para forzar la nueva versión de caché.
+
+CONSUMO Y PRIVACIDAD
+- La generación de imágenes se ejecuta solo cuando el usuario pulsa Generar.
+- Una imagen por solicitud; el servicio puede consumir saldo de Puter independientemente del chat.
+- No se incluyen claves API propias en el proyecto.
+- Los enlaces temporales de algunos proveedores pueden caducar; se recomienda guardar la imagen generada.
+- La compresión local se aplica a imágenes devueltas como data URI para limitar el tamaño del historial.
+
+VALIDACIÓN
+- Comprobar sintaxis JavaScript, CSS y referencias de IDs.
+- Verificar integridad del ZIP y service worker.
+- Las llamadas reales a generación de imagen y a cuentas Puter requieren iniciar sesión y no se simulan como prueba de extremo a extremo.

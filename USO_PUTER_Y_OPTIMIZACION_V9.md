@@ -1,34 +1,32 @@
-# Puter: consumo real y optimización — Nexo AI 9.0
+# Uso de Puter y optimización — Nexo AI
 
-## Ver el uso real
+## Consultar consumo
 
-1. Inicia sesión con tu cuenta Puter.
-2. Selecciona Nexo 5, Nexo 7, Papoi 8 o Anacleto Pro: aparecerá el chip de uso en la barra superior.
-3. Pulsa el chip o abre Ajustes → Uso → Resumen y pulsa Consultar.
-4. El panel muestra cupo mensual, restante, consumo total, porcentaje y consumo atribuido a Nexo si Puter identifica su appID. En Análisis puedes ver el desglose por API.
-5. Usa el enlace al dashboard de Puter para ver facturación y ciclos de renovación.
+1. Inicia sesión con Puter.
+2. Pulsa el chip de consumo de la barra superior o abre Ajustes → Uso.
+3. Pulsa Actualizar para consultar los créditos reales.
+4. En Análisis puedes descargar un informe CSV con los datos disponibles.
 
-## Qué significan las cifras
+## Unidad visual de créditos
 
-- `puter.auth.getMonthlyUsage()` devuelve `allowanceInfo.monthUsageAllowance` y `allowanceInfo.remaining` para el cupo de toda la cuenta. `usage` y `appTotals` ofrecen el desglose de la aplicación que realiza la llamada.
-- Los valores se miden en microcents: USD 0,01 son 1.000.000 microcents; USD 1,00 son 100.000.000.
-- `puter.auth.getDetailedAppUsage(appID)` devuelve `total` y el desglose por API de esa aplicación.
-- Los totales son actuales; el desglose por API/aplicación puede retrasarse aproximadamente un minuto.
-- El crédito incluido se renueva por ciclo mensual del plan y no se acumula. Los límites de frecuencia 429 usan ventanas móviles separadas. La API de uso mensual no proporciona una fecha exacta de renovación; el dashboard de Puter es la referencia.
+Nexo presenta el contador técnico de Puter en unidades legibles: 1 crédito mostrado equivale a 1.000.000 microcents. Es una escala visual, no dinero, no una cartera y no representa una cantidad fija de mensajes.
 
-## Por qué puede gastar más de lo esperado
+`puter.auth.getMonthlyUsage()` devuelve el cupo mensual y el remanente de la cuenta. `puter.auth.getDetailedAppUsage(appID)` puede devolver el consumo y el desglose de Nexo. Si Puter no facilita el detalle de la app, Nexo no inventa el consumo atribuido. Los detalles por API/app pueden retrasarse alrededor de un minuto.
 
-Puter aplica cargos por modelo/token y también por egress (datos enviados al navegador). Cada respuesta paga entrada (prompt + historial + memorias + contexto de archivos) y salida (tokens generados). Se añade gasto si la tarea dispara una segunda consulta de búsqueda, recuperación/reparación de archivos, revisión automática o generación de imágenes. Un flujo interrumpido puede estimarse hasta que Puter recibe los tokens finales.
+## Protección inteligente
 
-## Qué reduce Nexo 9.0
+- Desde el 80 % del cupo: respuestas normales de hasta 800 tokens y pausa de revisiones adicionales.
+- Desde el 90 %: respuestas normales de hasta 512 tokens y pausa de razonamiento/revisiones adicionales.
+- No cambia el modelo seleccionado ni reduce automáticamente los presupuestos de proyectos grandes.
 
-- El selector automático obtiene los modelos disponibles y sus costes con `puter.ai.listModels()`; prioriza modelos gratuitos y luego opciones de bajo coste verificable.
-- Los modelos caros, `:priority`, no verificados, Qwen y Claude Opus se ocultan del selector diario.
-- Se limita el historial a seis mensajes recientes y se truncan mensajes antiguos; la memoria selecciona hasta 12 notas relevantes.
-- Modo de pensar desactivado y effort bajo por defecto; límites de salida reducidos para preguntas normales.
-- Búsqueda web y revisión automática desactivadas hasta que sean necesarias/activadas.
-- La recuperación de una entrega descargable solo realiza una segunda llamada si la primera entrega parece incompleta.
+## Cómo reducir consumo
 
-## Importante
+- Usa un modelo gratuito o de nivel bajo cuando sea suficiente.
+- Mantén desactivada la búsqueda web para preguntas que no necesiten actualidad.
+- Conserva un historial corto y adjunta solo los archivos necesarios.
+- Genera imágenes finales cuando estés conforme con el prompt; usa antes el modo de prueba si quieres comprobar el servicio.
+- Evita pedir revisiones duplicadas si la primera respuesta ya resuelve la tarea.
 
-Puter User-Pays mide uso en la cuenta de cada persona. Nexo no puede reiniciar o regalar el saldo del proveedor. El contador local de respuestas de Nexo es una regla de la aplicación y es independiente del crédito mensual de Puter.
+## Límites del proveedor
+
+402 indica que se alcanzó el cupo mensual incluido; 429 indica un límite temporal de frecuencia. No son el mismo problema. Respeta `Retry-After` cuando Puter lo devuelve. La API de uso no ofrece una fecha/hora exacta de renovación; consulta https://puter.com/dashboard.

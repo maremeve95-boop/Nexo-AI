@@ -1,2 +1,2 @@
 NEXO AI
-Build: 2026-11-08
+Build: 2026-11-12 · Workspace Sync, Nexo Live, Project Knowledge & Vector Icon System

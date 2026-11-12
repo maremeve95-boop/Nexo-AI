@@ -1,0 +1,37 @@
+NEXO AI — CONTROL DE CRÉDITOS Y PULIDO DE INTERFAZ
+Build: 12 de noviembre de 2026
+
+NOVEDADES
+- El panel Uso muestra créditos consumidos, créditos disponibles, porcentaje del cupo mensual y consumo atribuido a Nexo cuando Puter identifica la aplicación.
+- Nuevo cálculo de consumo de Nexo durante la sesión actual, con reinicio correcto al cambiar de cuenta o cerrar sesión.
+- Chip de consumo en la barra superior, incluido en pantallas móviles compactas; cambia de estado al superar el 80 % y el 90 %.
+- Protección inteligente: desde el 80 % limita respuestas normales a 800 tokens y omite revisiones adicionales; desde el 90 % limita respuestas normales a 512 tokens y pausa razonamiento/revisiones adicionales. No cambia el modelo elegido ni recorta automáticamente los proyectos.
+- Informe de uso exportable a CSV, con consumo, disponibilidad, cupo y desglose cuando Puter lo facilita.
+- El generador de imágenes incorpora prueba con test_mode para mostrar una muestra sin consumir créditos según la API de Puter.
+- El selector de motores muestra niveles de consumo descriptivos en lugar de cifras o símbolos monetarios.
+- Nuevo menú «Transcribir audio»: acepta formatos de audio habituales, pide confirmación de uso, utiliza `puter.ai.speech2txt()` y coloca el texto en el compositor sin enviar ni guardar el archivo original.
+- La generación de voz también comprueba el cupo: al 90 % o más solicita confirmación antes de generar y actualiza el panel tras la operación.
+- Retirada la cartera antigua de Nexo Premium, los botones de compra y su backend Stripe/Supabase. Nexo no ofrece planes de pago ni una cartera separada.
+
+MEJORAS DE INTERFAZ
+- Indicador de consumo disponible a simple vista en Chromebook y móvil.
+- Estados visuales diferenciados para consumo normal, aviso y consumo crítico.
+- Textos de Uso y Cuenta revisados para no confundir el consumo de Puter con un saldo comprable.
+- Herramientas de voz agrupadas en el menú + y nuevo acceso a transcripción sin duplicar el dictado del micrófono.
+
+CONSUMO Y EXACTITUD
+- El contador procede de `puter.auth.getMonthlyUsage()`; el desglose de Nexo depende de los datos que Puter exponga para la app.
+- Conversión visual propia: 1 crédito mostrado = 1.000.000 microcents. Son unidades normalizadas de lectura, no dinero ni mensajes.
+- El desglose por API/app puede retrasarse aproximadamente un minuto.
+- Si Puter devuelve campos de saldo vacíos o nulos, Nexo muestra datos no disponibles; no los convierte en un falso 100 % de consumo.
+- Los límites temporales 429 se distinguen del agotamiento mensual 402.
+- El modo de prueba de imagen utiliza `test_mode`; no equivale a generar la imagen definitiva.
+- La transcripción usa el método documentado `puter.ai.speech2txt()`; requiere sesión Puter y puede consumir créditos, por lo que se solicita confirmación.
+- Nexo limita los archivos de transcripción a 10 MiB por prudencia de memoria en equipos modestos; no es una cuota oficial de Puter.
+
+VALIDACIÓN
+- Revisar sintaxis JavaScript y CSS, IDs y referencias a controles.
+- Probar el flujo de transcripción con un proveedor simulado, sin llamar a un servicio real.
+- Verificar que no quedan elementos visibles, llamadas ni endpoints de la cartera antigua.
+- Verificar ZIP y su contenido.
+- Las llamadas reales requieren iniciar sesión con una cuenta Puter; no se realiza ningún cargo ni prueba real desde este entorno.

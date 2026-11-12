@@ -1,35 +1,19 @@
-NEXO AI 9.0 RELEASE
+NEXO AI — LEEME
 
-Novedades principales:
-- Ajustes rediseñados por secciones, con consumo real de Puter y enlace al panel oficial.
-- Indicador de saldo/consumo de Puter para Nexo 5+.
-- El aviso de límites es no bloqueante; Ajustes y el chat siguen disponibles.
-- Modelos automáticos gratuitos/de bajo coste preferidos, modelos caros ocultos.
-- Menos tokens por respuesta e historial, modo rápido por defecto.
-- Memoria local ampliada y comandos como “Nexo, guarda esto en la memoria: …” sin llamar al modelo.
-- Introducción animada con opción “No mostrar de nuevo”.
+1. Descomprime el ZIP y publica la carpeta en Vercel o en tu hosting estático.
+2. Abre Nexo e inicia sesión con Puter para utilizar los modelos y consultar el consumo.
+3. En Ajustes → Uso pulsa Actualizar. Verás créditos consumidos, créditos disponibles, porcentaje del cupo y el desglose que facilite Puter.
+4. El botón de la barra superior abre directamente Uso. En pantallas pequeñas muestra un indicador compacto.
+5. Puedes descargar un informe CSV desde Ajustes → Uso → Análisis.
+6. En Image Studio usa «Probar sin gastar» para comprobar una muestra del generador en modo de prueba; pulsa «Generar imagen» solo cuando quieras crear la imagen final.
+7. En el menú + → Transcribir audio puedes convertir un archivo de hasta 10 MiB en texto. Nexo pide confirmación porque la transcripción puede consumir créditos; el resultado queda en el cuadro de escritura para que lo revises y el audio no se guarda en el chat.
+8. La protección inteligente está activada por defecto y reduce respuestas normales cuando el cupo mensual se acerca al límite.
 
-ACTUALIZAR EN GITHUB + VERCEL
-1. Descomprime el ZIP.
-2. Sube todo el contenido a la raíz del repositorio, manteniendo api/, lib/, supabase/ e icons/.
-3. No subas archivos .env reales ni claves privadas.
-4. Haz commit y espera al despliegue Ready en Vercel.
-5. En Chrome, recarga con Ctrl+Shift+R. Si usas la PWA instalada, ciérrala completamente y vuelve a abrirla para activar la caché v9.0.
+UNIDADES DE CONSUMO
+Nexo normaliza el contador técnico: 1 crédito mostrado = 1.000.000 microcents de Puter. Es una unidad de lectura, no dinero ni saldo comprable. Puter puede tardar alrededor de un minuto en actualizar el desglose por API o app.
 
-USO PUTER
-Inicia sesión, elige Nexo 5 o superior y pulsa el chip de uso de la barra, o entra a Ajustes → Uso → Resumen → Consultar. La cuenta muestra gasto/restante real en USD; el panel de Análisis muestra el detalle por API que Puter facilite. La fecha exacta de renovación se consulta en el dashboard oficial enlazado.
+CUENTAS Y PRIVACIDAD
+El inicio de sesión lo gestiona Puter. Nexo no almacena tu contraseña. Los chats y las memorias locales se guardan en este navegador y perfil.
 
-MEMORIA
-Escribe: “Nexo, guarda esto en la memoria: …”. Verás “Guardando la memoria…” y luego “Memoria guardada”. Esta acción se procesa localmente y no consume una respuesta de IA.
-
-La aplicación no puede restablecer los créditos reales de Puter. Su asignación mensual y sus límites de frecuencia son independientes de los contadores locales de Nexo.
-
-
-PULIDO FINAL: campos editables a 16px en iOS, diseño con contención horizontal, tema claro/oscuro con texto de contraste automático y consumo real de Puter sin topes locales artificiales. El cupo mensual se renueva el mes siguiente según tu plan; no se inventa una fecha exacta si el SDK no la proporciona. Un error 429 es un límite temporal distinto.
-
-
-CHROMEBOOK Y MENÚ +
-En pantallas de portátil, Nexo compacta la barra superior para mantener los controles principales visibles al 100% de zoom. Pulsa + para abrir Pensar, Buscar, Alternativa, Generar mensaje de voz, Mejorar prompt, Memoria, Lectura en voz alta, Perfiles, Exportar, Limpiar y Adjuntar. El menú tiene scroll propio si la pantalla es baja.
-
-AHORRO DE TOKENS
-Por defecto se envían los últimos 3 mensajes, hasta 7 recuerdos relevantes, y la salida normal se limita a 1.100 tokens. Los proyectos tienen 5.500 por defecto. La alternativa Gemini usa los mismos ajustes. Puedes cambiar los límites en Ajustes → Modelos e IA.
+VALIDACIÓN
+Ejecuta `npm run check:api` con Node.js 20+. Las pruebas estáticas no equivalen a una conversación real, una generación real de imagen o una transcripción real. Para usar voz, imagen o chat, inicia sesión con Puter.
