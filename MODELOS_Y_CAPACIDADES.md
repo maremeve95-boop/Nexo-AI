@@ -13,6 +13,10 @@ Los perfiles Nexo son configuraciones de instrucciones, límites y herramientas;
 | Nexo 7 | Creator Lab | Disponible |
 | Papoi 8 | Juegos, creación y proyectos | Disponible |
 | Anacleto Pro | Ingeniería y tareas complejas | Disponible |
+| ChatGPT · OpenAI | Modelos GPT reales, solo OpenAI | Disponible si hay modelos económicos |
+| Claude · Anthropic | Modelos Claude reales, solo Anthropic | Disponible si hay modelos económicos |
+| Gemini · Google | Modelos Gemini reales, solo Google | Disponible si hay modelos económicos |
+| DeepSeek | Modelos DeepSeek reales | Disponible si hay modelos económicos |
 
 ## Selección económica
 
@@ -24,7 +28,7 @@ Nexo consulta `puter.ai.listModels()` y utiliza las tarifas que devuelve el cat�
 - Las capacidades de tarea (por ejemplo, código o búsqueda) solo desempatan motores de coste prácticamente igual; no pueden hacer que un modelo mucho más caro gane por su nombre.
 - Si el catálogo no entrega nivel de consumo verificable, Nexo no lo elige automáticamente. Puede mostrar que no hay un motor económico compatible en vez de gastar a ciegas.
 
-Los IDs y la disponibilidad no están hardcodeados. La aplicación no puede elegir un motor que el catálogo de Puter no ofrezca.
+Los IDs y la disponibilidad no están hardcodeados. La aplicación no puede elegir un motor que el catálogo de Puter no ofrezca. Al seleccionar uno de los perfiles de proveedor nuevos, la lista manual también queda restringida a esa marca; un modelo elegido antes en otro perfil no se reutiliza.
 
 ## Control del consumo
 
@@ -58,3 +62,20 @@ Papoi 8 y Anacleto Pro pueden generar proyectos completos, juegos 2D/3D y archiv
 ## Créditos y consumo
 
 Nexo no integra cartera propia, suscripciones ni compras. El contador de Uso solo muestra el consumo que informa Puter, convertido a unidades normalizadas de lectura.
+
+
+## Perfiles de proveedor añadidos después de Anacleto Pro
+
+Los perfiles **ChatGPT · OpenAI**, **Claude · Anthropic**, **Gemini · Google** y **DeepSeek** no son modelos nuevos entrenados por Nexo: son filtros de proveedor sobre los IDs reales que devuelve `puter.ai.listModels()`. Cada selector excluye modelos de otras marcas, motores sin tarifa verificable, variantes `:priority`, Qwen y Claude Opus. La selección automática ordena por la tarifa publicada y el ajuste a la tarea. El catálogo es dinámico; si un proveedor no ofrece ahora una variante gratuita o dentro del umbral económico, Nexo muestra que no hay motor compatible en lugar de cambiar de proveedor silenciosamente.
+
+Los nombres comerciales se usan para identificar al proveedor del motor, no para afirmar que Nexo sea la aplicación oficial ChatGPT, Claude o Gemini.
+
+## Pensamiento adaptativo e instrucciones Claude
+
+El modo Pensar añade instrucciones breves según la tarea y el nivel seleccionado: el esfuerzo Bajo se mantiene para preguntas corrientes; tareas de código, investigación, archivos o visión pueden subir a Medio si el usuario activa Pensar. En los modelos OpenAI compatibles, Puter recibe `reasoning_effort`. No se envía ese parámetro a Claude, Gemini ni DeepSeek. La integración `puter.ai.chat()` documenta ese control como OpenAI-only; no expone los campos nativos `thinking`/`output_config.effort` de la API Messages de Anthropic. Para el perfil Claude, Nexo aplica las recomendaciones de prompting de Anthropic: instrucciones directas, objetivo y formato explícitos, contexto separado y etiquetas XML descriptivas cuando sirven para estructurar una tarea. Nunca pide revelar una cadena de pensamiento privada.
+
+## Iconos de interfaz generada
+
+Cuando se genera HTML/CSS/JavaScript, el prompt de entrega exige iconos SVG inline originales, consistentes y accesibles (viewBox 24×24, trazos `currentColor`, `aria-label` en controles de solo icono); prohíbe emojis como sustitutos de iconos de interfaz. Los emojis pueden seguir usándose como contenido textual si encajan.
+
+Documentación usada para estas decisiones: [Claude prompting best practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags), [Claude prompting overview](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct), [Puter chat API](https://docs.puter.com/AI/chat/), [Puter model catalog](https://docs.puter.com/AI/listModels/).

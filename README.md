@@ -4,6 +4,9 @@ Aplicación web de IA centrada en modelos económicos de Puter, generación y an
 
 ## Lo principal
 - Catálogo dinámico de modelos y selección automática basada en costes publicados y capacidades.
+- Perfiles de proveedor GPT/OpenAI, Claude/Anthropic, Gemini/Google y DeepSeek, siempre enrutados a IDs reales del catálogo y filtrados por coste.
+- Pensamiento adaptativo por tipo de tarea; `reasoning_effort` solo se envía a modelos OpenAI compatibles.
+- Iconos SVG originales para los perfiles; las instrucciones de generación de HTML exigen SVG accesibles en vez de emojis como iconos de interfaz.
 - Panel **Ajustes → Uso** con créditos de consumo, créditos disponibles, porcentaje mensual, desglose de uso y exportación CSV.
 - Protección inteligente configurable que reduce el gasto de salida cuando se consume el cupo mensual.
 - Generación/edición de imágenes con modo de prueba `test_mode`.
@@ -43,3 +46,22 @@ En la barra lateral abre **Espacios de trabajo** para crear proyectos con instru
 Abre **+ → Conversación en directo**, revisa el aviso de uso y marca la casilla antes de conectar. Necesita HTTPS, permiso del micrófono, una sesión Puter y acceso a la API Realtime en tu cuenta. La función es experimental y puede consumir saldo/cupo del proveedor. Para evitar ese consumo, usa **Voz por turnos**: dictado y lectura normal del navegador.
 
 El botón **Terminar** detiene el micrófono y el altavoz; también se intenta liberar el audio al cerrar el panel o abandonar la página. La prueba de desarrollo usa un audio simulado, no valida una cuenta Puter real.
+
+
+## Perfiles y pensamiento adaptativo
+
+Después de Anacleto Pro, el selector incluye perfiles específicos para OpenAI/GPT, Anthropic/Claude, Google/Gemini y DeepSeek. Cada perfil usa solo motores de esa marca que aparecen en el catálogo dinámico y pasan el umbral económico de Nexo; si no existe uno elegible, no hace fallback cruzado. Son perfiles de enrutamiento e instrucciones, no redes nuevas.
+
+El modo Pensar adapta instrucciones a la dificultad. En modelos OpenAI compatibles se configura `reasoning_effort`; en Claude/Gemini/DeepSeek no se mandan campos que el wrapper de Puter no documenta. Para Claude se usan instrucciones directas, contextos delimitados y etiquetas XML en tareas que se benefician de ello.
+
+
+## Signature & Economy Update — 16/11/2026
+
+- Respuesta normal predeterminada: 800 tokens máximos.
+- Presupuesto predeterminado para proyectos: 4.000 tokens, con más margen para juegos grandes y 3D.
+- Protección progresiva de créditos desde el 70 % del cupo real de Puter.
+- Búsqueda auxiliar más compacta y sin revisiones automáticas adicionales.
+- Renovación visual de la interfaz, el compositor, las conversaciones y los ajustes.
+- Se conserva el catálogo de proveedores, los iconos SVG, la sincronización, los espacios y las funciones de voz e imagen.
+
+Los límites son techos de salida, no una predicción exacta del coste. El consumo real depende del modelo, la entrada, los archivos, las imágenes y las herramientas.
