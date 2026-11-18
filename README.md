@@ -3,7 +3,8 @@
 Aplicación web de IA centrada en modelos económicos de Puter, generación y análisis de imágenes, chats locales, búsqueda web, memoria, archivos y herramientas de voz.
 
 ## Lo principal
-- Catálogo dinámico de modelos y selección automática basada en costes publicados y capacidades.
+- Catálogo dinámico de modelos y selección automática basada en costes publicados y capacidades; el selector puede incluir GPT-5.4 y Claude Sonnet cuando Puter confirma su ID y su tarifa dentro del presupuesto.
+- Chat independiente **Asistente de modelos** para recomendar motores por tarea, explicar cómo crear HTML/imagenes y comparar coste/capacidad sin mezclar el historial principal.
 - Perfiles de proveedor GPT/OpenAI, Claude/Anthropic, Gemini/Google y DeepSeek, siempre enrutados a IDs reales del catálogo y filtrados por coste.
 - Pensamiento adaptativo por tipo de tarea; `reasoning_effort` solo se envía a modelos OpenAI compatibles.
 - Iconos SVG originales para los perfiles; las instrucciones de generación de HTML exigen SVG accesibles en vez de emojis como iconos de interfaz.
@@ -65,3 +66,6 @@ El modo Pensar adapta instrucciones a la dificultad. En modelos OpenAI compatibl
 - Se conserva el catálogo de proveedores, los iconos SVG, la sincronización, los espacios y las funciones de voz e imagen.
 
 Los límites son techos de salida, no una predicción exacta del coste. El consumo real depende del modelo, la entrada, los archivos, las imágenes y las herramientas.
+
+## Asistente de modelos
+Pulsa **Asistente** en la barra superior para abrir el chat separado. El asesor consulta el catálogo de Puter, usa un motor elegible de coste bajo, limita sus respuestas y mantiene un historial local independiente. Para imágenes orienta al generador dedicado de Nexo; no confunde un modelo de chat con uno de generación visual.

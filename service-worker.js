@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nexo-ai-signature-economy-2026-11-16b';
+const CACHE_NAME = 'nexo-ai-model-advisor-2026-11-18a';
 const APP_SHELL = ["./index.html", "./manifest.webmanifest", "./icons/nexo-192.png", "./icons/nexo-512.png"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));

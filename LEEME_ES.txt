@@ -17,3 +17,6 @@ El inicio de sesión lo gestiona Puter. Nexo no almacena tu contraseña. Los cha
 
 VALIDACIÓN
 Ejecuta `npm run check:api` con Node.js 20+. Las pruebas estáticas no equivalen a una conversación real, una generación real de imagen o una transcripción real. Para usar voz, imagen o chat, inicia sesión con Puter.
+
+9. Pulsa «Asistente» en la barra superior para abrir un chat aparte que te recomienda modelos para HTML, explica la creación de imágenes y compara precios del catálogo real. Su historial se puede limpiar sin borrar tus conversaciones principales.
+10. En Ajustes → Modelos puedes seleccionar opciones de coste moderado como GPT-5.4 o Claude Sonnet cuando Puter las anuncie con una tarifa dentro del límite. Automático sigue priorizando el modelo compatible más barato.
