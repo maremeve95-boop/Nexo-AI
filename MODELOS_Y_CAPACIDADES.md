@@ -1,85 +1,78 @@
-# Modelos de Nexo AI
+# Modelos de Nexo AI — edición definitiva
 
-Los perfiles Nexo son configuraciones de instrucciones, límites y herramientas; no son redes neuronales entrenadas desde cero. El motor real se selecciona desde el catálogo que Puter anuncia a la cuenta en cada momento.
+Los perfiles Nexo son instrucciones, prioridades de tarea y límites de uso de esta aplicación. **No son redes neuronales entrenadas por Nexo**: el motor que genera una respuesta es un modelo externo seleccionado desde el catálogo dinámico que Puter ofrece a la cuenta.
 
-| Perfil | Especialidad | Estado |
-|---|---|---|
-| Nexo 4 Lite | Estudios y respuestas rápidas | Disponible |
-| Nexo 4.1 | Conversación, creatividad y uso general | Predeterminado |
-| Nexo 4.5 | Investigación y síntesis | Disponible |
-| Nexo 5 | Programación y depuración | Disponible |
-| Nexo 5.5 | Repair Lab | Reservado |
-| Nexo 6 | Advanced Lab | Reservado |
-| Nexo 7 | Creator Lab | Disponible |
-| Papoi 8 | Juegos, creación y proyectos | Disponible |
-| Anacleto Pro | Ingeniería y tareas complejas | Disponible |
-| ChatGPT · OpenAI | Modelos GPT reales, solo OpenAI | Disponible si Puter confirma tarifas dentro del presupuesto |
-| Claude · Anthropic | Modelos Claude reales, solo Anthropic | Disponible si Puter confirma tarifas dentro del presupuesto |
-| Gemini · Google | Modelos Gemini reales, solo Google | Disponible si hay modelos económicos |
-| DeepSeek | Modelos DeepSeek reales | Disponible si hay modelos económicos |
+## Familia disponible
 
-## Selección económica
+| Orden | Perfil | Uso recomendado | Estado |
+|---:|---|---|---|
+| 1 | **Nexo Estándar** | Asistente diario equilibrado, conversación, explicaciones y tareas generales. | Disponible · predeterminado |
+| 2 | **Nexo 4.5** | Investigación, contraste de información, síntesis y análisis. | Disponible |
+| 3 | **Nexo 5** | Programación general, depuración y mantenimiento de software. | Disponible |
+| 4 | **Nexo 7** | Creator Lab: planificación, archivos, análisis multimodal y proyectos complejos. | Disponible |
+| 5 | **Papoi 8** | Videojuegos, experiencias creativas y proyectos 2D/3D. | Disponible |
+| 6 | **Anacleto Pro** | Análisis avanzado y resolución de problemas complejos. | Disponible |
+| 7 | **Eustaquio Max** | Especialista en ingeniería de software y desarrollo web completo: HTML, CSS, JavaScript, TypeScript, Python y otros lenguajes. | Disponible · nuevo |
+| 8 | **Nexo Vision 5.5** | Dirección artística, mejora compacta de prompts y generación/edición de imágenes. | Disponible |
+| 9 | **Nexo Apex 6** | Razonamiento avanzado, prioriza Sonnet y usa GPT-5.4 como respaldo con tarifas verificadas y límites de coste. | Disponible |
 
-Nexo consulta `puter.ai.listModels()` y utiliza las tarifas que devuelve el catálogo. En automático:
+Nexo 4 Lite se ha retirado. Nexo Estándar ocupa su lugar como perfil principal. Los perfiles genéricos ChatGPT/OpenAI, Claude, Gemini y DeepSeek se han retirado del selector de chat. Nexo Apex 6 puede usar Claude Sonnet o GPT-5.4 como motores específicos cuando Puter los publique con precio verificable; no se ofrecen como perfiles genéricos. Eustaquio Max aparece inmediatamente después de Anacleto Pro.
 
-- Se priorizan variantes `:free` confirmadas y, después, las tarifas más bajas.
-- El selector admite modelos con tarifa publicada de hasta **3 USD / millón de tokens de entrada** y **16 USD / millón de tokens de salida**. Esto permite incluir opciones como GPT-5.4 y Claude Sonnet si el catálogo de Puter las ofrece dentro de ese límite. No significa que sean las opciones más baratas: se etiquetan por nivel de coste y Automático sigue eligiendo primero la alternativa más económica compatible.
-- Se excluyen variantes `:priority`, Qwen, Claude Opus y GPT-6 Astra.
-- Las capacidades de tarea (por ejemplo, código o búsqueda) solo desempatan motores de coste prácticamente igual; no pueden hacer que un modelo mucho más caro gane por su nombre.
-- Si el catálogo no entrega nivel de consumo verificable, Nexo no lo elige automáticamente. Puede mostrar que no hay un motor económico compatible en vez de gastar a ciegas.
+## Eustaquio Max
 
-Los IDs y la disponibilidad no están hardcodeados. La aplicación no puede elegir un motor que el catálogo de Puter no ofrezca. Al seleccionar uno de los perfiles de proveedor nuevos, la lista manual también queda restringida a esa marca; un modelo elegido antes en otro perfil no se reutiliza.
+Eustaquio Max es el perfil especialista de código. Sus prioridades son:
 
-## Control del consumo
+- Entregar archivos completos y conectados, no fragmentos incompletos.
+- Crear interfaces responsive, accesibles y con interacciones reales.
+- Revisar arquitectura, imports, rutas, selectores, listeners y dependencias cuando se modifica un proyecto existente.
+- Evitar botones decorativos, funciones vacías, pseudocódigo y marcadores TODO como sustituto de la implementación solicitada.
+- Mantener las soluciones ligeras cuando el proyecto vaya a ejecutarse en un equipo modesto.
+- Distinguir comprobaciones estáticas de pruebas realmente ejecutadas.
 
-En Ajustes → Modelos e IA se controla el máximo de tokens de salida normal, el presupuesto máximo para proyectos y la cantidad de historial que se reenvía. El valor `max_tokens` es un límite de salida, no una garantía del gasto total: también se cobran tokens de entrada, herramientas y cualquier llamada auxiliar. El historial previo se limita y las llamadas de recuperación/revisión se ejecutan solo cuando son necesarias; la revisión automática está desactivada por defecto.
+## Modelos gratuitos: cómo se eligen
 
-El modo de razonamiento solo envía `reasoning_effort` a motores cuya documentación/catálogo indique compatibilidad. Los parámetros OpenAI-only, como `verbosity`, no se envían a proveedores que no los admiten.
+Nexo consulta `puter.ai.listModels()` en tiempo de ejecución. La documentación oficial indica que el catálogo devuelve IDs, proveedor, aliases y metadatos de coste/capacidad cuando están disponibles. El selector solo admite modelos de chat con coste 0 confirmado en entrada y salida o variante `:free`; excluye proveedores/perfiles de chat retirados, variantes `:priority` y motores que no encajan con los criterios de esta edición.
 
+La búsqueda de modelos gratuitos se guía por familias que aparecen en el catálogo público de OpenRouter consultado el 18 de noviembre de 2026 —por ejemplo, **NVIDIA Nemotron 3 Ultra**, **ERNIE 5.5 Flash Preview**, **Nemotron 3.5 Super VL**, **Nemotron 3 Nano Omni**, **Nemotron 3.5 Lightning**, **Liquid LFM3 1.7B**, **Ling 3.2 Flash**, **Dots3-Note**, **Particle-1**, **Cohere North Mini Code** y **Flint**—, pero Nexo **solo muestra y usa una opción cuando su propio catálogo Puter la devuelve**. No se inventan IDs ni se da por hecho que OpenRouter y Puter ofrezcan exactamente el mismo conjunto.
 
-## Imágenes y visión
+Las variantes `:free` pueden tener cuotas por proveedor, límites temporales, colas y cambios o retiradas. Inkling 2 Small aparece marcado para retirarse el 19 de noviembre de 2026, por lo que no se usa como recomendación estable en esta edición. “Gratis” no significa ilimitado ni garantiza que esté disponible en todas las cuentas. Automático prioriza primero el menor coste elegible y usa la especialidad como desempate; no elige un modelo caro solo porque su nombre parezca más potente. Si no existe un modelo gratuito compatible, Nexo lo comunica en vez de cambiar a uno de pago silenciosamente.
 
-El catálogo distingue los modelos de chat multimodal de los motores dedicados a generar imágenes:
+## Selección y uso de modelos
 
-- Para analizar una imagen adjunta, Nexo filtra por modalidades/capacidades del catálogo Puter (`input_modalities`, `modalities` o indicadores equivalentes) y solo elige motores identificados como compatibles. En Ajustes → Modelos e IA, las opciones con visión aparecen marcadas como **Admite imágenes**.
-- Si el catálogo no confirma ningún modelo de visión económico, Nexo avisa y no envía la imagen a un motor de texto sin compatibilidad comprobada.
-- Para generar o editar imágenes, el menú `+` ofrece modelos independientes: Gemini 3.1 Flash Image, Gemini 3.1 Flash Lite Image, Gemini Nano Banana 2.1, Gemini 3 Pro Image, GPT Image 2.6 Flare y GPT Image 2.6 Sunburst. La selección real depende de la disponibilidad vigente en Puter.
-- El generador permite relación de aspecto, calidad y una imagen de referencia PNG/JPEG/WebP/GIF. El valor por defecto es calidad baja para reducir el consumo; cada generación es una llamada separada y puede consumir saldo del proveedor.
+- **Automático**: selecciona el motor elegible de menor coste publicado que encaja con la tarea.
+- **Manual**: permite escoger entre las opciones gratuitas confirmadas por el catálogo de la cuenta.
+- **Visión**: cuando el catálogo identifica una modalidad de imagen, se puede priorizar un motor compatible para analizar adjuntos.
+- **Asistente de modelos**: chat independiente con historial propio que explica qué perfil elegir y compara solo IDs presentes en el catálogo real.
 
-La generación utiliza `puter.ai.txt2img()`; el análisis de imágenes en conversaciones utiliza `puter.ai.chat()` con archivo de imagen y debe ir a un modelo de chat que admita visión. Los enlaces alojados por proveedores pueden ser temporales: guarda la imagen generada si quieres conservarla.
+## Búsqueda y lectura web
 
-## Creación y voz
+La búsqueda web integrada de Puter depende de un motor compatible con la herramienta `web_search`. Esta edición retira los perfiles OpenAI/GPT del chat y, por tanto, **no promete búsqueda web general integrada**. Se conserva la lectura de páginas públicas: pega una URL HTTP/HTTPS y Nexo intentará recuperar su contenido mediante el lector del proyecto. Las páginas que exigen sesión o bloquean lectores automáticos pueden fallar.
 
-Papoi 8 y Anacleto Pro pueden generar proyectos completos, juegos 2D/3D y archivos descargables. Mientras se transmite código incompleto, el chat muestra un indicador discreto de trabajo; revela la respuesta cuando termina. El menú `+` ofrece Pensar, Buscar, Alternativa, generación de mensaje de voz, transcripción de archivos de audio y adjuntos. La voz usa el servicio TTS de Puter y la transcripción usa `puter.ai.speech2txt()` (OpenAI por defecto); ambos servicios pueden consumir créditos por separado del chat. La transcripción acepta archivos `File`/`Blob`; Nexo aplica un máximo local de 10 MiB para mantener bajo el uso de memoria en Chromebook. El texto se inserta en el cuadro de escritura y el audio original no se conserva en el historial.
+## Imágenes y audio
 
-## Límites
+La generación de imágenes utiliza una herramienta y un catálogo separados de los modelos de chat. Cambiar el perfil a Eustaquio Max no genera imágenes por sí solo; abre **Crear imagen** para generar o editar visuales. Los modelos que aparezcan en ese apartado son motores visuales y no perfiles de chat.
 
-- Las cuotas y la facturación real dependen de la cuenta Puter y del motor que responda.
-- Los límites locales de algunos perfiles se guardan en el navegador y no representan crédito del proveedor.
-- Los proyectos que usen Three.js/CDN necesitan Internet y conviene abrirlos desde HTTPS o servidor local.
-- No se afirma que el código descargado haya sido ejecutado si no se ha probado.
+La transcripción de audio usa Puter `speech2txt` con el proveedor xAI y solicita idioma español; el uso puede consumir créditos del servicio de voz de Puter. El dictado del micrófono del navegador es una función distinta.
 
-## Créditos y consumo
+## Consumo y límites
 
-Nexo no integra cartera propia, suscripciones ni compras. El contador de Uso solo muestra el consumo que informa Puter, convertido a unidades normalizadas de lectura.
+Los límites de tokens de Nexo son topes de salida, no una garantía del gasto total. El consumo depende también del contenido de entrada, historial, archivos, imágenes, llamadas de herramientas y cuotas del proveedor. La protección de créditos reduce presupuestos cuando el uso de Puter aumenta, pero no puede garantizar un importe exacto. No existe cartera propia, Premium ni compra de créditos dentro de Nexo.
 
+## Referencias técnicas
 
-## Perfiles de proveedor añadidos después de Anacleto Pro
+- [Puter.js `listModels()`](https://docs.puter.com/AI/listModels/) — catálogo por cuenta, metadatos de coste y variantes `:free`.
+- [Puter.js `chat()`](https://docs.puter.com/AI/chat/) — llamada de chat y herramientas disponibles.
+- [Puter.js `speech2txt()`](https://docs.puter.com/AI/speech2txt/) — transcripción y proveedores admitidos.
+- [OpenRouter: Free Models](https://openrouter.ai/collections/free-models/) — referencia pública actualizada en noviembre de 2026, con descripciones, tarifas publicadas y modelos previstos para desaparecer; no implica que estén habilitados en Puter.
 
-Los perfiles **ChatGPT · OpenAI**, **Claude · Anthropic**, **Gemini · Google** y **DeepSeek** no son modelos nuevos entrenados por Nexo: son filtros de proveedor sobre los IDs reales que devuelve `puter.ai.listModels()`. Cada selector excluye modelos de otras marcas, motores sin tarifa verificable, variantes `:priority`, Qwen y Claude Opus. La selección automática ordena por la tarifa publicada y el ajuste a la tarea. El catálogo es dinámico; si un proveedor no ofrece ahora una variante gratuita o dentro del umbral económico, Nexo muestra que no hay motor compatible en lugar de cambiar de proveedor silenciosamente.
+## Nexo Vision 5.5
 
-Los nombres comerciales se usan para identificar al proveedor del motor, no para afirmar que Nexo sea la aplicación oficial ChatGPT, Claude o Gemini.
+Nexo Vision 5.5 es un perfil de arte visual que abre el generador independiente cuando el usuario pide crear una imagen. El valor predeterminado es **GPT Image 2.6 Flare** con calidad media: equilibrio entre acabado y coste. También se ofrecen GPT Image 2.6 Sunburst para detalle y Gemini 3 Pro Image. La disponibilidad efectiva depende del catálogo y los permisos de Puter. El botón **Mejorar prompt visual** hace una única llamada corta (máximo aproximado de 220 tokens de salida) a un motor gratuito de texto, solo cuando el usuario lo pulsa.
 
-## Pensamiento adaptativo e instrucciones Claude
+## Nexo Apex 6
 
-El modo Pensar añade instrucciones breves según la tarea y el nivel seleccionado: el esfuerzo Bajo se mantiene para preguntas corrientes; tareas de código, investigación, archivos o visión pueden subir a Medio si el usuario activa Pensar. En los modelos OpenAI compatibles, Puter recibe `reasoning_effort`. No se envía ese parámetro a Claude, Gemini ni DeepSeek. La integración `puter.ai.chat()` documenta ese control como OpenAI-only; no expone los campos nativos `thinking`/`output_config.effort` de la API Messages de Anthropic. Para el perfil Claude, Nexo aplica las recomendaciones de prompting de Anthropic: instrucciones directas, objetivo y formato explícitos, contexto separado y etiquetas XML descriptivas cuando sirven para estructurar una tarea. Nunca pide revelar una cadena de pensamiento privada.
+Nexo Apex 6 busca primero Claude Sonnet y después GPT-5.4, pero solo cuando `puter.ai.listModels()` devuelve un coste verificable dentro del límite de 4 USD por millón de tokens de entrada y 20 USD por millón de salida. Se excluyen variantes `:priority`. Si no hay coincidencias, usa un motor gratuito compatible y no afirma que haya utilizado Sonnet o GPT-5.4. El máximo normal de salida del perfil se limita a 700 tokens antes de aplicar la protección gradual de créditos. Esto reduce consumo, pero no garantiza un coste fijo: también cuenta el contexto de entrada.
 
-## Iconos de interfaz generada
+## Uso y suscripciones Puter
 
-Cuando se genera HTML/CSS/JavaScript, el prompt de entrega exige iconos SVG inline originales, consistentes y accesibles (viewBox 24×24, trazos `currentColor`, `aria-label` en controles de solo icono); prohíbe emojis como sustitutos de iconos de interfaz. Los emojis pueden seguir usándose como contenido textual si encajan.
-
-Documentación usada para estas decisiones: [Claude prompting best practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags), [Claude prompting overview](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct), [Puter chat API](https://docs.puter.com/AI/chat/), [Puter model catalog](https://docs.puter.com/AI/listModels/).
-
-## Asistente de modelos
-
-El botón **Asistente** de la barra superior abre un chat independiente del historial principal. Puede recomendar motores para HTML, comparar GPT-5.4 y Claude Sonnet o explicar la generación de imágenes. El asesor usa el modelo elegible más barato, limita cada respuesta a 300 tokens y conserva su propio historial local, que se puede limpiar sin borrar los chats normales. La generación de imágenes usa un catálogo/API distinto del catálogo de modelos de chat.
+`puter.auth.getMonthlyUsage()` devuelve `allowanceInfo.monthUsageAllowance` y `allowanceInfo.remaining`. Nexo muestra consumo, restante y porcentaje; también actualiza el panel después de errores de crédito/402. El aviso de cupo agotado se muestra cuando el dato devuelto indica cero restante. La API no proporciona la fecha exacta de renovación. El modal de suscripciones reproduce la estructura Free/Basic/Plus/Pro y cada botón Upgrade abre la página oficial `https://puter.com/`; Nexo no procesa compras ni recoge datos de pago. Los precios públicos mostrados en esta edición son $0, $10, $25 y $100 USD/mes y pueden cambiar.

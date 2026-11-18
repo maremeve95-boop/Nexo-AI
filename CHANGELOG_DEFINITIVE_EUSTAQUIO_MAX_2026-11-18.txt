@@ -1,0 +1,27 @@
+NEXO AI — DEFINITIVE EDITION · EUSTAQUIO MAX
+18 November 2026
+
+FAMILY
+- Removed Nexo 4 Lite; added Nexo Estándar as the everyday default profile.
+- Added Eustaquio Max immediately after Anacleto Pro as the specialist for complete programming and web projects.
+- Kept Nexo 5.5 and Nexo 6 reserved and unavailable.
+- Removed ChatGPT/OpenAI, Claude, Gemini and DeepSeek provider profiles from the chat family.
+- Updated family descriptions, icons, introductory text and capability modal.
+
+MODELS
+- Chat selector and automatic routing now admit only free variants or models with published zero input/output cost in Puter's live catalogue.
+- Catalog matching considers Puter-qualified IDs and aliases as well as names/providers. A model is considered free only when its ID has the :free variant or Puter publishes zero input and output costs; a name containing “free” alone is not enough.
+- Non-chat endpoints such as decision/rubric and span-scoring models are filtered out of the chat selector.
+- Free-model candidates are task-ranked only after cost eligibility; no hardcoded model is assumed available unless Puter returns it.
+- Candidate families include Nemotron, ERNIE, Liquid LFM3, Ling, Dots, Particle, Cohere North Mini Code and Flint when present in the active account catalogue. Inkling 2 Small is omitted because the public OpenRouter catalog marked it for retirement on November 19, 2026.
+- Added a settings migration that resets removed provider/paid selections to Automatic and selects Nexo Estándar for removed profiles.
+
+TOOLS / CLARITY
+- Replaced general web-search copy with an honest public-link reader; no unavailable integrated search is advertised in the free-only family.
+- Kept image generation separate from chat profiles.
+- Audio transcription uses Puter's xAI speech2txt provider and requests Spanish.
+- Refined responsive profile and information surfaces with lightweight effects for modest hardware.
+
+NOTES
+- Free provider variants can be throttled, quota-limited or removed upstream. Their presence in a public OpenRouter list does not guarantee availability through Puter.
+- No live authenticated Puter session or interactive browser session was available for this static release check.

@@ -1,22 +1,23 @@
-NEXO AI — LEEME
+NEXO AI — EDICIÓN DEFINITIVA
 
-1. Descomprime el ZIP y publica la carpeta en Vercel o en tu hosting estático.
-2. Abre Nexo e inicia sesión con Puter para utilizar los modelos y consultar el consumo.
-3. En Ajustes → Uso pulsa Actualizar. Verás créditos consumidos, créditos disponibles, porcentaje del cupo y el desglose que facilite Puter.
-4. El botón de la barra superior abre directamente Uso. En pantallas pequeñas muestra un indicador compacto.
-5. Puedes descargar un informe CSV desde Ajustes → Uso → Análisis.
-6. En Image Studio usa «Probar sin gastar» para comprobar una muestra del generador en modo de prueba; pulsa «Generar imagen» solo cuando quieras crear la imagen final.
-7. En el menú + → Transcribir audio puedes convertir un archivo de hasta 10 MiB en texto. Nexo pide confirmación porque la transcripción puede consumir créditos; el resultado queda en el cuadro de escritura para que lo revises y el audio no se guarda en el chat.
-8. La protección inteligente está activada por defecto y reduce respuestas normales cuando el cupo mensual se acerca al límite.
+1. Descomprime el ZIP y publica su contenido en Vercel o en un hosting compatible.
+2. Conserva index.html, api/, icons/, manifest.webmanifest y service-worker.js.
+3. Abre la URL HTTPS e inicia sesión con Puter para conectar el chat y consultar el consumo.
+4. En Ajustes → Modelos pulsa «Actualizar catálogo». Solo se mostrarán motores de chat con variante gratuita confirmada o coste 0 publicado por el catálogo de tu cuenta.
+5. El perfil predeterminado es Nexo Estándar. Eustaquio Max está después de Anacleto Pro y es el especialista en programación y desarrollo web.
+6. Nexo 4 Lite se sustituyó por Nexo Estándar. Los perfiles genéricos ChatGPT/OpenAI, Claude, Gemini y DeepSeek se retiraron. Los antiguos perfiles reservados Nexo 5.5 y Nexo 6 ahora son Nexo Vision 5.5 (imágenes) y Nexo Apex 6 (razonamiento equilibrado). Eustaquio Max sigue inmediatamente después de Anacleto Pro.
+7. Pulsa «Asistente» para abrir un chat separado que te recomienda perfiles y motores presentes en el catálogo. Su historial no se mezcla con los chats normales.
+8. Para imágenes abre «Crear imagen»: la generación visual usa una herramienta y modelos distintos del chat.
+9. Para leer páginas pega una URL pública HTTP/HTTPS en el chat. Esta edición no dispone de búsqueda web general integrada, pero conserva la lectura de enlaces compartidos.
+10. El menú + permite adjuntar archivos, usar dictado, transcribir audio y generar mensajes de voz. La transcripción usa el servicio independiente de Puter/xAI y puede consumir créditos.
+11. Ajustes → Uso permite consultar el cupo informado por Puter y exportar un CSV cuando la cuenta ofrece esos datos.
 
-UNIDADES DE CONSUMO
-Nexo normaliza el contador técnico: 1 crédito mostrado = 1.000.000 microcents de Puter. Es una unidad de lectura, no dinero ni saldo comprable. Puter puede tardar alrededor de un minuto en actualizar el desglose por API o app.
-
-CUENTAS Y PRIVACIDAD
-El inicio de sesión lo gestiona Puter. Nexo no almacena tu contraseña. Los chats y las memorias locales se guardan en este navegador y perfil.
+MODELOS GRATUITOS
+El catálogo de Puter es dinámico. Algunas variantes gratuitas usan el sufijo :free y están sujetas a cuotas y límites impuestos por el proveedor; pueden desaparecer. Que una familia como Nemotron, ERNIE, Nemotron Nano Omni, Dots, Particle, Cohere North Mini Code o Flint aparezca en un catálogo público no garantiza que esté disponible en tu cuenta Puter. Nexo solo la selecciona si Puter la devuelve. Inkling 2 Small se ha omitido porque el catálogo público indica que se retira el 19 de noviembre de 2026. Gratis no significa ilimitado.
 
 VALIDACIÓN
-Ejecuta `npm run check:api` con Node.js 20+. Las pruebas estáticas no equivalen a una conversación real, una generación real de imagen o una transcripción real. Para usar voz, imagen o chat, inicia sesión con Puter.
+Ejecuta npm run check:api con Node.js 20+. Las comprobaciones estáticas no sustituyen una conversación real ni la prueba de imágenes/voz con una cuenta Puter.
 
-9. Pulsa «Asistente» en la barra superior para abrir un chat aparte que te recomienda modelos para HTML, explica la creación de imágenes y compara precios del catálogo real. Su historial se puede limpiar sin borrar tus conversaciones principales.
-10. En Ajustes → Modelos puedes seleccionar opciones de coste moderado como GPT-5.4 o Claude Sonnet cuando Puter las anuncie con una tarifa dentro del límite. Automático sigue priorizando el modelo compatible más barato.
+7. En Ajustes → Uso puedes ver créditos de Puter y abrir el modal de planes. Los botones Upgrade redirigen a puter.com; Nexo no procesa pagos.
+8. Nexo Vision 5.5 abre el generador de imágenes y permite mejorar el prompt visual con una llamada breve opcional.
+9. Nexo Apex 6 prioriza Claude Sonnet y usa GPT-5.4 como respaldo solo con tarifas verificadas y dentro del límite de coste; si no están disponibles, usa un motor gratuito compatible.
