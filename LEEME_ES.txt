@@ -1,23 +1,62 @@
-NEXO AI — EDICIÓN DEFINITIVA
+NEXO AI — LIVE KNOWLEDGE & WEB TOOLS
+Fecha: 19 de noviembre de 2026
 
-1. Descomprime el ZIP y publica su contenido en Vercel o en un hosting compatible.
+INSTALACIÓN Y PUBLICACIÓN
+1. Descomprime el ZIP y publica su contenido en la raíz del repositorio de GitHub o en un hosting compatible.
 2. Conserva index.html, api/, icons/, manifest.webmanifest y service-worker.js.
-3. Abre la URL HTTPS e inicia sesión con Puter para conectar el chat y consultar el consumo.
-4. En Ajustes → Modelos pulsa «Actualizar catálogo». Solo se mostrarán motores de chat con variante gratuita confirmada o coste 0 publicado por el catálogo de tu cuenta.
-5. El perfil predeterminado es Nexo Estándar. Eustaquio Max está después de Anacleto Pro y es el especialista en programación y desarrollo web.
-6. Nexo 4 Lite se sustituyó por Nexo Estándar. Los perfiles genéricos ChatGPT/OpenAI, Claude, Gemini y DeepSeek se retiraron. Los antiguos perfiles reservados Nexo 5.5 y Nexo 6 ahora son Nexo Vision 5.5 (imágenes) y Nexo Apex 6 (razonamiento equilibrado). Eustaquio Max sigue inmediatamente después de Anacleto Pro.
-7. Pulsa «Asistente» para abrir un chat separado que te recomienda perfiles y motores presentes en el catálogo. Su historial no se mezcla con los chats normales.
-8. Para imágenes abre «Crear imagen»: la generación visual usa una herramienta y modelos distintos del chat.
-9. Para leer páginas pega una URL pública HTTP/HTTPS en el chat. Esta edición no dispone de búsqueda web general integrada, pero conserva la lectura de enlaces compartidos.
-10. El menú + permite adjuntar archivos, usar dictado, transcribir audio y generar mensajes de voz. La transcripción usa el servicio independiente de Puter/xAI y puede consumir créditos.
-11. Ajustes → Uso permite consultar el cupo informado por Puter y exportar un CSV cuando la cuenta ofrece esos datos.
+3. En Vercel, importa el repositorio con preset Other, sin comando de compilación y con directorio de salida .
+4. Abre la URL HTTPS e inicia sesión con Puter.
+5. En Ajustes → Modelos pulsa «Actualizar catálogo» para consultar los IDs y las tarifas que tu cuenta ofrece realmente.
 
-MODELOS GRATUITOS
-El catálogo de Puter es dinámico. Algunas variantes gratuitas usan el sufijo :free y están sujetas a cuotas y límites impuestos por el proveedor; pueden desaparecer. Que una familia como Nemotron, ERNIE, Nemotron Nano Omni, Dots, Particle, Cohere North Mini Code o Flint aparezca en un catálogo público no garantiza que esté disponible en tu cuenta Puter. Nexo solo la selecciona si Puter la devuelve. Inkling 2 Small se ha omitido porque el catálogo público indica que se retira el 19 de noviembre de 2026. Gratis no significa ilimitado.
+PERFILES
+1. Nexo Estándar — conversación diaria y tareas generales; modelo gratuito de conversación.
+2. Nexo 4.5 — investigación, contraste y síntesis; modelo gratuito con mejor ajuste para análisis.
+3. Nexo 5 — programación general; prioriza modelos gratuitos especializados en código.
+4. Nexo 7 — proyectos y análisis multimodal; modelo gratuito con mejor ajuste a la tarea.
+5. Papoi 8 — juegos y experiencias 2D/3D; prioriza modelos gratuitos con capacidad de código.
+6. Anacleto Pro — análisis avanzado; modelo gratuito con buen ajuste a razonamiento.
+7. Eustaquio Max — programación y desarrollo web completo; prioriza modelos gratuitos de código y variantes gratuitas OpenAI/Claude si están publicadas.
+8. Nexo Vision 5.5 — perfil especializado en prompts visuales y generación de imágenes mediante la herramienta independiente.
+9. Nexo Apex 6 — razonamiento avanzado; el mejor modelo gratuito compatible del catálogo.
+
+Los perfiles son instrucciones y políticas de selección, no modelos entrenados desde cero. La jerarquía indica la capacidad objetivo y la especialidad configurada; ningún proveedor garantiza que un motor sea superior en absolutamente todas las tareas. Todos comparten reglas de coherencia: responder a la intención real, conservar el contexto, saludar cuando reciben un saludo y no despedirse sin motivo.
+
+COSTES Y CRÉDITOS
+Todos los perfiles automáticos solo usan variantes :free o con coste 0 confirmado para entrada y salida. No activan modelos de pago sin que el usuario los seleccione expresamente (la selección automática no muestra modelos de pago). Las variantes gratuitas pueden tener límites propios y no son ilimitadas. El coste depende del modelo, tokens de entrada/salida, contexto, archivos, imágenes y herramientas.
+
+Ajustes → Uso permite consultar la información de consumo que Puter devuelve. Nexo detecta el saldo agotado al actualizar datos o recibir un error de crédito, pero no puede predecir exactamente cuándo ocurrirá. La protección reduce los límites desde el 50 % del cupo. Una petición normal hace una llamada principal; la revisión y reparación automática adicional están desactivadas para no duplicar consumo. Los botones Upgrade redirigen a Puter; Nexo no procesa pagos.
+
+IMÁGENES Y HERRAMIENTAS
+- Para generar imágenes abre «Crear imagen». Vision 5.5 puede ayudarte a mejorar el prompt; el motor visual es independiente del chat.
+- **Buscar en Google:** escribe una consulta en el cuadro y pulsa el botón «Buscar en Google» (o + → Buscar en Google). Se abrirá Google en otra pestaña sin gastar una llamada de IA. Copia hasta tres URLs públicas y pégalas en Nexo para leerlas y analizarlas.
+- Algunos modelos OpenAI compatibles con `web_search` de Puter pueden buscar en la misma petición; puede consumir cuota y solo se activa cuando el catálogo confirma compatibilidad. Para los demás motores, Nexo no finge haber buscado.
+- **Fecha y hora:** se obtienen del reloj y zona horaria del navegador. Nexo los incluye en el contexto y responde localmente a preguntas como «¿qué día es?» o «¿qué hora es?».
+- Las búsquedas automáticas se activan para temas cambiantes como actualidad, novedades, precios, versiones, clima, resultados y calendarios. La herramienta web puede no estar disponible en todos los modelos.
+- El Asistente de modelos se abre en un overlay independiente y conserva su propio historial.
+- El menú + ofrece las opciones de adjuntos, dictado y audio disponibles en la cuenta/navegador.
 
 VALIDACIÓN
-Ejecuta npm run check:api con Node.js 20+. Las comprobaciones estáticas no sustituyen una conversación real ni la prueba de imágenes/voz con una cuenta Puter.
+Ejecuta `npm run check:api` con Node.js 20 o superior. Las comprobaciones estáticas no sustituyen la prueba de chat, voz o imágenes con una sesión autenticada de Puter.
 
-7. En Ajustes → Uso puedes ver créditos de Puter y abrir el modal de planes. Los botones Upgrade redirigen a puter.com; Nexo no procesa pagos.
-8. Nexo Vision 5.5 abre el generador de imágenes y permite mejorar el prompt visual con una llamada breve opcional.
-9. Nexo Apex 6 prioriza Claude Sonnet y usa GPT-5.4 como respaldo solo con tarifas verificadas y dentro del límite de coste; si no están disponibles, usa un motor gratuito compatible.
+
+ACTUALIZACIÓN LIVE KNOWLEDGE & WEB TOOLS (19-11-2026)
+- Se añade fecha/hora local en cada prompt y en el Asistente de Modelos.
+- El botón de búsqueda abre Google con la consulta; la aplicación no pretende extraer las SERP sin una API oficial.
+- Admite lectura de hasta tres enlaces públicos por consulta a través del endpoint `api/read-url.js`.
+- Para modelos OpenAI compatibles, se añade `web_search` a la petición principal cuando la consulta requiere información actual. No se crea una segunda llamada de búsqueda.
+- El chat sigue automáticamente la parte inferior tras enviar y recibir respuestas, pero conserva la posición si el usuario revisa mensajes antiguos.
+- Se refuerzan reglas para no presentar conocimiento antiguo como actualidad confirmada.
+
+ACTUALIZACIÓN ECONOMY GUARD (19-11-2026)
+- Todos los perfiles automáticos usan solo variantes :free o de coste 0 confirmado por Puter.
+- Eustaquio Max prioriza modelos gratuitos especializados en programación; nunca activa Sonnet/GPT de pago en automático.
+- Respuestas normales limitadas a 384 tokens de salida por defecto; proyectos a 2.800.
+- Historial por defecto: dos últimos mensajes. Contexto y adjuntos más compactos.
+- Sin segunda llamada automática para revisar o reparar código, y sin herramienta de búsqueda facturable automática.
+- La protección reduce la salida a 320/256/192/160 tokens al superar 50/70/85/95 % del cupo mensual, respectivamente.
+- Actualiza el catálogo en Ajustes → Modelos después de publicar. La disponibilidad y el saldo real dependen de tu cuenta Puter.
+- Una variante gratuita también puede tener límites de proveedor; “gratis” no significa ilimitado.
+
+- El chat principal desactiva los reintentos automáticos entre proveedores (`fallback:false`) y la repetición por rechazo de Claude (`refusalFallback:false`); un fallo se muestra al usuario en lugar de disparar otra pasada.
+
+- Los reintentos automáticos entre proveedores están desactivados también en herramientas auxiliares.

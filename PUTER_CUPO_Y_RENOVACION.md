@@ -12,13 +12,15 @@ Nexo consulta el contador mensual real mediante `puter.auth.getMonthlyUsage()`. 
 El total mensual y el remanente son la referencia principal. El desglose por API o aplicación puede tardar alrededor de un minuto. Si el proveedor no devuelve consumo de aplicación, Nexo no inventa esa cifra y muestra «No disponible».
 
 ## Protección inteligente
-- Por debajo del 80 %: se aplican tus ajustes normales.
-- Desde el 80 %: las respuestas normales se limitan a 800 tokens y se omiten revisiones automáticas adicionales.
-- Desde el 90 %: las respuestas normales se limitan a 512 tokens y se pausan razonamiento y revisiones extra.
+- Valor normal predeterminado: 384 tokens de salida; historial de dos mensajes.
+- Desde el 50 % de uso: máximo 320 tokens por respuesta normal; presupuesto de artefactos hasta 2.400 y sin llamadas auxiliares automáticas.
+- Desde el 70 %: máximo 256 tokens y pensamiento adicional pausado; artefactos hasta 2.000.
+- Desde el 85 %: máximo 192 tokens; artefactos hasta 1.700.
+- Desde el 95 %: máximo 160 tokens; artefactos hasta 1.400.
 
-La protección no cambia el motor seleccionado, no bloquea el chat y no recorta automáticamente los presupuestos de proyectos/código. Puedes desactivarla en Ajustes → Uso.
+La selección automática usa únicamente modelos que Puter marque como variante `:free` o con coste cero confirmado para entrada y salida. No se cambia silenciosamente a un motor de pago. `max_tokens` limita la salida, no los tokens de entrada ni el coste total. La protección reduce también el contexto y las llamadas adicionales, pero no puede garantizar que una cuota del proveedor gratuito dure un número concreto de mensajes. Puedes desactivar el ahorro en Ajustes → Uso, aunque no es recomendable si quieres conservar el cupo.
 
-Las llamadas de generación de voz e imágenes pueden generar consumo adicional; al 90 % del cupo, Nexo solicita confirmación para esas acciones. Si Puter no devuelve alguno de los campos de saldo, la interfaz indica que no está disponible en vez de inferir que se agotó.
+Las llamadas de generación de voz e imágenes son servicios independientes y pueden consumir recursos aparte de los tokens de chat. La mejora de prompts es opcional y hace una llamada adicional solo cuando pulsas su botón. La revisión automática de código está desactivada por defecto; al activarla se hará una segunda llamada.
 
 ## Errores de límites
 - **402 `insufficient_funds`:** se agotó el cupo mensual incluido. La renovación depende del ciclo del plan Puter; el SDK no devuelve una fecha/hora exacta del siguiente reinicio.

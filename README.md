@@ -10,26 +10,33 @@ Aplicación web/PWA de Gorbus con chat, perfiles especializados, generador y an�
 4. **Nexo 7** — Creator Lab, análisis y proyectos complejos.
 5. **Papoi 8** — juegos y experiencias 2D/3D.
 6. **Anacleto Pro** — análisis avanzado.
-7. **Eustaquio Max** — nuevo perfil especialista en programación y desarrollo web completo, situado después de Anacleto Pro.
+7. **Eustaquio Max** — perfil especialista en programación y desarrollo web completo; prioriza motores gratuitos especializados en código y puede usar variantes gratuitas OpenAI/Claude si Puter las publica.
 
-Los perfiles anteriormente reservados Nexo 5.5 y Nexo 6 se renombran **Nexo Vision 5.5** y **Nexo Apex 6** y quedan activos como perfiles especializados. Los perfiles ChatGPT/OpenAI, Claude, Gemini y DeepSeek se han retirado del selector de chat. Los perfiles Nexo son instrucciones y políticas de selección; no son modelos neuronales entrenados desde cero.
+Los perfiles anteriormente reservados Nexo 5.5 y Nexo 6 se renombran **Nexo Vision 5.5** y **Nexo Apex 6** y quedan activos como perfiles especializados. Los perfiles genéricos ChatGPT/OpenAI, Claude, Gemini y DeepSeek se han retirado del selector de chat; algunos motores OpenAI/Claude se usan como motores internos de los perfiles superiores. Los perfiles Nexo son instrucciones y políticas de selección; no son modelos neuronales entrenados desde cero.
 
 ## Modelos y costes
 
-Nexo consulta `puter.ai.listModels()` en la cuenta activa. Solo deja seleccionar motores de chat con coste 0 publicado para entrada y salida o una variante `:free` reconocida por el ID del catálogo. Automático elige primero la alternativa gratuita compatible más económica. La documentación de Puter especifica que las variantes gratuitas están sujetas a cuotas y que el proveedor puede retirarlas. No existe garantía de uso ilimitado ni de que un modelo concreto aparezca en todas las cuentas. Nexo Apex 6 es la excepción controlada: acepta Sonnet o GPT-5.4 solo si el catálogo informa un coste verificable bajo un tope de 4 USD/M de entrada y 20 USD/M de salida; las respuestas se limitan a 700 tokens por defecto y pueden bajar con la protección inteligente.
+Nexo consulta `puter.ai.listModels()` en la cuenta activa y construye una jerarquía por perfil. Todos los perfiles automáticos seleccionan únicamente variantes `:free` o con coste 0 confirmado para entrada y salida. Eustaquio Max prioriza motores de código gratuitos; Apex 6 y Anacleto Pro priorizan modelos gratuitos con mejor ajuste para razonamiento. OpenAI y Claude solo pueden entrar si la variante específica es gratuita. No se seleccionan modelos de pago automáticamente. Vision 5.5 sigue siendo un perfil especializado de imagen, no un escalón de chat general.
 
-Entre las familias gratuitas que pueden buscarse en catálogos públicos están Nemotron 3 Ultra, Nemotron 3.5 Super VL, Nemotron 3.5 Lightning, Nemotron 3 Nano Omni, ERNIE 5.5 Flash, Liquid LFM3 1.7B, Ling 3.2 Flash, Dots3-Note, Particle-1, Cohere North Mini Code y Flint. La aplicación solo las mostrará si Puter las devuelve realmente. No fija IDs de OpenRouter como si fueran automáticamente compatibles con Puter. Revisa `MODELOS_Y_CAPACIDADES.md` para detalles.
+Nexo usa ahora un perfil de ahorro estricto: todos los perfiles automáticos seleccionan únicamente variantes `:free` o coste cero confirmado por Puter. Eustaquio Max prioriza motores gratuitos especializados en código. El predeterminado es 384 tokens de salida para respuestas y 2.800 para artefactos, con dos mensajes de historial. No se ejecutan revisiones ni reparaciones automáticas en segunda llamada. Consulta `CHANGELOG_ECONOMY_GUARD_2026-11-19.txt` para los límites.
 
 ## Funciones destacadas
 
 - Chat con historial local, memoria, adjuntos y análisis de archivos.
 - Asistente de modelos en un overlay/chat independiente con historial separado.
-- Generación y edición de imágenes mediante GPT Image 2.6 Flare/Sunburst o Gemini 3 Pro Image, con calidad media recomendada y mejora opcional del prompt visual. La mejora usa un modelo de texto económico y solo se ejecuta cuando se pulsa el botón.
-- Lectura de enlaces públicos HTTP/HTTPS que el usuario comparta. Esta edición no anuncia búsqueda web general integrada al retirar los motores OpenAI del chat.
+- Generación y edición de imágenes mediante GPT Image 2.6 Flare/Sunburst o Gemini 3 Pro Image, con calidad media recomendada y mejora opcional del prompt visual. La mejora usa un modelo de chat gratuito confirmado y solo se ejecuta cuando se pulsa el botón.
+- Búsqueda contextual: el botón «Buscar en Google» abre Google con el texto escrito; el usuario puede pegar hasta tres enlaces públicos y Nexo recupera su contenido mediante el endpoint de lectura. Algunos modelos OpenAI compatibles del catálogo Puter pueden usar la herramienta `web_search` en la llamada principal si la consulta es actual. Si el motor no admite búsqueda, Nexo lo indica y no inventa búsquedas. La búsqueda nativa puede consumir cuota adicional.
 - Dictado desde el navegador, lectura en voz alta y transcripción de audio con Puter speech2txt/xAI.
 - Descarga de archivos generados y paquetes ZIP.
 - Ajustes de uso, límites de salida y protección inteligente de consumo. La aplicación muestra cupo mensual, saldo restante, porcentaje consumido y detecta agotamiento tras actualizar el dato de Puter o recibir un error de crédito. Incluye un diálogo de cupo agotado y una ventana de planes estilo Puter; los botones Upgrade abren Puter y no procesan pagos dentro de Nexo.
 - Diseño responsive con modo de rendimiento para dispositivos modestos.
+
+## Información actual, fecha y hora
+
+- Nexo añade fecha, hora local y zona horaria obtenidas del navegador a cada petición principal; una respuesta local atiende preguntas directas como «¿qué día es hoy?» y «¿qué hora es?». La hora visible del encabezado se actualiza periódicamente.
+- Las consultas que contienen indicadores de actualidad (hoy, noticias, versiones, precios, novedades, clima, tipos de cambio, resultados y similares) pueden activar la búsqueda nativa solo si el modelo seleccionado la admite.
+- El botón Google no extrae automáticamente la página de resultados ni garantiza que Nexo lea todos los resultados; abre Google en otra pestaña. El usuario debe pegar en Nexo hasta tres URLs públicas. La lectura puede fallar ante páginas con login, CAPTCHA, bloqueo anti-bot o contenido dinámico.
+- La memoria de Nexo guarda preferencias y notas del usuario, no actualiza automáticamente el conocimiento mundial ni cambia los pesos del modelo.
 
 ## Uso y despliegue
 
@@ -47,3 +54,29 @@ Requisito para las comprobaciones locales: Node.js 20 o superior. Ejecuta `npm r
 Las cuotas y tarifas dependen del proveedor y de la cuenta Puter. Los límites de salida de Nexo no equivalen al gasto total: también cuentan entrada, historial, archivos, imágenes y herramientas. Nexo no integra pagos, cartera ni suscripciones. La sincronización entre dispositivos es opcional y no ofrece cifrado de extremo a extremo; evita sincronizar secretos o datos sensibles.
 
 Las comprobaciones estáticas no sustituyen una prueba de funcionamiento con una sesión real de Puter.
+
+
+## Live Knowledge & Web Tools (19-11-2026)
+
+- Se añade fecha, hora y zona horaria local del navegador al contexto de cada petición y al asesor de modelos; se responde localmente a preguntas directas sobre el día y la hora.
+- Se corrige el seguimiento del chat para bajar al enviar y al recibir una respuesta cuando el usuario está al final, sin arrastrarlo hacia abajo si ha subido a consultar mensajes anteriores.
+- Las consultas sensibles al tiempo pueden activar la herramienta web nativa de Puter en una llamada principal, solo con modelos compatibles.
+- «Buscar en Google» abre una búsqueda real en otra pestaña; al pegar hasta tres enlaces públicos, Nexo los recupera y los analiza. Google no se consulta de forma programática ni se inventan resultados.
+- Se actualizan instrucciones y textos para distinguir memoria, conocimiento del modelo y datos actuales verificados.
+
+## Economy Guard (19-11-2026)
+
+- Automático es gratuito por diseño: nunca selecciona modelos de pago aunque el perfil sea avanzado. Las variantes OpenAI/Claude solo entran si Puter confirma `:free` o coste 0; Gemini y DeepSeek siguen excluidos.
+- Una petición principal equivale a una llamada principal: sin búsqueda auxiliar, reparación automática ni revisión duplicada. Las herramientas opcionales de mejora siguen requiriendo que el usuario pulse su botón.
+- Respuestas normales: 384 tokens como máximo por defecto. Proyectos: 2.800 tokens de salida por defecto, con topes adaptativos por estado del cupo.
+- Historial: dos últimos mensajes por defecto. Los límites de créditos de Puter siguen siendo independientes de los tokens configurados por Nexo.
+
+
+## Economy Guard — 2026-11-19
+- Perfiles automáticos limitados a variantes `:free` o coste 0 confirmado por el catálogo de Puter.
+- Respuestas normales: 384 tokens por defecto; historial reciente compacto.
+- Proyectos: 2.800 tokens por defecto, con topes según tipo de tarea.
+- Sin revisión ni reparación automática adicional por defecto: un envío normal genera una sola llamada de chat.
+- Los modelos gratuitos tienen cuotas del proveedor; `max_tokens` solo limita la salida y no garantiza un coste exacto.
+
+- El chat principal desactiva los reintentos automáticos entre proveedores (`fallback:false`) y la repetición por rechazo de Claude (`refusalFallback:false`); un fallo se muestra al usuario en lugar de disparar otra pasada.

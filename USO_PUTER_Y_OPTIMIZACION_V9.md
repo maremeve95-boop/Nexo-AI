@@ -15,9 +15,15 @@ Nexo presenta el contador técnico de Puter en unidades legibles: 1 crédito mos
 
 ## Protección inteligente
 
-- Desde el 80 % del cupo: respuestas normales de hasta 800 tokens y pausa de revisiones adicionales.
-- Desde el 90 %: respuestas normales de hasta 512 tokens y pausa de razonamiento/revisiones adicionales.
-- No cambia el modelo seleccionado ni reduce automáticamente los presupuestos de proyectos grandes.
+- Respuestas normales: 384 tokens de salida por defecto; solo dos mensajes recientes de historial.
+- Desde el 50 % del cupo: hasta 320 tokens normales y hasta 2.400 para artefactos; se omiten llamadas auxiliares automáticas.
+- Desde el 70 %: hasta 256 tokens normales y hasta 2.000 para artefactos; pensamiento adicional pausado.
+- Desde el 85 %: hasta 192 tokens normales y hasta 1.700 para artefactos.
+- Desde el 95 %: hasta 160 tokens normales y hasta 1.400 para artefactos.
+
+El selector automático usa exclusivamente variantes gratuitas confirmadas por el catálogo de Puter (`:free` o coste cero en entrada y salida). No hace fallback silencioso a otro proveedor: si el motor falla, muestra el error en lugar de intentar otro modelo potencialmente facturable. La revisión y reparación automática están desactivadas por defecto.
+
+Los límites `max_tokens` afectan a la salida, no al tamaño de la entrada ni al coste global. Nexo también reduce instrucciones, memoria y mensajes anteriores. Las variantes gratuitas pueden tener cuotas y límites temporales propios; no se puede garantizar una cantidad fija de mensajes.
 
 ## Cómo reducir consumo
 
