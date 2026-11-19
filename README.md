@@ -89,3 +89,12 @@ Las comprobaciones estáticas no sustituyen una prueba de funcionamiento con una
 - Las cifras son techos, no precios fijos. Nexo obtiene la tarifa del catálogo actual de Puter y pide confirmación cuando un modelo sea facturable; si no se autoriza, no envía la petición de pago.
 - Puter publica `openai/gpt-5.1-codex-mini` a $0.25/$2 por 1M; se habilita para Eustaquio solo si aparece en el catálogo activo. Aunque otros IDs GPT-5.1 Codex están deprecados en OpenAI, Puter mantiene esta ficha y puede conservar su alias de proveedor. GPT-5 Nano y GPT-5 Mini tienen retirada anunciada el 11-12-2026, y GPT-5.4 Nano el 01-04-2027; si dejan de aparecer, Nexo usa la alternativa aprobada que siga disponible. El catálogo decide disponibilidad final y puede cambiar con el tiempo.
 - Roles: Nexo 7 (código rápido), Papoi 8 (frontend), Anacleto (lógica y revisión), Eustaquio (desarrollo web/agentes), Vision (código desde capturas/UI), Apex (razonamiento avanzado).
+
+
+Actualización definitiva de enrutamiento (19-11-2026): se retiró el selector manual de proveedores/modelos. El usuario elige un perfil Nexo; el motor se resuelve automáticamente por perfil y tarea, usando únicamente candidatos del catálogo real de Puter que respeten el presupuesto. Los motores de pago requieren confirmación; si no se autorizan, Nexo intenta una alternativa gratuita compatible.
+
+
+CAMBIO FINAL (19-11-2026): ya no hay selector manual de motor de IA. El usuario escoge un perfil Nexo; Nexo escoge el motor real internamente por tarea y jerarquía. El coste de motores de pago requiere confirmación; al rechazarlo, Nexo intenta un motor gratuito compatible.
+
+
+La migración final conserva el perfil Nexo que el usuario ya tenía seleccionado; solo normaliza el motor guardado a enrutamiento automático.

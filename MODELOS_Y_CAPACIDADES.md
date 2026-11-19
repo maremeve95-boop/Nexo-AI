@@ -77,3 +77,25 @@ La app incluye fecha, hora y zona horaria local del navegador. La búsqueda nati
 - [Anthropic — Precios](https://www.anthropic.com/pricing) — tarifas de referencia de Claude.
 
 La disponibilidad, las tarifas finales, el cupo y los límites dependen del catálogo y de la cuenta Puter en el momento de uso.
+
+
+Actualización definitiva de enrutamiento (19-11-2026): se retiró el selector manual de proveedores/modelos. El usuario elige un perfil Nexo; el motor se resuelve automáticamente por perfil y tarea, usando únicamente candidatos del catálogo real de Puter que respeten el presupuesto. Los motores de pago requieren confirmación; si no se autorizan, Nexo intenta una alternativa gratuita compatible.
+
+
+## Jerarquía definitiva y selección automática (19-11-2026)
+
+El usuario selecciona un **perfil Nexo**, no un proveedor o ID de modelo. El motor real se resuelve en cada mensaje según tarea, catálogo de Puter, capacidad necesaria y presupuesto. El orden visible de perfiles es:
+
+1. Nexo Estándar — asistente diario.
+2. Nexo 4.5 — investigación y síntesis.
+3. Nexo 5 — programación y depuración general.
+4. Nexo 7 — código rápido y diario; preferencia GPT-5 Nano.
+5. Papoi 8 — frontend y código limpio; preferencia GPT-5.4 Nano.
+6. Anacleto Pro — lógica y revisión; preferencia Claude Haiku 5.5.
+7. Eustaquio Max — desarrollo web completo; preferencia GPT-5.1 Codex Mini, con Qwen3 Coder cuando el catálogo lo permita.
+8. Nexo Vision 5.5 — visión aplicada a UI y capturas; preferencia GPT-4.1 Mini con entrada de imagen.
+9. Nexo Apex 6 — razonamiento avanzado; preferencia GPT-5.4 Mini.
+
+Los motores preferentes son candidatos, nunca garantías: Puter puede retirarlos o no ofrecerlos a una cuenta. No se usa un ID inexistente. Los motores de pago deben estar dentro del techo del perfil y requieren confirmación explícita por ID y tarifa. Si se rechaza el coste, Nexo intenta un motor gratuito compatible con la misma tarea. No cambia a pago en silencio ni conserva una elección manual antigua.
+
+El selector manual de motores se eliminó para evitar que un override genérico interfiera con la jerarquía. Permanece el selector de perfiles Nexo.
