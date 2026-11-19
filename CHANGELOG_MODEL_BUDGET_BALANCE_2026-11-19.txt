@@ -1,0 +1,55 @@
+NEXO AI — MODEL BUDGET BALANCE
+Fecha: 19 de noviembre de 2026
+
+RESUMEN
+- Se reajustan los motores preferentes por perfil usando tarifas públicas de referencia y metadatos del catálogo Puter en vivo.
+- Los perfiles Nexo Estándar, Nexo 4.5 y Nexo 5 mantienen selección gratuita por defecto.
+- Los perfiles especialistas pueden proponer modelos de bajo coste dentro de sus límites, siempre con confirmación explícita antes del primer uso facturable y al cambiar la tarifa.
+
+MAPA DE MOTORES
+- Nexo 7: GPT-5 Nano; alternativa GPT-5.4 Nano.
+- Papoi 8: GPT-5.4 Nano; alternativa GPT-5 Mini; luego Qwen Coder solo si el coste entra en el límite.
+- Anacleto Pro: Claude Haiku 5.5; alternativa Haiku 4.5.
+- Eustaquio Max: GPT-5.1 Codex Mini; alternativa más económica Qwen3 Coder 30B A3B Instruct y luego Qwen3 Coder Flash.
+- Nexo Vision 5.5: GPT-4.1 Mini con entrada de imagen; alternativa Llama 4 Scout con visión confirmada.
+- Nexo Apex 6: GPT-5.4 Mini; sin respaldo facturable más caro.
+
+LIMITES DE TARIFA POR MILLÓN (USD, ENTRADA / SALIDA)
+- Nexo 7: $0.25 / $1.50.
+- Papoi 8: $0.25 / $2.00.
+- Anacleto Pro: $1.00 / $5.00.
+- Eustaquio Max: $0.35 / $2.00.
+- Vision 5.5: $0.45 / $2.00.
+- Apex 6: $0.80 / $5.00.
+
+PRECIOS DE REFERENCIA (NO CONSTANTES)
+- GPT-5 Nano: aprox. $0.05 / $0.40 por 1M.
+- GPT-5.4 Nano: aprox. $0.20 / $1.25 por 1M.
+- Claude Haiku 5.5: aprox. $0.10 / $0.50 por 1M.
+- GPT-5.1 Codex Mini: aprox. $0.25 / $2.00 por 1M.
+- Qwen3 Coder 30B A3B Instruct: aprox. $0.15 / $0.60 por 1M.
+- Qwen3 Coder Flash: aprox. $0.30 / $1.50 por 1M.
+- GPT-4.1 Mini: aprox. $0.40 / $1.60 por 1M.
+- GPT-5.4 Mini: aprox. $0.75 / $4.50 por 1M.
+
+SEGURIDAD DE COSTE
+- No se usa una tarifa codificada como verdad: el catálogo actual de Puter se consulta antes de habilitar cada opción.
+- Si falta el coste, la moneda no es USD reconocida, el modelo no aparece o supera el límite, se excluye.
+- El diálogo muestra la tarifa y requiere confirmación. Si se cancela, no se envía nada.
+- No se cambia a un modelo facturable más caro al fallar el preferido.
+- Puter sí publica el ID exacto `openai/gpt-5.1-codex-mini` a $0.25/$2 por 1M, por lo que se habilita para Eustaquio si el catálogo activo lo confirma. La documentación general de OpenAI marca como deprecados otros IDs GPT-5.1 Codex; Puter puede mantener su propio alias de proveedor. GPT-5 Nano y GPT-5 Mini tienen retirada anunciada para el 11-12-2026; GPT-5.4 Nano para el 01-04-2027. Si desaparecen del catálogo, se usa la alternativa aprobada que siga disponible.
+
+ROLES ACTUALIZADOS
+- Nexo 7: código rápido y diario.
+- Papoi 8: código limpio y frontend (mantiene creatividad y juegos cuando se solicitan).
+- Anacleto Pro: lógica compleja y revisión.
+- Eustaquio Max: programación web completa y agentes.
+- Vision 5.5: código desde capturas, mockups y UI.
+- Apex 6: razonamiento avanzado equilibrado.
+
+AHORRO CONSERVADO
+- 384 tokens por defecto para respuestas normales.
+- 2.800 tokens por defecto para artefactos.
+- Historial de dos mensajes por defecto.
+- Sin revisión/reparación automática en una segunda llamada.
+- Los precios por millón no son el precio de un mensaje: el gasto real depende del volumen de entrada/salida y herramientas.
