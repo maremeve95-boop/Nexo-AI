@@ -1,4 +1,4 @@
 NEXO AI
-Economy Router & Smart Fallback
-Version 1.2.1
+Live Model Catalog & Expanded Profiles
+Version 1.2.2
 2026-11-24
