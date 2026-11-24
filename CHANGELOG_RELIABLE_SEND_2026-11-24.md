@@ -25,6 +25,7 @@
 
 ## Validación
 - `npm run check` verifica sintaxis de scripts inline, API y Service Worker.
+- `scripts/test-puter-fallback.cjs` simula un 429 durante el stream, cambio de proveedor, fallback implícito desactivado y `Retry-After`.
 - El fallback se probó con errores simulados 429 durante el stream, cambio de proveedor, SDK fallback desactivado y Retry-After.
 - Las pruebas contra límites reales de Puter requieren una cuenta autenticada y no se presentan como realizadas.
 
