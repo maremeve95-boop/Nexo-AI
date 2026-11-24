@@ -1,3 +1,20 @@
+# Nexo AI 1.2.2 — Live Model Catalog & Expanded Profiles (2026-11-24)
+
+## Selector de modelos
+- El selector superior se divide en dos grupos: perfiles de Nexo y motores gratuitos reales del catálogo de Puter.
+- Añadidos Nexo 4 Lite, Nexo 4.1 y Nexo 6.0 Patched con instrucciones y preferencias de modelos diferenciadas.
+- La lista se construye desde `puter.ai.listModels()` y muestra hasta 60 opciones gratuitas compatibles, usando nombre, proveedor e ID procedentes del catálogo.
+- La elección manual guarda `settings.modelChoice`, independiente del perfil de Nexo. Cambiar de perfil vuelve al modo automático.
+- La selección directa solo permite modelos que Puter marca `:free` o con coste de entrada y salida igual a cero. Si el catálogo los elimina o cambia su coste, la selección se restablece a automático.
+- Google/Gemini entra en el conjunto gratuito solo cuando el catálogo confirma coste cero o una variante gratuita; no se permiten sus variantes facturables en el selector directo.
+- El catálogo cambia con el tiempo; los perfiles continúan resolviendo a modelos reales disponibles en cada actualización.
+
+## Validación
+- `npm run check` valida los dos bloques JavaScript inline, API, Service Worker, fallback 402/429 y las reglas estáticas del nuevo selector.
+- No se afirma que los modelos se hayan llamado en vivo: la lista real se obtiene al iniciar sesión con Puter desde la aplicación publicada.
+
+---
+
 # Nexo AI 1.2.1 — Economy Router & Smart Fallback (2026-11-24)
 
 ## Enrutamiento económico
