@@ -1,4 +1,4 @@
 NEXO AI
-Live Knowledge & 2D Game Preview Update
-Version 1.2.0
+Economy Router & Smart Fallback
+Version 1.2.1
 2026-11-24
