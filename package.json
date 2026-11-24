@@ -10,6 +10,7 @@
     "check:api": "node --check api/read-url.js",
     "check:service-worker": "node --check service-worker.js",
     "check:app": "node scripts/check-inline-scripts.cjs",
-    "check": "npm run check:app && npm run check:api && npm run check:service-worker"
+    "check": "npm run check:app && npm run check:api && npm run check:service-worker && npm run test:fallback",
+    "test:fallback": "node scripts/test-puter-fallback.cjs"
   }
 }
