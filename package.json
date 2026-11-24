@@ -1,13 +1,15 @@
 {
   "name": "nexo-ai",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
-  "description": "Nexo AI — live release context, cached Puter models, and safer 2D HTML game preview.",
+  "description": "Nexo AI — economy-first model routing, smart token budgets, and explicit free-model fallback for Puter.js.",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
     "check:api": "node --check api/read-url.js",
-    "check:service-worker": "node --check service-worker.js"
+    "check:service-worker": "node --check service-worker.js",
+    "check:app": "node scripts/check-inline-scripts.cjs",
+    "check": "npm run check:app && npm run check:api && npm run check:service-worker"
   }
 }
