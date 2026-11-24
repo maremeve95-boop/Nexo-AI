@@ -9,6 +9,7 @@ Aplicación web de Nexo AI. La interfaz principal está en `index.html`; utiliza
 - El fallback integrado del SDK está desactivado para impedir cambios silenciosos de modelo o tarifa.
 - Los timeouts cubren tanto la promesa inicial de Puter como las lecturas del stream; un límite agotado ya no bloquea el resto de la pestaña.
 - El ahorro inteligente reduce el historial y las llamadas auxiliares con el consumo real de Puter. El payload transmite solo roles y texto, no metadatos internos.
+- Los mejoradores auxiliares respetan la pausa de ahorro desde el 50 % y las llamadas desactivan el fallback implícito del SDK.
 
 ## Actualización 1.2.0 — 24 de noviembre de 2026
 
