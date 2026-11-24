@@ -1300,7 +1300,7 @@ function syncFamilySelect(){
  select.append(modelGroup);
  if(!isFamilyUnlocked(settings.family))settings.family='standard';
  const selectedModel=String(settings.modelChoice||'auto');const hasSelectedModel=models.some(model=>String(model.id)===selectedModel);
- if(selectedModel!=='auto'&&!hasSelectedModel)settings.modelChoice='auto';
+ if(selectedModel!=='auto'&&!hasSelectedModel&&modelCatalogueLoaded)settings.modelChoice='auto';
  select.value=settings.modelChoice&&settings.modelChoice!=='auto'&&hasSelectedModel?'model:'+settings.modelChoice:settings.family;
 }
 
