@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nexo-ai-economy-router-2026-11-24-v1.2.1';
+const CACHE_NAME = 'nexo-ai-model-selector-2026-11-24-v1.2.2';
 const APP_SHELL = ["./index.html", "./manifest.webmanifest", "./icons/nexo-192.png", "./icons/nexo-512.png"];
 self.addEventListener("install", event => { event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", event => { event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith("nexo-ai-") && key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim())); });
