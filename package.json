@@ -1,8 +1,8 @@
 {
   "name": "nexo-ai",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "private": true,
-  "description": "Nexo AI — economy-first model routing, smart token budgets, and explicit free-model fallback for Puter.js.",
+  "description": "Nexo AI — live free Puter model picker, expanded Nexo profiles, and economy-first routing.",
   "engines": {
     "node": ">=20"
   },
@@ -10,7 +10,8 @@
     "check:api": "node --check api/read-url.js",
     "check:service-worker": "node --check service-worker.js",
     "check:app": "node scripts/check-inline-scripts.cjs",
-    "check": "npm run check:app && npm run check:api && npm run check:service-worker && npm run test:fallback",
-    "test:fallback": "node scripts/test-puter-fallback.cjs"
+    "check": "npm run check:app && npm run check:api && npm run check:service-worker && npm run test:fallback && npm run test:model-selector",
+    "test:fallback": "node scripts/test-puter-fallback.cjs",
+    "test:model-selector": "node scripts/test-model-selector.cjs"
   }
 }
