@@ -2,6 +2,14 @@
 
 Aplicación web de Nexo AI. La interfaz principal está en `index.html`; utiliza Puter.js para modelos y herramientas.
 
+## Actualización 1.2.2 — 24 de noviembre de 2026
+
+- El selector superior separa perfiles Nexo y una lista dinámica de hasta 60 motores gratuitos detectados en el catálogo actual de Puter.
+- Se añaden Nexo 4 Lite (deberes y explicaciones), Nexo 4.1 (conversación general) y Nexo 6.0 Patched (reparación de código).
+- Se puede seleccionar un motor gratuito concreto desde el mismo desplegable. La elección se conserva entre chats y vuelve a automático si el motor desaparece del catálogo o deja de figurar como gratuito.
+- Google/Gemini solo aparece si Puter marca la variante como gratuita o publica un coste cero. Las variantes facturables no aparecen en la lista directa.
+- Los modelos se obtienen dinámicamente con `puter.ai.listModels()`; los límites y cuotas del proveedor siguen aplicándose.
+
 ## Actualización 1.2.1 — 24 de noviembre de 2026
 
 - Enrutamiento economy-first: los modelos gratuitos compatibles se ordenan antes que cualquier opción de pago; las tarifas y el consentimiento de pago existentes siguen vigentes.
