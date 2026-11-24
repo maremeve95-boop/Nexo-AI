@@ -1577,7 +1577,7 @@ async function* requestPuterStreamWithFallback({initialModel,family,task,buildRe
    const options={...baseOptions,model:activeModel,fallback:false};
    if(request.webSearch&&supportsOpenAIWebSearch(activeModel))options.tools=[{type:'web_search'}];else delete options.tools;
    const provider=String(getModelInfo(activeModel)?.provider||activeProvider||'').toLowerCase();
-   if(provider.includes('openai')||/^openai\\//i.test(activeModel)||/^gpt-/i.test(activeModel)){if(!supportsOpenAIReasoning(activeModel))delete options.reasoning_effort;if(!options.verbosity)options.verbosity='low'}else{delete options.reasoning_effort;delete options.verbosity}
+   if(provider.includes('openai')||/^openai\//i.test(activeModel)||/^gpt-/i.test(activeModel)){if(!supportsOpenAIReasoning(activeModel))delete options.reasoning_effort;if(!options.verbosity)options.verbosity='low'}else{delete options.reasoning_effort;delete options.verbosity}
    const pending=mediaFile?puter.ai.chat(request.mediaPrompt,mediaFile,false,options):puter.ai.chat(request.payload,false,options);
    const stream=await withPuterTimeout(pending,90000);
    for await(const part of iteratePuterStreamWithTimeout(stream,signal,90000)){
