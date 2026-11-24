@@ -2,6 +2,14 @@
 
 Aplicación web de Nexo AI. La interfaz principal está en `index.html`; utiliza Puter.js para modelos y herramientas.
 
+## Actualización 1.2.1 — 24 de noviembre de 2026
+
+- Enrutamiento economy-first: los modelos gratuitos compatibles se ordenan antes que cualquier opción de pago; las tarifas y el consentimiento de pago existentes siguen vigentes.
+- Fallback explícito ante 402/429: Nexo prueba hasta dos alternativas gratuitas compatibles, también cuando el error llega durante el stream.
+- El fallback integrado del SDK está desactivado para impedir cambios silenciosos de modelo o tarifa.
+- Los timeouts cubren tanto la promesa inicial de Puter como las lecturas del stream; un límite agotado ya no bloquea el resto de la pestaña.
+- El ahorro inteligente reduce el historial y las llamadas auxiliares con el consumo real de Puter. El payload transmite solo roles y texto, no metadatos internos.
+
 ## Actualización 1.2.0 — 24 de noviembre de 2026
 
 - Nexo conoce la fecha de esta versión y responde localmente cuándo se actualizó.
@@ -19,8 +27,7 @@ Aplicación web de Nexo AI. La interfaz principal está en `index.html`; utiliza
 - `package.json`: configuración Node y comprobaciones.
 
 ```bash
-npm run check:api
-npm run check:service-worker
+npm run check
 ```
 
 Los perfiles son configuraciones de Nexo, no modelos entrenados desde cero. El catálogo y las cuotas dependen de Puter. La vista previa HTML está aislada y no sustituye probar el juego en los dispositivos objetivo.
