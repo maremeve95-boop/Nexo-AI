@@ -1,28 +1,26 @@
 # Nexo AI
 
-Aplicación web de Nexo AI. La interfaz principal está en `index.html`; usa Puter.js para los modelos y herramientas.
+Aplicación web de Nexo AI. La interfaz principal está en `index.html`; utiliza Puter.js para modelos y herramientas.
 
-## Despliegue
+## Actualización 1.2.0 — 24 de noviembre de 2026
 
-1. Sube el contenido de este proyecto a la raíz del repositorio.
-2. En Vercel, importa el repositorio y usa la configuración predeterminada de Node.
-3. Comprueba que `/api/read-url` responde en el deployment.
+- Nexo conoce la fecha de esta versión y responde localmente cuándo se actualizó.
+- Caché del catálogo de modelos: restaura la lista al iniciar y la actualiza en segundo plano, evitando pedir el catálogo en cada mensaje.
+- Instrucciones reforzadas para juegos 2D HTML autocontenidos: primer frame visible, Canvas 2D, bucle requestAnimationFrame, controles, objetivo, HUD y reinicio.
+- Diagnóstico estático y previsualización aislada de HTML con avisos de errores JavaScript o Canvas sin dibujo.
+- Reparación de HTML bajo petición manual, sin llamadas automáticas adicionales.
 
-## Archivos necesarios en ejecución
+## Archivos esenciales
 
 - `index.html`: aplicación y lógica de cliente.
-- `api/read-url.js`: lector de enlaces públicos con validación de URL.
-- `manifest.webmanifest`, `service-worker.js` e `icons/`: instalación PWA y caché.
-- `vercel.json`: cabeceras de API y service worker.
-- `package.json`: versión Node y comprobaciones.
-
-Los changelogs antiguos y notas de cada iteración se han retirado del paquete limpio; no eran necesarios para ejecutar la aplicación. El historial del repositorio conserva las versiones anteriores.
-
-## Comprobaciones
+- `api/read-url.js`: lector de enlaces públicos.
+- `manifest.webmanifest`, `service-worker.js` e `icons/`: PWA y caché.
+- `vercel.json`: configuración de despliegue.
+- `package.json`: configuración Node y comprobaciones.
 
 ```bash
 npm run check:api
 npm run check:service-worker
 ```
 
-La integración de IA requiere iniciar sesión en Puter. Los motores y cuotas dependen de la cuenta y de la disponibilidad del proveedor.
+Los perfiles son configuraciones de Nexo, no modelos entrenados desde cero. El catálogo y las cuotas dependen de Puter. La vista previa HTML está aislada y no sustituye probar el juego en los dispositivos objetivo.

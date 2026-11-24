@@ -1,8 +1,8 @@
 {
   "name": "nexo-ai",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
-  "description": "Nexo AI — reliable Puter chat, economy-first model routing, live usage, image and voice tools.",
+  "description": "Nexo AI — live release context, cached Puter models, and safer 2D HTML game preview.",
   "engines": {
     "node": ">=20"
   },
