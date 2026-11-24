@@ -12,6 +12,7 @@
 - El resumen de compactación también se acorta al subir el consumo.
 - La reparación automática y la revisión secundaria de archivos se pausan desde el 50 % para evitar llamadas auxiliares.
 - El payload del chat solo transmite `role` y `content`; excluye identificadores, proveedor, marcas de tiempo, estados y metadatos de generación.
+- Los mejoradores auxiliares de prompts se pausan desde el 50 % del cupo; las llamadas auxiliares usan `fallback: false`.
 - Sin datos válidos de uso de Puter, Nexo no inventa un porcentaje ni aplica límites basados en una medición inexistente.
 
 ## Fiabilidad de Puter.js
@@ -20,6 +21,7 @@
 - Se añaden límites de espera a la promesa de chat y a cada lectura del stream.
 - Se toleran fallos de `listModels()` sin dejar una promesa rechazada sin controlar.
 - Después de agotar las alternativas gratuitas, el mensaje queda como fallido y el siguiente envío se puede intentar de nuevo; no se bloquea toda la pestaña.
+- Las promesas de catálogo y autenticación del arranque y del asesor de modelos quedan controladas.
 
 ## Validación
 - `npm run check` verifica sintaxis de scripts inline, API y Service Worker.
