@@ -1,7 +1,0 @@
-HISTÓRICO CONSERVADO: mejoras introducidas en Nexo AI 7.2 Quick (versión anterior)
-- Menos tareas previas a responder.
-- Búsqueda web más selectiva y carga progresiva del indicador de actividad.
-- Revisión automática opcional.
-- Mejoras de contexto y rendimiento.
-
-La versión actual es Nexo AI 7.4 — Papoi 8 Creator Engine. Consulta CHANGELOG_PAPOI_8.txt para las novedades de esta entrega.
